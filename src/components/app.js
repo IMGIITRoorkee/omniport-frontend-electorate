@@ -1,70 +1,45 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Scrollbars } from 'react-custom-scrollbars'
-import { Segment, Container } from 'semantic-ui-react'
+import React, { Component } from "react";
+import { Switch, Redirect, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import { Scrollbars } from "react-custom-scrollbars";
+import { Segment, Container, Sidebar, Menu } from "semantic-ui-react";
 
-import { AppHeader, AppFooter, AppMain, getTheme } from 'formula_one'
+import { AppHeader, AppFooter, AppMain, getTheme } from "formula_one";
 
-import main from 'formula_one/src/css/app.css'
-import blocks from '../css/app.css'
+import NavMenu from "./navMenu";
+
+import main from "formula_one/src/css/app.css";
+import blocks from "../css/app.css";
 
 class App extends Component {
-  render () {
-    const creators = [
-      {
-        name: 'Dhruv Bhanushali',
-        role: 'Mentor',
-        link: 'https://dhruvkb.github.io/'
-      },
-      {
-        name: 'Praduman Goyal',
-        role: 'Frontend developer',
-        link: 'https://pradumangoyal.github.io'
-      }
-    ]
-
+  render() {
+    const { match } = this.props;
     return (
-      <div styleName='main.app'>
-        <AppHeader appName='electorate2' mode='app' />
+      <div styleName="main.app">
+        <AppHeader appName="electorate2" mode="app" userDropdown />
         <AppMain>
-          <div styleName='main.app-main'>
+          <div styleName="main.app-main">
             <Scrollbars autoHide>
-              <Container styleName='blocks.content-div'>
-                <center>
-                  <Segment compact color={getTheme()}>
-                    <center>
-                      <h1>Congratulations!</h1>
-                      <p styleName='blocks.logo'>
-                        <img src='/branding/site/logo.svg' />
-                      </p>
-                      <p>
-                        You have successfully initiated <em>electorate2</em> and
-                        taken the first step to building your
-                        <strong> Omniport</strong> app.
-                      </p>
-                      <p>
-                        Edit <code>./src/components/app.js</code> and make this
-                        app do magical things. We can't wait to see what you make.
-                      </p>
-                      <p>
-                        Greetings,
-                        <br />
-                        Team Omniport
-                      </p>
-                    </center>
-                  </Segment>
-                </center>
-              </Container>
+              <div styleName="blocks.content-div">
+                <Sidebar.Pushable fluid styleName="blocks.pushable">
+                  <Sidebar as={Menu} vertical visible>
+                    <NavMenu />
+                  </Sidebar>
+                  <Sidebar.Pusher styleName="blocks.pusher-content">
+                    <Switch>
+                      <Route exact path={`${match.path}`} />
+                      <Route render={props => <Redirect to="/404" />} />
+                    </Switch>
+                  </Sidebar.Pusher>
+                </Sidebar.Pushable>
+              </div>
             </Scrollbars>
           </div>
         </AppMain>
-        <AppFooter creators={creators} />
+        <AppFooter />
       </div>
-    )
+    );
   }
 }
 
-export default connect(
-  null,
-  null
-)(App)
+export default connect(null, null)(App);

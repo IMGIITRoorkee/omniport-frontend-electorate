@@ -1,5 +1,6 @@
 .content-div {
   height: 100%;
+  width: 100%;
 
   display: flex !important;
   flex-direction: column;
@@ -8,6 +9,19 @@
   flex-grow: 1;
 }
 
-.logo img {
-  width: 12em;
+.pushable {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.pusher-content {
+  width: calc(100% - 260px);
+  overflow: auto !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  background: #f2f4f7 !important;
+  padding: 20px;
 }
