@@ -25,3 +25,27 @@
   background: #f2f4f7 !important;
   padding: 20px;
 }
+
+.post-all {
+  padding-top: 95em;
+  padding-left: 3em;
+}
+
+.post {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.post-header {
+  padding-bottom: 0.5em;
+}
+
+.profile-photo {
+  border-radius: 50% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+  width: 50% !important;
+  height: auto !important;
+}

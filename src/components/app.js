@@ -7,6 +7,7 @@ import { Segment, Container, Sidebar, Menu } from "semantic-ui-react";
 import { AppHeader, AppFooter, AppMain, getTheme } from "formula_one";
 
 import NavMenu from "./navMenu";
+import AllProfiles from "./allProfiles";
 
 import main from "formula_one/src/css/app.css";
 import blocks from "../css/app.css";
@@ -27,7 +28,11 @@ class App extends Component {
                   </Sidebar>
                   <Sidebar.Pusher styleName="blocks.pusher-content">
                     <Switch>
-                      <Route exact path={`${match.path}`} />
+                      <Route
+                        exact
+                        path={`${match.path}`}
+                        component={AllProfiles}
+                      />
                       <Route render={props => <Redirect to="/404" />} />
                     </Switch>
                   </Sidebar.Pusher>

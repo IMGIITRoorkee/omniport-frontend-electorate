@@ -14,7 +14,7 @@ class navMenu extends Component {
       color: "#72a1ff"
     };
     return (
-      <Container>
+      <Fragment>
         <Menu.Item>
           <Menu.Header>INSTITUTE CANDIDATES</Menu.Header>
           <Menu.Menu>
@@ -25,7 +25,11 @@ class navMenu extends Component {
               as={Link}
               to={baseNavUrl("")}
             />
-            <Menu.Item name="GS Technical Affairs" />
+            <Menu.Item
+              name="GS Technical Affairs"
+              as={Link}
+              to={baseNavUrl("/temp")}
+            />
             <Menu.Item name="GS Sports Affairs" />
             <Menu.Item name="GS Hostel Affairs" />
             <Menu.Item name="GS Cultural Affairs" />
@@ -35,7 +39,7 @@ class navMenu extends Component {
         <Menu.Item>
           <Menu.Header>QUESTION AND ANSWER</Menu.Header>
         </Menu.Item>
-      </Container>
+      </Fragment>
     );
   }
 }

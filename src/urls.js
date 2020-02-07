@@ -2,7 +2,11 @@ import config from "../config.json";
 
 //Backend URLs
 export const baseApiUrl = () => {
-  return `/api/electorate2/`;
+  return `/api/electorate/`;
+};
+
+export const urlGetAllProfiles = () => {
+  return `${baseApiUrl()}candidate_view/`;
 };
 
 //Frontend URLs

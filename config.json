@@ -1,8 +1,8 @@
 {
-    "nomenclature": {
-        "name": "electorate2",
-        "verboseName": "Electorate2"
-    },
-    "baseUrl": "/electorate2",
-    "source": "electorate2/src/index"
+  "nomenclature": {
+    "name": "electorate2",
+    "verboseName": "Electorate2"
+  },
+  "baseUrl": "/electorate2",
+  "source": "electorate2/src/index"
 }
