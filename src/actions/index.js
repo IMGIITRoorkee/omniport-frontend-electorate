@@ -33,3 +33,19 @@ export const getAllProfiles = () => {
       .catch(err => console.log(err));
   };
 };
+
+//Get PostDict for making homepage dynamic
+export const getPostOptions = () => {
+  return dispatch => {
+    axios
+      .options(urlGetAllProfiles())
+      .then(res => {
+        console.log(res.data.actions.POST.post.choices);
+        dispatch({
+          type: "GET_POST_OPTIONS",
+          payload: res.data.actions.POST.post.choices
+        });
+      })
+      .catch(err => console.log(err));
+  };
+};

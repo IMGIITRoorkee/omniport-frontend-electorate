@@ -27,12 +27,14 @@ class navMenu extends Component {
             />
             <Menu.Item
               name="GS Technical Affairs"
+              replace
               as={Link}
               to={baseNavUrl("/temp")}
             />
             <Menu.Item name="GS Sports Affairs" />
             <Menu.Item name="GS Hostel Affairs" />
             <Menu.Item name="GS Cultural Affairs" />
+            <Menu.Item name="GS Professional Affairs" />
             <Menu.Item name="GS Academic(PG) Affairs" />
           </Menu.Menu>
         </Menu.Item>

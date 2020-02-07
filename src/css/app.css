@@ -27,17 +27,19 @@
 }
 
 .post-all {
-  padding-top: 95em;
+  padding-top: 120em;
   padding-left: 3em;
+  padding-bottom: 5em;
 }
 
 .post {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 2em;
 }
 
 .post-header {
   padding-bottom: 0.5em;
+  padding-top: 0.5em;
 }
 
 .profile-photo {

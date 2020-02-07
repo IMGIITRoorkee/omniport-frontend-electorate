@@ -3,13 +3,13 @@ import exampleReducer from "./exampleReducer";
 
 import WhoAmI from "./whoAmI";
 import AllProfilesReducer from "./allProfilesReducer";
-import PostOptionsReducers from "./postOptionsReducer";
+import GetPostOptionsReducers from "./getPostOptionsReducer";
 
 const rootReducers = combineReducers({
   exampleReducer,
   whoAmI: WhoAmI,
   allProfiles: AllProfilesReducer,
-  postOptions: PostOptionsReducers
+  getPostOptions: GetPostOptionsReducers
 });
 
 export default rootReducers;

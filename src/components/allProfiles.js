@@ -5,7 +5,7 @@ import { groupBy } from "lodash";
 
 import ProfileCard from "./profileCard";
 
-import { setUser, getAllProfiles } from "../actions";
+import { setUser, getAllProfiles, getPostOptions } from "../actions";
 
 import blocks from "../css/app.css";
 
@@ -13,17 +13,10 @@ class allProfiles extends Component {
   componentDidMount() {
     this.props.SetUser();
     this.props.GetAllProfiles();
+    this.props.GetPostOptions();
   }
   render() {
-    const { allProfiles, postsOptions } = this.props;
-    const post = [
-      "G.S. Academics Affairs(UG)",
-      "G.S. Technical Affairs",
-      "G.S. Sports Affairs",
-      "G.S. Hostel Affairs",
-      "G.S. Cultural Council",
-      "G.S. Academics Affairs(PG)"
-    ];
+    const { allProfiles, getPostOptions } = this.props;
     var allProfilesFiltered;
     if (allProfiles) {
       allProfilesFiltered = groupBy(allProfiles, "post");
@@ -32,12 +25,12 @@ class allProfiles extends Component {
       <div styleName="blocks.post-all">
         <h1>Insitute Candidates</h1>
         <Divider />
-        {post.map(element => (
+        {getPostOptions.map(element => (
           <div styleName="blocks.post">
-            <h2 styleName="blocks.post-header">{element}</h2>
+            <h2 styleName="blocks.post-header">{element.value}</h2>
             <Card.Group>
-              {allProfilesFiltered[element] ? (
-                allProfilesFiltered[element].map(profile => (
+              {allProfilesFiltered[element.value] ? (
+                allProfilesFiltered[element.value].map(profile => (
                   <ProfileCard
                     name={profile.fullName}
                     degree={profile.degree}
@@ -62,7 +55,8 @@ class allProfiles extends Component {
 function mapStateToProps(state) {
   return {
     whoAmI: state.whoAmI,
-    allProfiles: state.allProfiles
+    allProfiles: state.allProfiles,
+    getPostOptions: state.getPostOptions
   };
 }
 
@@ -73,6 +67,9 @@ const mapDispatchToProps = dispatch => {
     },
     GetAllProfiles: () => {
       dispatch(getAllProfiles());
+    },
+    GetPostOptions: () => {
+      dispatch(getPostOptions());
     }
   };
 };
