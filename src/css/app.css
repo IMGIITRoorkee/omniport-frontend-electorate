@@ -16,7 +16,7 @@
 }
 
 .pusher-content {
-  width: calc(100% - 260px);
+  /*width: calc(100% - 260px);*/
   overflow: auto !important;
   display: flex;
   flex-direction: column;
@@ -27,9 +27,11 @@
 }
 
 .post-all {
-  padding-top: 120em;
-  padding-left: 3em;
-  padding-bottom: 5em;
+  position: relative;
+  /* padding-top: 125em;
+  padding-left: 20em;
+  padding-right: 20em;
+  padding-bottom: 5em; */
 }
 
 .post {
@@ -42,12 +44,82 @@
   padding-top: 0.5em;
 }
 
-.profile-photo {
-  border-radius: 50% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-top: 50px !important;
-  margin-bottom: 50px !important;
-  width: 50% !important;
+.questions-all {
+  padding-left: 3em;
+  padding-bottom: 1em;
+}
+
+.question-filters {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  padding-bottom: 1.5em;
+  padding-top: 1.5em;
+}
+
+.question-segment {
+  width: 40%;
+}
+
+.candidate-profile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/*HomePage Candidate Card */
+.card-candidate-name {
+  font-size: 1.5em !important;
+  font-weight: 600;
+  text-align: center;
+  text-transform: capitalize !important;
+}
+
+.card-candidate-info {
+  font-size: 1em !important;
+  font-weight: 500;
+  text-align: center;
+  text-transform: capitalize !important;
+  margin-top: 0.25rem;
+}
+
+.card-profile-photo {
+  text-align: center;
+  border-radius: 50%;
+  width: 15rem !important;
   height: auto !important;
+  margin: 2.5em;
+}
+
+.card-profile-photo-padding {
+  padding: 1rem;
+}
+
+.card-padding {
+  padding-right: 5rem;
+}
+
+.question-card-question {
+  font-size: large;
+}
+
+.question-card-button {
+  margin-top: 1em;
+}
+
+.question-card-meta {
+  padding-left: 1.5em;
+}
+
+.allProfiles-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-left: 3.5em;
+}
+
+.allquestions-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }

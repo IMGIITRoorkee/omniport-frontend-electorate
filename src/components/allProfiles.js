@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Card, Segment, Image, Divider } from "semantic-ui-react";
+import { Card, Segment, Divider } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { groupBy } from "lodash";
 
@@ -20,31 +20,34 @@ class allProfiles extends Component {
     var allProfilesFiltered;
     if (allProfiles) {
       allProfilesFiltered = groupBy(allProfiles, "post");
+      console.log(allProfilesFiltered);
     }
     return allProfiles ? (
-      <div styleName="blocks.post-all">
-        <h1>Insitute Candidates</h1>
-        <Divider />
-        {getPostOptions.map(element => (
-          <div styleName="blocks.post">
-            <h2 styleName="blocks.post-header">{element.value}</h2>
-            <Card.Group>
-              {allProfilesFiltered[element.value] ? (
-                allProfilesFiltered[element.value].map(profile => (
-                  <ProfileCard
-                    name={profile.fullName}
-                    degree={profile.degree}
-                    branchName={profile.branchName}
-                    currentYear={profile.currentYear}
-                    id={profile.id}
-                  />
-                ))
-              ) : (
-                <Segment>No Candidates Yet!</Segment>
-              )}
-            </Card.Group>
-          </div>
-        ))}
+      <div styleName="blocks.allProfiles-container">
+        <div styleName="blocks.post-all">
+          <h1>INSTITUTE CANDIDATES</h1>
+          <Divider />
+          {getPostOptions.map(element => (
+            <div styleName="blocks.post">
+              <h2 styleName="blocks.post-header">{element.displayName}</h2>
+              <Card.Group>
+                {allProfilesFiltered[element.displayName] ? (
+                  allProfilesFiltered[element.displayName].map(profile => (
+                    <ProfileCard
+                      name={profile.fullName}
+                      degree={profile.degree}
+                      branchName={profile.branchName}
+                      currentYear={profile.currentYear}
+                      id={profile.id}
+                    />
+                  ))
+                ) : (
+                  <Segment>No Candidates Yet!</Segment>
+                )}
+              </Card.Group>
+            </div>
+          ))}
+        </div>
       </div>
     ) : (
       "No Candidates"

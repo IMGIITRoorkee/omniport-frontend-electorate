@@ -39,7 +39,9 @@ class navMenu extends Component {
           </Menu.Menu>
         </Menu.Item>
         <Menu.Item>
-          <Menu.Header>QUESTION AND ANSWER</Menu.Header>
+          <Menu.Header as={Link} to={baseNavUrl("/questions")}>
+            QUESTION AND ANSWER
+          </Menu.Header>
         </Menu.Item>
       </Fragment>
     );

@@ -8,6 +8,9 @@ import { AppHeader, AppFooter, AppMain, getTheme } from "formula_one";
 
 import NavMenu from "./navMenu";
 import AllProfiles from "./allProfiles";
+import Questions from "./questions";
+import CandidateProfile from "./candidateProfile";
+import AnswerQuestions from "./answerQuestions";
 
 import main from "formula_one/src/css/app.css";
 import blocks from "../css/app.css";
@@ -23,15 +26,31 @@ class App extends Component {
             <Scrollbars autoHide>
               <div styleName="blocks.content-div">
                 <Sidebar.Pushable fluid styleName="blocks.pushable">
-                  <Sidebar as={Menu} vertical visible>
+                  {/* Add side navbar here */}
+                  {/* <Sidebar as={Menu} vertical visible>
                     <NavMenu />
-                  </Sidebar>
+                  </Sidebar> */}
                   <Sidebar.Pusher styleName="blocks.pusher-content">
                     <Switch>
                       <Route
                         exact
                         path={`${match.path}`}
                         component={AllProfiles}
+                      />
+                      <Route
+                        exact
+                        path={`${match.path}profiles/:id`}
+                        component={CandidateProfile}
+                      />
+                      <Route
+                        exact
+                        path={`${match.path}profiles/:id/answer`}
+                        component={AnswerQuestions}
+                      />
+                      <Route
+                        exact
+                        path={`${match.path}questions/`}
+                        component={Questions}
                       />
                       <Route render={props => <Redirect to="/404" />} />
                     </Switch>

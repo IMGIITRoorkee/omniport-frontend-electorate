@@ -1,29 +1,30 @@
-import React, { Component, Fragment } from "react";
-import { Card, Image } from "semantic-ui-react";
+import React, { Component } from "react";
+import { Card, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+
+import { getTheme } from "formula_one";
 
 import blocks from "../css/app.css";
 
 class profileCard extends Component {
   render() {
     return (
-      <Fragment>
-        <Card>
-          <img
-            src="https://imgix-media.wbdndc.net/cms/filer_public_thumbnails/filer_public/d8/5a/d85a3ec6-79c5-49ae-86e9-902c74546e69/batman-profile-293d6d-bm_cv17_ns-1-v1-600x600-marquee-thumb.jpg__600x600_q85_crop_subsampling-2_upscale.jpg"
-            styleName="blocks.profile-photo"
-          />
-          <Card.Content>
-            <Card.Header textAlign="center">{this.props.name}</Card.Header>
-            <Card.Meta textAlign="center">
-              <span>
-                {this.props.degree} {this.props.branchName}
-              </span>
-            </Card.Meta>
-            <Card.Meta textAlign="center">
-              {this.props.currentYear} Year
-            </Card.Meta>
-          </Card.Content>
+      <div styleName="blocks.card-padding">
+        <Card as={Segment} color={getTheme()} fluid>
+          <div styleName="blocks.card-profile-photo-padding">
+            <img
+              src="https://imgix-media.wbdndc.net/cms/filer_public_thumbnails/filer_public/d8/5a/d85a3ec6-79c5-49ae-86e9-902c74546e69/batman-profile-293d6d-bm_cv17_ns-1-v1-600x600-marquee-thumb.jpg__600x600_q85_crop_subsampling-2_upscale.jpg"
+              styleName="blocks.card-profile-photo"
+            />
+          </div>
+
+          <div styleName="blocks.card-candidate-name">{this.props.name}</div>
+          <div styleName="blocks.card-candidate-info">
+            {this.props.degree} {this.props.branchName}
+          </div>
+          <div styleName="blocks.card-candidate-info">
+            {this.props.currentYear} Year
+          </div>
           <Card.Content
             extra
             textAlign="center"
@@ -33,7 +34,7 @@ class profileCard extends Component {
             View Profile
           </Card.Content>
         </Card>
-      </Fragment>
+      </div>
     );
   }
 }
