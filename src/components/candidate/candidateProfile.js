@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { setUser, getCandidateDetails } from "../actions";
+import { setUser, getCandidateDetails } from "../../actions";
 import { getTheme } from "formula_one";
 
 import CustomBreadcrumb from "core/common/src/components/custom-breadcrumb";
@@ -19,9 +19,11 @@ import {
   Icon
 } from "semantic-ui-react";
 
-import blocks from "../css/app.css";
+import blocks from "../../css/app.css";
+import styles from "../../css/candidate/candidate.css";
+import home from "../../css/home/home.css";
 
-import AskAQuestion from "./askAQuestion";
+import AskAQuestion from "../questions/askAQuestion";
 
 class candidateProfile extends Component {
   componentDidMount() {
@@ -34,7 +36,7 @@ class candidateProfile extends Component {
     console.log(this.props.whoAmI.roles);
     const { candidateDetails, whoAmI } = this.props;
     return !candidateDetails.isEmpty ? (
-      <div styleName="blocks.candidate-profile">
+      <div styleName="styles.candidate-profile">
         <div>
           <Breadcrumb size={"massive"}>
             <Breadcrumb.Section>Institute Candidates</Breadcrumb.Section>
@@ -56,7 +58,7 @@ class candidateProfile extends Component {
             <div>
               <img
                 src="https://imgix-media.wbdndc.net/cms/filer_public_thumbnails/filer_public/d8/5a/d85a3ec6-79c5-49ae-86e9-902c74546e69/batman-profile-293d6d-bm_cv17_ns-1-v1-600x600-marquee-thumb.jpg__600x600_q85_crop_subsampling-2_upscale.jpg"
-                styleName="blocks.card-profile-photo"
+                styleName="home.profileCard-card-profile-photo"
               />
             </div>
             <div>{candidateDetails.fullName}</div>
@@ -104,7 +106,6 @@ class candidateProfile extends Component {
           <Button
             as={Link}
             to={`/electorate2/profiles/${candidateDetails.id}/answer`}
-            id={candidateDetails.id}
           >
             Answer Questions
           </Button>

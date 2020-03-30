@@ -26,24 +26,6 @@
   padding: 20px;
 }
 
-.post-all {
-  position: relative;
-  /* padding-top: 125em;
-  padding-left: 20em;
-  padding-right: 20em;
-  padding-bottom: 5em; */
-}
-
-.post {
-  padding-top: 0.5em;
-  padding-bottom: 2em;
-}
-
-.post-header {
-  padding-bottom: 0.5em;
-  padding-top: 0.5em;
-}
-
 .questions-all {
   padding-left: 3em;
   padding-bottom: 1em;
@@ -75,14 +57,6 @@
   text-transform: capitalize !important;
 }
 
-.card-candidate-info {
-  font-size: 1em !important;
-  font-weight: 500;
-  text-align: center;
-  text-transform: capitalize !important;
-  margin-top: 0.25rem;
-}
-
 .card-profile-photo {
   text-align: center;
   border-radius: 50%;
@@ -92,11 +66,7 @@
 }
 
 .card-profile-photo-padding {
-  padding: 1rem;
-}
-
-.card-padding {
-  padding-right: 5rem;
+  padding: 4rem;
 }
 
 .question-card-question {
@@ -109,13 +79,6 @@
 
 .question-card-meta {
   padding-left: 1.5em;
-}
-
-.allProfiles-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding-left: 3.5em;
 }
 
 .allquestions-container {

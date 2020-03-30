@@ -12,9 +12,11 @@ import { connect } from "react-redux";
 import QuestionCard from "./questionCard";
 import PostQuestion from "./postQuestion";
 
-import { getAllQuestions } from "../actions";
+import { getAllQuestions } from "../../actions";
 
-import blocks from "../css/app.css";
+// import blocks from "../../css/app.css";
+import styles from "../../css/questions/questions.css";
+
 import { element } from "prop-types";
 
 class questions extends Component {
@@ -25,8 +27,8 @@ class questions extends Component {
     const { allQuestions } = this.props;
     console.log(this.props.allQuestions);
     return (
-      <div styleName="blocks.allquestions-container">
-        <div styleName="blocks.questions-all">
+      <div styleName="styles.allquestions-container">
+        <div styleName="styles.allquestions-questions-all">
           <h2>QUESTIONS AND ANSWERS</h2>
           <Divider />
           {/* <PostQuestion /> */}

@@ -16,9 +16,10 @@ import {
   setUser,
   getAllProfiles,
   askQuestion
-} from "../actions";
+} from "../../actions";
 
-import blocks from "../css/app.css";
+// import blocks from "../../css/app.css";
+import styles from "../../css/questions/questions.css";
 
 class postQuestion extends Component {
   constructor(props) {
@@ -83,8 +84,8 @@ class postQuestion extends Component {
     });
     return (
       <Fragment>
-        <Segment.Group styleName="blocks.question-segment">
-          <Segment styleName="blocks.question-segment">
+        <Segment.Group styleName="styles.question-segment">
+          <Segment styleName="styles.question-segment">
             <Form encType="multiple/form-data">
               <Form.Group>
                 <Label color="blue" size="large">

@@ -5,9 +5,10 @@ import { groupBy } from "lodash";
 
 import ProfileCard from "./profileCard";
 
-import { setUser, getAllProfiles, getPostOptions } from "../actions";
+import { setUser, getAllProfiles, getPostOptions } from "../../actions";
 
-import blocks from "../css/app.css";
+// import blocks from "../../css/app.css";
+import styles from "../../css/home/home.css";
 
 class allProfiles extends Component {
   componentDidMount() {
@@ -23,13 +24,15 @@ class allProfiles extends Component {
       console.log(allProfilesFiltered);
     }
     return allProfiles ? (
-      <div styleName="blocks.allProfiles-container">
-        <div styleName="blocks.post-all">
+      <div styleName="styles.allProfiles-container">
+        <div>
           <h1>INSTITUTE CANDIDATES</h1>
           <Divider />
           {getPostOptions.map(element => (
-            <div styleName="blocks.post">
-              <h2 styleName="blocks.post-header">{element.displayName}</h2>
+            <div styleName="styles.allProfiles-post">
+              <h2 styleName="styles.allProfiles-post-header">
+                {element.displayName}
+              </h2>
               <Card.Group>
                 {allProfilesFiltered[element.displayName] ? (
                   allProfilesFiltered[element.displayName].map(profile => (

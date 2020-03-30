@@ -2,11 +2,11 @@ import { combineReducers } from "redux";
 import exampleReducer from "./exampleReducer";
 
 import WhoAmI from "./whoAmI";
-import AllProfilesReducer from "./allProfilesReducer";
-import GetPostOptionsReducers from "./getPostOptionsReducer";
-import AllQuestionsReducers from "./allQuestionsReducer";
-import CandidateDetailsReducer from "./candidateDetailsReducer";
-import ParticularQuestionsReducer from "./particularQuestionsReducers";
+import AllProfilesReducer from "./home/allProfilesReducer";
+import GetPostOptionsReducers from "./home/getPostOptionsReducer";
+import AllQuestionsReducers from "./questions/allQuestionsReducer";
+import CandidateDetailsReducer from "./candidate/candidateDetailsReducer";
+import ParticularQuestionsReducer from "./candidate/particularQuestionsReducers";
 
 const rootReducers = combineReducers({
   exampleReducer,

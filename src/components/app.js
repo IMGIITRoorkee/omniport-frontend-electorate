@@ -7,10 +7,10 @@ import { Segment, Container, Sidebar, Menu } from "semantic-ui-react";
 import { AppHeader, AppFooter, AppMain, getTheme } from "formula_one";
 
 import NavMenu from "./navMenu";
-import AllProfiles from "./allProfiles";
-import Questions from "./questions";
-import CandidateProfile from "./candidateProfile";
-import AnswerQuestions from "./answerQuestions";
+import AllProfiles from "./home/allProfiles";
+import Questions from "./questions/questions";
+import CandidateProfile from "./candidate/candidateProfile";
+import AnswerQuestions from "./answers/answerQuestions";
 
 import main from "formula_one/src/css/app.css";
 import blocks from "../css/app.css";

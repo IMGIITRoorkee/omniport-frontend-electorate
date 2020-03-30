@@ -1,0 +1,48 @@
+.allProfiles-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-left: 3.5em;
+}
+
+.allProfiles-post {
+  padding-top: 0.5em;
+  padding-bottom: 2em;
+}
+
+.allProfiles-post-header {
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+}
+
+.profileCard-card-padding {
+  padding-right: 5rem;
+  padding-bottom: 5em;
+}
+
+.profileCard-card-candidate-info {
+  font-size: 1em !important;
+  font-weight: 500;
+  text-align: center;
+  text-transform: capitalize !important;
+  margin-top: 0.25rem;
+}
+
+.profileCard-card-profile-photo-padding {
+  padding: 2rem;
+}
+
+.profileCard-card-profile-photo {
+  text-align: center;
+  border-radius: 50%;
+  width: 15rem !important;
+  height: auto !important;
+  margin: 2.5em;
+}
+
+.profileCard-card-candidate-name {
+  font-size: 1.5em !important;
+  font-weight: 600;
+  text-align: center;
+  text-transform: capitalize !important;
+}

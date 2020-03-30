@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { getParticularQuestions, getCandidateDetails } from "../actions";
+import { getParticularQuestions, getCandidateDetails } from "../../actions";
 
-import blocks from "../css/answerQuestions.css";
+import styles from "../../css/answers/answers.css";
 import { Breadcrumb, Segment } from "semantic-ui-react";
 
-import QuestionCard from "./questionCard";
+import QuestionCard from "../questions/questionCard";
 
 class answerQuestions extends Component {
   componentDidMount() {
@@ -19,7 +19,7 @@ class answerQuestions extends Component {
     console.log(this.props);
     const { particularQuestions } = this.props;
     return (
-      <div styleName="blocks.container">
+      <div styleName="styles.answerQuestions-container">
         <div>
           <Breadcrumb size={"massive"}>
             <Breadcrumb.Section>My Profile</Breadcrumb.Section>

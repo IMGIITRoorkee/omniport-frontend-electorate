@@ -1,0 +1,26 @@
+.question-segment {
+  width: 40%;
+}
+
+.question-card-question {
+  font-size: large;
+}
+
+.question-card-meta {
+  padding-left: 1.5em;
+}
+
+.question-card-button {
+  margin-top: 1em;
+}
+
+.allquestions-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.allquestions-questions-all {
+  padding-left: 3em;
+  padding-bottom: 1em;
+}

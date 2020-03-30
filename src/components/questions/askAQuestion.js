@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Segment, Form, Button } from "semantic-ui-react";
 
-import { askQuestion } from "../actions";
+import { askQuestion } from "../../actions";
 
-import blocks from "../css/app.css";
+// import blocks from "../css/app.css";
+import styles from "../../css/questions/questions.css";
 
 class askAQuestion extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class askAQuestion extends Component {
   render() {
     return (
       <div>
-        <Segment styleName="blocks.question-segment">
+        <Segment styleName="styles.question-segment">
           <h3>Question and Answer with {this.props.candidateName}</h3>
           <Form>
             <Form.Field>
