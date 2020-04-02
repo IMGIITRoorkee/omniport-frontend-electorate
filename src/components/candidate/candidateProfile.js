@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { setUser, getCandidateDetails } from "../../actions";
+import {
+  setUser,
+  getCandidateDetails,
+  getParticularQuestions
+} from "../../actions";
 import { getTheme } from "formula_one";
 
 import CustomBreadcrumb from "core/common/src/components/custom-breadcrumb";
@@ -24,17 +28,21 @@ import styles from "../../css/candidate/candidate.css";
 import home from "../../css/home/home.css";
 
 import AskAQuestion from "../questions/askAQuestion";
+import QuestionCard from "../questions/questionCard";
+import { element } from "prop-types";
 
 class candidateProfile extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
     this.props.SetUser();
     this.props.GetCandidateDetails(id);
+    this.props.GetParticularQuestions(id);
   }
   render() {
     console.log(this.props.candidateDetails);
     console.log(this.props.whoAmI.roles);
-    const { candidateDetails, whoAmI } = this.props;
+    console.log(this.props.particularQuestions);
+    const { candidateDetails, whoAmI, particularQuestions } = this.props;
     return !candidateDetails.isEmpty ? (
       <div styleName="styles.candidate-profile">
         <div>
@@ -117,6 +125,17 @@ class candidateProfile extends Component {
             candidateId={candidateDetails.id}
           />
         </div>
+        <div>
+          {particularQuestions.map(element => (
+            <QuestionCard
+              question={element.question}
+              asker={element.askerFullName}
+              candidate={element.candidateFullName}
+              answer={element.answer}
+              likes={element.numberOfLikes}
+            />
+          ))}
+        </div>
       </div>
     ) : (
       "No Details"
@@ -127,7 +146,8 @@ class candidateProfile extends Component {
 function mapStateToProps(state) {
   return {
     whoAmI: state.whoAmI,
-    candidateDetails: state.candidateDetails
+    candidateDetails: state.candidateDetails,
+    particularQuestions: state.particularQuestions
   };
 }
 
@@ -138,6 +158,9 @@ const mapDispatchToProps = dispatch => {
     },
     GetCandidateDetails: id => {
       dispatch(getCandidateDetails(id));
+    },
+    GetParticularQuestions: id => {
+      dispatch(getParticularQuestions(id));
     }
   };
 };
