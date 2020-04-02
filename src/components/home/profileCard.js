@@ -32,7 +32,7 @@ class profileCard extends Component {
             extra
             textAlign="center"
             as={Link}
-            to={`/electorate2/profiles/${this.props.id}`}
+            to={`/electorate/profiles/${this.props.id}`}
           >
             View Profile
           </Card.Content>

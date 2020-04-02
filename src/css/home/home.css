@@ -3,6 +3,7 @@
   flex-direction: column;
   height: 100%;
   padding-left: 3.5em;
+  margin-left: 16%;
 }
 
 .allProfiles-post {
@@ -45,4 +46,9 @@
   font-weight: 600;
   text-align: center;
   text-transform: capitalize !important;
+}
+
+
+.Link:hover {
+  background-color: #EDF2F9;
 }

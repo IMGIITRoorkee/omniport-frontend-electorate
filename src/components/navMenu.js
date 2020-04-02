@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Menu, Container } from "semantic-ui-react";
+import Scrollspy from 'react-scrollspy';
 
 import { baseNavUrl } from "../urls";
 
@@ -23,7 +24,7 @@ class navMenu extends Component {
               activeStyle={activeStyle}
               replace
               as={Link}
-              to={baseNavUrl("")}
+              to={baseNavUrl("/#tech")}
             />
             <Menu.Item
               name="GS Technical Affairs"
@@ -43,7 +44,22 @@ class navMenu extends Component {
             QUESTION AND ANSWER
           </Menu.Header>
         </Menu.Item>
+        {/* <Scrollspy
+                items={["acad_ug", "tech", "sport","hostel","cult","prof","acad_pg"]}
+                currentClassName="is-current"
+                style={{ position: "fixed ", top: "0", backgroundColor: "#fff" }}
+              >
+            <Menu.Header>INSTITUTE CANDIDATES</Menu.Header>
+                <li><a href="#acad_ug"> acads </a></li>
+                <li><a href="#tech"> tech </a></li>
+                <li><a href="#sport"> sport </a></li>
+                <li><a> cult </a></li>
+                <li><a> prof </a></li>
+                <li><a> acad_pg </a></li>
+                </Scrollspy>
+ */}
       </Fragment>
+    
     );
   }
 }
