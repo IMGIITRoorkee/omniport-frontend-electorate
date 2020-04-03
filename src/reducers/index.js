@@ -7,6 +7,7 @@ import GetPostOptionsReducers from "./home/getPostOptionsReducer";
 import AllQuestionsReducers from "./questions/allQuestionsReducer";
 import CandidateDetailsReducer from "./candidate/candidateDetailsReducer";
 import ParticularQuestionsReducer from "./candidate/particularQuestionsReducers";
+import UnansweredQuestionsReducer from "./answers/unansweredQuestionsReducer";
 
 const rootReducers = combineReducers({
   exampleReducer,
@@ -15,7 +16,8 @@ const rootReducers = combineReducers({
   getPostOptions: GetPostOptionsReducers,
   allQuestions: AllQuestionsReducers,
   candidateDetails: CandidateDetailsReducer,
-  particularQuestions: ParticularQuestionsReducer
+  particularQuestions: ParticularQuestionsReducer,
+  unansweredQuestions: UnansweredQuestionsReducer
 });
 
 export default rootReducers;

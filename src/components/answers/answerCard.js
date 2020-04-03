@@ -1,15 +1,87 @@
 import React, { Component } from "react";
-import { Segment } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { Segment, Form, Button } from "semantic-ui-react";
+
+import { answerQuestion } from "../../actions";
+
+import styles from "../../css/questions/questions.css";
 
 class answerCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      answer: ""
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange(e) {
+    const name = e.target.name;
+    this.setState({
+      [name]: e.target.value
+    });
+  }
+  handleSubmit() {
+    if (this.state.answer && this.props.askerId) {
+      var formData = new FormData();
+      formData.append("answer", this.state.answer);
+      this.props.AnswerQuestion(this.props.questionId, formData);
+      this.setState({
+        answer: ""
+      });
+    }
+  }
   render() {
     return (
       <div>
         {/* Add Answer form here */}
-        <Segment></Segment>
+        <Segment>
+          <div styleName="styles.question-card-question">
+            <label>
+              <b>Q. </b>
+            </label>
+            {this.props.question}
+          </div>
+          <div styleName="styles.question-card-meta-header">
+            <span styleName="styles.question-card-meta">
+              {this.props.asker} asked on {this.props.askedOn} | |{" "}
+              <label>UNANSWERED</label>
+            </span>
+          </div>
+          <div>
+            <Form>
+              <div styleName="styles.inputbox">
+                <Form.Input
+                  name="answer"
+                  value={this.state.answer}
+                  onChange={this.handleChange}
+                  type="text"
+                  placeholder="Type your answer!"
+                />
+                <Form.Input
+                  type="submit"
+                  value="Submit"
+                  position="right"
+                  onSubmit={this.handleSubmit}
+                />
+              </div>
+            </Form>
+          </div>
+          <div>
+            <Button>Likes {this.props.likes}</Button>
+          </div>
+        </Segment>
       </div>
     );
   }
 }
 
-export default answerCard;
+const mapDispatchToProps = dispatch => {
+  return {
+    AnswerQuestion: (id, data) => {
+      dispatch(answerQuestion(id, data));
+    }
+  };
+};
+
+export default connect(null, mapDispatchToProps)(answerCard);
