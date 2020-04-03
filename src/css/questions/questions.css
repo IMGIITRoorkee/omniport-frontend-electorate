@@ -1,13 +1,30 @@
 .question-segment {
-  width: 40%;
+  width: 100%;
 }
 
 .question-card-question {
-  font-size: large;
+  font-size: 17px;
+  color: #1D1D1D;
+
+}
+
+.question-card-unanswered {
+  color: #356DBF;
+  padding-left: 2em;
 }
 
 .question-card-meta {
-  padding-left: 1.5em;
+  padding-left: 2em;
+  color: #A7A7A7;
+}
+
+.question-card-meta-like {
+  color: #A7A7A7;
+}
+
+.question-card-meta-header {
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .question-card-button {
@@ -18,9 +35,52 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  margin-left: 16%;
 }
 
 .allquestions-questions-all {
   padding-left: 3em;
   padding-bottom: 1em;
+}
+
+.Link:hover {
+  background-color: #EDF2F9;
+}
+
+.heading {
+  color: #0B1626;
+  line-height: 23px;
+  font-size: 25px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+input[type=text] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  width: 85%;
+  margin-right: 10px;
+}
+
+.inputbox {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+::placeholder {
+  font-size: 18px;
+}
+.submit, .submit:hover {
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #356DBF;
+  color: white;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.question-card-container{
+  padding-bottom: 20px;
 }

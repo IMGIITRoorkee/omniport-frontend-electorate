@@ -1,3 +1,3 @@
-# electorate
+# Electorate
 
 > Omniport app frontend
