@@ -25,7 +25,7 @@ class askAQuestion extends Component {
   handleSubmit() {
     if (this.state.quest && this.props.askerId && this.props.candidateId) {
       var formData = new FormData();
-      formData.append("asker", "6");
+      formData.append("asker", this.props.askerId);
       formData.append("question", this.state.quest);
       formData.append("candidate", this.props.candidateId);
       formData.append("post", "tech");

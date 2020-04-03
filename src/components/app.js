@@ -20,7 +20,7 @@ class App extends Component {
     const { match } = this.props;
     return (
       <div styleName="main.app">
-        <AppHeader appName="electorate2" mode="app" userDropdown />
+        <AppHeader appName="electorate" mode="app" userDropdown />
         <AppMain>
           <div styleName="main.app-main">
             <Scrollbars autoHide>
