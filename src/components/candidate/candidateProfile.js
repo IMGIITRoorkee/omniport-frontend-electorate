@@ -83,7 +83,7 @@ class candidateProfile extends Component {
         </div>
         <Divider />
         <div styleName = "styles.container">
-        <div>
+        <div styleName = "styles.leftside">
           <div>
             <div>
               <img
@@ -107,11 +107,13 @@ class candidateProfile extends Component {
               </Modal.Header>
               <Modal.Content>
                 <Modal.Description>
+                  <div>
                   <iframe
                     src={candidateDetails.resume}
                     width="800"
                     height="800"
                   ></iframe>
+                  </div>
                 </Modal.Description>
               </Modal.Content>
             </Modal>
@@ -162,7 +164,6 @@ class candidateProfile extends Component {
         </div>
         </div>
         </div>
-        <Fragment>
         <Scrollspy
                 items={["acad_ug", "tech", "sport","hostel","cult","prof","acad_pg"]}
                 currentClassName = "navbar"
@@ -179,7 +180,6 @@ class candidateProfile extends Component {
                 <ColoredLine color = "#BEBEBE" />
                 <div style = {{ fontSize : "1.5em", margin: "0px", marginTop: "4px", padding: "15px",color : "#131313",}}><a href={baseNavUrl("/questions")} style = {{color : "#131313"}}>Question And Answer</a></div>
                 </Scrollspy>
-                </Fragment>
 
       </div>
     ) : (

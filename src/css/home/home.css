@@ -48,7 +48,12 @@
   text-transform: capitalize !important;
 }
 
-
 .Link:hover {
   background-color: #EDF2F9;
+}
+
+.navbar {
+font-size: 2em;
+background-color: black !important;
+margin: 20em !important;
 }

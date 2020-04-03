@@ -1,7 +1,11 @@
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+.leftside {
+  width: 40%;
+  margin-left: 2%;
 }
 .candidate-profile {
   display: flex;
@@ -69,8 +73,8 @@ margin-top: 60px;
 }
 
 .rightside{
-  margin-right: 5%;
-  /* width: 50%; */
+  margin-right: 2%;
+  width: 60%;
 }
 .headingmanifesto {
   color: #0B1626;

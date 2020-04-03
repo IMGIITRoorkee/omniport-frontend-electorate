@@ -25,11 +25,11 @@ class askAQuestion extends Component {
   handleSubmit() {
     if (this.state.quest && this.props.askerId && this.props.candidateId) {
       var formData = new FormData();
-      formData.append("asker", "6");
+      formData.append("asker", "13");
       formData.append("question", this.state.quest);
       formData.append("candidate", this.props.candidateId);
       formData.append("post", "tech");
-      console.log(formData['candidate']);
+      // console.log(formData['candidate']);
       this.props.AskQuestion(formData);
       this.setState({
         quest: ""
@@ -40,7 +40,7 @@ class askAQuestion extends Component {
     return (
       <div>
           <div styleName = "styles.heading">Question and Answer with {this.props.candidateName}</div>
-          <form>
+          {/* <form>
             <div styleName = "styles.inputbox">
               <input
                 name="quest"
@@ -58,7 +58,28 @@ class askAQuestion extends Component {
               onClick={this.handleSubmit}
             />
             </div>
-          </form>
+          </form> */}
+          <Form>
+            <Form.Field>
+              <Form.Input
+                styleName="styles.inputbox"
+                name="quest"
+                value={this.state.quest}
+                onChange={this.handleChange}
+                type="text"
+                rows="3"
+                placeholder="Ask your question"
+              />
+            </Form.Field>
+            <Button
+              styleName="styles.submit"
+              type="submit"
+              position="right"
+              primary
+              content="Submit"
+              onClick={this.handleSubmit}
+            />
+          </Form>
       </div>
     );
   }

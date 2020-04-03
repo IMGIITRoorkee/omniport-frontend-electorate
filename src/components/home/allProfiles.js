@@ -68,14 +68,14 @@ class allProfiles extends Component {
 
             </div>
           ))}
-          </div>          
-          <Fragment>
+          </div>   
+          <div>       
         <Scrollspy
                 items={["acad_ug", "tech", "sport","hostel","cult","prof","acad_pg"]}
                 currentClassName = "navbar"
                 style={{ position: "fixed ", top: "0",left:"0px", padding: "0px", margin: "0", width: "15%", backgroundColor: "#FFFFFF" ,height : "100%"}}
               >
-                <div style = {{ fontSize : "1.5em", margin: "0px", marginTop: "4px", padding: "15px", textAlign: "center", backgroundColor : "#356DBF"}}><a href={baseNavUrl("")} style = {{color : "white"}}>INSTITUTE CANDIDATES</a></div>
+                <div style = {{ fontSize : "1.5em", margin: "0px", marginTop: "4px", padding: "15px", backgroundColor : "#356DBF"}}><a href={baseNavUrl("")} style = {{color : "white"}}>INSTITUTE CANDIDATES</a></div>
                 <a href={baseNavUrl("#acad_ug")} > <Menu.Item styleName = "styles.Link" style = {activeStyle} name= "GS Academic(UG) Affairs" /> </a>
                 <a href={baseNavUrl("#tech")} ><Menu.Item styleName = "styles.Link" style = {activeStyle} name= "GS Technical Affairs" /> </a> 
                 <a href={baseNavUrl("#sport")}><Menu.Item styleName = "styles.Link" style = {activeStyle} name= "GS Sports Affairs" /></a>
@@ -86,7 +86,7 @@ class allProfiles extends Component {
                 <ColoredLine color = "#BEBEBE" />
                 <div style = {{ fontSize : "1.5em", margin: "0px", marginTop: "4px", padding: "15px",color : "#131313",}}><a href={baseNavUrl("/questions")} style = {{color : "#131313"}}>Question And Answer</a></div>
                 </Scrollspy>
-                </Fragment>
+                </div>
       </div>
     ) : (
       "No Candidates"
