@@ -153,7 +153,7 @@ class candidateProfile extends Component {
                 </div>
                 <a
                   styleName="styles.answer-question"
-                  href={baseNavUrl("/profiles/${candidateDetails.id}/answer")}
+                  href={baseNavUrl(`/profiles/${candidateDetails.id}/answer`)}
                 >
                   Answer Questions
                 </a>
@@ -162,7 +162,7 @@ class candidateProfile extends Component {
               <div>
                 <AskAQuestion
                   candidateName={candidateDetails.fullName}
-                  askerId={this.props.whoAmI.id}
+                  askerId={whoAmI.id}
                   candidateId={candidateDetails.id}
                 />
               </div>
