@@ -10,11 +10,11 @@
 
 .question-card-unanswered {
   color: #356DBF;
-  padding-left: 2em;
+  padding-left: 1.5em;
 }
 
 .question-card-meta {
-  padding-left: 2em;
+  padding-left: 1.5em;
   color: #A7A7A7;
 }
 
@@ -36,6 +36,7 @@
   flex-direction: column;
   height: 100%;
   margin-left: 16%;
+  width: 60%;
 }
 
 .allquestions-questions-all {
@@ -83,4 +84,24 @@ input[type=text] {
 
 .question-card-container{
   padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+  /* .inputbox {
+    margin-top: 20px;
+    display: flex;
+    width: 95%;
+    margin-left: 1.6em;
+    flex-direction: column;
+  }
+  .inputsubmit {
+    width: 90px !important;
+  } */
+  .allquestions-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 17%;
+    width: 80%;
+  }  
 }

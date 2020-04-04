@@ -6,6 +6,7 @@ import {
   urlGetAllProfiles,
   urlGetAllQuestions,
   urlGetParticularQuestions,
+  urlGetUnansweredQuestions,
   urlGetCandidateDetails,
   urlGetQuestionDetails
 } from "../urls";
@@ -79,6 +80,21 @@ export const getParticularQuestions = id => {
       .then(res => {
         dispatch({
           type: "GET_PARTICULAR_QUESTIONS",
+          payload: res.data.results
+        });
+      })
+      .catch(err => console.log(err));
+  };
+};
+
+//Get unanswered questions from answer_view endpoint
+export const getUnansweredQuestions = id => {
+  return dispatch => {
+    axios
+      .get(urlGetUnansweredQuestions(id))
+      .then(res => {
+        dispatch({
+          type: "GET_UNANSWERED_QUESTIONS",
           payload: res.data.results
         });
       })

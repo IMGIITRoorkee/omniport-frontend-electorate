@@ -1,7 +1,7 @@
-import React, { Component, Fragment} from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Scrollspy from 'react-scrollspy';
+import Scrollspy from "react-scrollspy";
 import { baseNavUrl } from "../../urls";
 import {
   setUser,
@@ -10,7 +10,6 @@ import {
 } from "../../actions";
 
 import { getTheme } from "formula_one";
-import QuestionCard from "../questions/questionCard";
 
 import CustomBreadcrumb from "core/common/src/components/custom-breadcrumb";
 import {
@@ -27,12 +26,13 @@ import {
   Icon
 } from "semantic-ui-react";
 
-import { element } from "prop-types";
 import blocks from "../../css/app.css";
 import styles from "../../css/candidate/candidate.css";
 import home from "../../css/home/home.css";
 
 import AskAQuestion from "../questions/askAQuestion";
+import QuestionCard from "../questions/questionCard";
+import { element } from "prop-types";
 
 class candidateProfile extends Component {
   componentDidMount() {
@@ -40,29 +40,29 @@ class candidateProfile extends Component {
     this.props.SetUser();
     this.props.GetCandidateDetails(id);
     this.props.GetParticularQuestions(id);
-    }
-  
+  }
+
   render() {
     console.log(this.props.candidateDetails);
     console.log(this.props.whoAmI.roles);
     const { candidateDetails, whoAmI, particularQuestions } = this.props;
 
     const activeStyle = {
-      fontSize : "1.2em",
-      color : "#606060",
-      paddingLeft : "10px",
-      margin : "15px",
-      padding : "2px"
+      fontSize: "1.2em",
+      color: "#606060",
+      paddingLeft: "10px",
+      margin: "15px",
+      padding: "2px"
     };
     const ColoredLine = ({ color }) => (
       <hr
-          style={{
-              color: color,
-              backgroundColor: color,
-              height: "0.2px",
-          }}
+        style={{
+          color: color,
+          backgroundColor: color,
+          height: "0.2px"
+        }}
       />
-  );
+    );
 
     return !candidateDetails.isEmpty ? (
       <div styleName="styles.candidate-profile">
@@ -70,117 +70,220 @@ class candidateProfile extends Component {
           <Breadcrumb size={"massive"}>
             <Breadcrumb.Section>INSTITUTE CANDIDATES</Breadcrumb.Section>
             <Breadcrumb.Divider icon="right chevron" />
-            <Breadcrumb.Section>{candidateDetails.postFullname}</Breadcrumb.Section>
+            <Breadcrumb.Section>
+              {candidateDetails.postFullname}
+            </Breadcrumb.Section>
             <Breadcrumb.Divider icon="right chevron" />
             {candidateDetails.isCandidate ? (
-              <Breadcrumb.Section >{"My Profile"}</Breadcrumb.Section>
+              <Breadcrumb.Section>{"My Profile"}</Breadcrumb.Section>
             ) : (
-              <Breadcrumb.Section >
+              <Breadcrumb.Section>
                 {candidateDetails.fullName}
               </Breadcrumb.Section>
             )}
           </Breadcrumb>
         </div>
         <Divider />
-        <div styleName = "styles.container">
-        <div styleName = "styles.leftside">
+        <div styleName="styles.container">
           <div>
             <div>
-              <img
-                src="https://imgix-media.wbdndc.net/cms/filer_public_thumbnails/filer_public/d8/5a/d85a3ec6-79c5-49ae-86e9-902c74546e69/batman-profile-293d6d-bm_cv17_ns-1-v1-600x600-marquee-thumb.jpg__600x600_q85_crop_subsampling-2_upscale.jpg"
-                styleName="styles.profileCard-card-profile-photo"
+              <div>
+                <img
+                  src="https://imgix-media.wbdndc.net/cms/filer_public_thumbnails/filer_public/d8/5a/d85a3ec6-79c5-49ae-86e9-902c74546e69/batman-profile-293d6d-bm_cv17_ns-1-v1-600x600-marquee-thumb.jpg__600x600_q85_crop_subsampling-2_upscale.jpg"
+                  styleName="styles.profileCard-card-profile-photo"
+                />
+              </div>
+              <div styleName="styles.heading">{candidateDetails.fullName}</div>
+              <div styleName="styles.headingdetailstwo">
+                {candidateDetails.degree} {candidateDetails.branchName}
+              </div>
+              <div styleName="styles.headingdetailstwo">
+                {candidateDetails.currentYear} Year
+              </div>
+              <div styleName="styles.headingdetails">
+                {candidateDetails.emailAddress}
+              </div>
+              <div styleName="styles.headingdetailsthree">Standing for</div>
+              <div styleName="styles.headingdetailslink">
+                {" "}
+                {candidateDetails.postFullname}{" "}
+              </div>
+            </div>
+            <div>
+              <Modal
+                trigger={<a styleName="styles.resume">Electoral Resume</a>}
+              >
+                <Modal.Header>
+                  Electoral Resume of {candidateDetails.fullName}
+                </Modal.Header>
+                <Modal.Content>
+                  <Modal.Description>
+                    <iframe
+                      src={candidateDetails.resume}
+                      width="800"
+                      height="800"
+                    ></iframe>
+                  </Modal.Description>
+                </Modal.Content>
+              </Modal>
+            </div>
+            <div>
+              <video
+                styleName="styles.video"
+                width="300"
+                height="200"
+                src={candidateDetails.video}
+                controls
               />
             </div>
-            <div styleName = "styles.heading">{candidateDetails.fullName}</div>
-            <div styleName = "styles.headingdetailstwo">
-              {candidateDetails.degree} {candidateDetails.branchName}
+          </div>
+          <div styleName="styles.rightside">
+            <div>
+              <div styleName="styles.headingmanifesto">Manifesto</div>
+              <iframe
+                src={candidateDetails.manifesto}
+                width="800"
+                height="480"
+              ></iframe>
             </div>
-            <div styleName = "styles.headingdetailstwo">{candidateDetails.currentYear} Year</div>
-            <div styleName = "styles.headingdetails">{candidateDetails.emailAddress}</div>
-            <div styleName = "styles.headingdetailsthree">Standing for</div>
-            <div styleName = "styles.headingdetailslink" > {candidateDetails.postFullname} </div>
-          </div>
-          <div>
-            <Modal trigger={<a styleName = "styles.resume">Electoral Resume</a>}>
-              <Modal.Header>
-                Electoral Resume of {candidateDetails.fullName}
-              </Modal.Header>
-              <Modal.Content>
-                <Modal.Description>
-                  <div>
-                  <iframe
-                    src={candidateDetails.resume}
-                    width="800"
-                    height="800"
-                  ></iframe>
-                  </div>
-                </Modal.Description>
-              </Modal.Content>
-            </Modal>
-          </div>
-          <div>
-            <video
-              styleName = "styles.video"
-              width="300"
-              height="200"
-              src={candidateDetails.video}
-              controls
-            />
+            {candidateDetails.isCandidate ? (
+              <div styleName="styles.answer">
+                <div styleName="styles.heading">
+                  Question and Answer with {candidateDetails.fullName}
+                </div>
+                <a
+                  styleName="styles.answer-question"
+                  href={baseNavUrl(`/profiles/${candidateDetails.id}/answer`)}
+                >
+                  Answer Questions
+                </a>
+              </div>
+            ) : (
+              <div>
+                <AskAQuestion
+                  candidateName={candidateDetails.fullName}
+                  askerId={whoAmI.id}
+                  candidateId={candidateDetails.id}
+                />
+              </div>
+            )}
+            <div>
+              {particularQuestions.map(element => (
+                <QuestionCard
+                  question={element.question}
+                  asker={element.askerFullName}
+                  candidate={element.candidateFullName}
+                  answer={element.answer}
+                  likes={element.numberOfLikes}
+                />
+              ))}
+            </div>
           </div>
         </div>
-        <div styleName = "styles.rightside">
         <div>
-          <div styleName = "styles.headingmanifesto">Manifesto</div>
-          <iframe
-            src={candidateDetails.manifesto}
-            width="800"
-            height="480"
-          ></iframe>
-        </div>
-        {candidateDetails.isCandidate ? (
-           <div styleName = "styles.answer">
-           <div styleName = "styles.heading">Question and Answer with {candidateDetails.fullName}</div>
-            <a styleName = "styles.answer-question" href = {baseNavUrl("/profiles/${candidateDetails.id}/answer")}>Answer Questions</a>
-       </div>
-        ) : 
-        <div>
-        <AskAQuestion
-          candidateName={candidateDetails.fullName}
-          askerId={this.props.whoAmI.id}
-          candidateId={candidateDetails.id}
-        />
-      </div>
-        }
-      <div>
-      {particularQuestions.map(element => (
-        <QuestionCard
-          question={element.question}
-          asker={element.askerFullName}
-          candidate={element.candidateFullName}
-          answer={element.answer}
-          likes={element.numberOfLikes}
-            />
-          ))}
-        </div>
-        </div>
-        </div>
-        <Scrollspy
-                items={["acad_ug", "tech", "sport","hostel","cult","prof","acad_pg"]}
-                currentClassName = "navbar"
-                style={{ position: "fixed ", top: "0",left:"0px", padding: "0px", margin: "0", width: "15%", backgroundColor: "#FFFFFF" ,height : "100%"}}
-              >
-                <div style = {{ fontSize : "1.5em", margin: "0px", marginTop: "4px", padding: "15px", textAlign: "center", backgroundColor : "#356DBF"}}><a href={baseNavUrl("")} style = {{color : "white"}}>INSTITUTE CANDIDATES</a></div>
-                <a href={baseNavUrl("#acad_ug")} > <Menu.Item styleName = "styles.Link" style = {activeStyle} name= "GS Academic(UG) Affairs" /> </a>
-                <a href={baseNavUrl("#tech")} ><Menu.Item styleName = "styles.Link" style = {activeStyle} name= "GS Technical Affairs" /> </a> 
-                <a href={baseNavUrl("#sport")}><Menu.Item styleName = "styles.Link" style = {activeStyle} name= "GS Sports Affairs" /></a>
-                <a href={baseNavUrl("#hostel")} > <Menu.Item styleName = "styles.Link" style = {activeStyle} name="GS Hostel Affairs" /></a>
-                <a href = {baseNavUrl("#cult")} ><Menu.Item styleName = "styles.Link" style = {activeStyle} name= "GS Cultural Affairs" /></a>
-                <a href = {baseNavUrl("#prof")} ><Menu.Item styleName = "styles.Link" style = {activeStyle} name= "GS Professional Affairs" /></a>
-                <a href = {baseNavUrl("#acad_pg")} ><Menu.Item styleName = "styles.Link" style = {activeStyle} name= "GS Academic(PG) Affairs" /></a>
-                <ColoredLine color = "#BEBEBE" />
-                <div style = {{ fontSize : "1.5em", margin: "0px", marginTop: "4px", padding: "15px",color : "#131313",}}><a href={baseNavUrl("/questions")} style = {{color : "#131313"}}>Question And Answer</a></div>
-                </Scrollspy>
-
+          <Scrollspy
+            items={[
+              "acad_ug",
+              "tech",
+              "sport",
+              "hostel",
+              "cult",
+              "prof",
+              "acad_pg"
+            ]}
+            currentClassName="navbar"
+            style={{
+              position: "fixed ",
+              top: "0",
+              left: "0px",
+              padding: "0px",
+              margin: "0",
+              width: "15%",
+              backgroundColor: "#FFFFFF",
+              height: "100%"
+            }}
+          >
+            <div
+              style={{
+                fontSize: "1.5em",
+                margin: "0px",
+                marginTop: "4px",
+                padding: "15px",
+                textAlign: "center",
+                backgroundColor: "#356DBF"
+              }}
+            >
+              <a href={baseNavUrl("")} style={{ color: "white" }}>
+                INSTITUTE CANDIDATES
+              </a>
+            </div>
+            <a href={baseNavUrl("#acad_ug")}>
+              {" "}
+              <Menu.Item
+                styleName="styles.Link"
+                style={activeStyle}
+                name="GS Academic(UG) Affairs"
+              />{" "}
+            </a>
+            <a href={baseNavUrl("#tech")}>
+              <Menu.Item
+                styleName="styles.Link"
+                style={activeStyle}
+                name="GS Technical Affairs"
+              />{" "}
+            </a>
+            <a href={baseNavUrl("#sport")}>
+              <Menu.Item
+                styleName="styles.Link"
+                style={activeStyle}
+                name="GS Sports Affairs"
+              />
+            </a>
+            <a href={baseNavUrl("#hostel")}>
+              {" "}
+              <Menu.Item
+                styleName="styles.Link"
+                style={activeStyle}
+                name="GS Hostel Affairs"
+              />
+            </a>
+            <a href={baseNavUrl("#cult")}>
+              <Menu.Item
+                styleName="styles.Link"
+                style={activeStyle}
+                name="GS Cultural Affairs"
+              />
+            </a>
+            <a href={baseNavUrl("#prof")}>
+              <Menu.Item
+                styleName="styles.Link"
+                style={activeStyle}
+                name="GS Professional Affairs"
+              />
+            </a>
+            <a href={baseNavUrl("#acad_pg")}>
+              <Menu.Item
+                styleName="styles.Link"
+                style={activeStyle}
+                name="GS Academic(PG) Affairs"
+              />
+            </a>
+            <ColoredLine color="#BEBEBE" />
+            <div
+              style={{
+                fontSize: "1.5em",
+                margin: "0px",
+                marginTop: "4px",
+                padding: "15px",
+                color: "#131313"
+              }}
+            >
+              <a href={baseNavUrl("/questions")} style={{ color: "#131313" }}>
+                Question And Answer
+              </a>
+            </div>
+          </Scrollspy>
+          </div>
       </div>
     ) : (
       "No Details"
@@ -192,8 +295,8 @@ function mapStateToProps(state) {
   return {
     whoAmI: state.whoAmI,
     candidateDetails: state.candidateDetails,
-    particularQuestions: state.particularQuestions 
-   };
+    particularQuestions: state.particularQuestions
+  };
 }
 
 const mapDispatchToProps = dispatch => {
@@ -204,8 +307,8 @@ const mapDispatchToProps = dispatch => {
     GetCandidateDetails: id => {
       dispatch(getCandidateDetails(id));
     },
-  GetParticularQuestions: id => {
-    dispatch(getParticularQuestions(id));
+    GetParticularQuestions: id => {
+      dispatch(getParticularQuestions(id));
     }
   };
 };

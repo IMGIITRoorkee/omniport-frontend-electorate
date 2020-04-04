@@ -64,7 +64,7 @@ class questionCard extends Component {
           </div>
         </Segment>
         </div>
-        <Fragment>
+        <div>
         <Scrollspy
                 items={["acad_ug", "tech", "sport","hostel","cult","prof","acad_pg"]}
                 currentClassName = "navbar"
@@ -81,8 +81,7 @@ class questionCard extends Component {
                 <ColoredLine color = "#BEBEBE" />
                 <div class = "headnavbar" style = {{ fontSize : "1.5em", margin: "0px", marginTop: "1px", padding: "15px", backgroundColor : "#356DBF"}}><a href={baseNavUrl("/questions")} style = {{color : "white"}}>Question And Answer</a></div>
                 </Scrollspy>
-                </Fragment>
-
+        </div>
       </div>
     );
   }
