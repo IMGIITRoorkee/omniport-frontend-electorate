@@ -68,7 +68,7 @@ class candidateProfile extends Component {
       <div styleName="styles.candidate-profile">
         <div>
           <Breadcrumb size={"massive"}>
-            <Breadcrumb.Section as={Link} to={baseNavUrl()}>
+            <Breadcrumb.Section as={Link} to={baseNavUrl("/")}>
               INSTITUTE CANDIDATES
             </Breadcrumb.Section>
             <Breadcrumb.Divider icon="right chevron" />

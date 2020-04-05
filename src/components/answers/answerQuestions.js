@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import Scrollspy from "react-scrollspy";
 
 import { getUnansweredQuestions, getCandidateDetails } from "../../actions";
@@ -42,7 +43,13 @@ class answerQuestions extends Component {
       <div styleName="styles.answerQuestions-container">
         <div styleName="styles.answerques-brdcrumb">
           <Breadcrumb size={"massive"}>
-            <Breadcrumb.Section> MY PROFILE </Breadcrumb.Section>
+            <Breadcrumb.Section
+              as={Link}
+              to={baseNavUrl(`/profiles/${this.props.match.params.id}`)}
+            >
+              {" "}
+              MY PROFILE{" "}
+            </Breadcrumb.Section>
             <Breadcrumb.Divider icon="right chevron" />
             <Breadcrumb.Section>Answer Questions</Breadcrumb.Section>
           </Breadcrumb>
