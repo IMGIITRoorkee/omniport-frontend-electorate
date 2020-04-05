@@ -25,14 +25,14 @@ class allProfiles extends Component {
       color: "#606060",
       paddingLeft: "10px",
       margin: "15px",
-      padding: "2px"
+      padding: "2px",
     };
     const ColoredLine = ({ color }) => (
       <hr
         style={{
           color: color,
           backgroundColor: color,
-          height: "0.2px"
+          height: "0.2px",
         }}
       />
     );
@@ -45,14 +45,14 @@ class allProfiles extends Component {
         <div>
           <h1>INSTITUTE CANDIDATES</h1>
           <Divider />
-          {getPostOptions.map(element => (
+          {getPostOptions.map((element) => (
             <div styleName="styles.allProfiles-post">
               <h2 styleName="styles.allProfiles-post-header" id={element.value}>
                 {element.displayName}
               </h2>
               <Card.Group>
                 {allProfilesFiltered[element.value] ? (
-                  allProfilesFiltered[element.value].map(profile => (
+                  allProfilesFiltered[element.value].map((profile) => (
                     <ProfileCard
                       name={profile.fullName}
                       degree={profile.degree}
@@ -77,7 +77,7 @@ class allProfiles extends Component {
               "hostel",
               "cult",
               "prof",
-              "acad_pg"
+              "acad_pg",
             ]}
             currentClassName="navbar"
             style={{
@@ -88,7 +88,7 @@ class allProfiles extends Component {
               margin: "0",
               width: "15%",
               backgroundColor: "#FFFFFF",
-              height: "100%"
+              height: "100%",
             }}
           >
             <div
@@ -98,7 +98,7 @@ class allProfiles extends Component {
                 marginTop: "4px",
                 padding: "15px",
                 textAlign: "center",
-                backgroundColor: "#356DBF"
+                backgroundColor: "#356DBF",
               }}
             >
               <a href={baseNavUrl("")} style={{ color: "white" }}>
@@ -163,7 +163,7 @@ class allProfiles extends Component {
                 margin: "0px",
                 marginTop: "4px",
                 padding: "15px",
-                color: "#131313"
+                color: "#131313",
               }}
             >
               <a href={baseNavUrl("/questions")} style={{ color: "#131313" }}>
@@ -183,11 +183,11 @@ function mapStateToProps(state) {
   return {
     whoAmI: state.whoAmI,
     allProfiles: state.allProfiles,
-    getPostOptions: state.getPostOptions
+    getPostOptions: state.getPostOptions,
   };
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     SetUser: () => {
       dispatch(setUser());
@@ -197,7 +197,7 @@ const mapDispatchToProps = dispatch => {
     },
     GetPostOptions: () => {
       dispatch(getPostOptions());
-    }
+    },
   };
 };
 

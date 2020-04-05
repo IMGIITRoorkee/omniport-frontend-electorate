@@ -6,7 +6,7 @@ import { baseNavUrl } from "../../urls";
 import {
   setUser,
   getCandidateDetails,
-  getParticularQuestions
+  getParticularQuestions,
 } from "../../actions";
 
 import { getTheme } from "formula_one";
@@ -23,7 +23,7 @@ import {
   Grid,
   Card,
   Image,
-  Icon
+  Icon,
 } from "semantic-ui-react";
 
 import blocks from "../../css/app.css";
@@ -52,14 +52,14 @@ class candidateProfile extends Component {
       color: "#606060",
       paddingLeft: "10px",
       margin: "15px",
-      padding: "2px"
+      padding: "2px",
     };
     const ColoredLine = ({ color }) => (
       <hr
         style={{
           color: color,
           backgroundColor: color,
-          height: "0.2px"
+          height: "0.2px",
         }}
       />
     );
@@ -68,7 +68,9 @@ class candidateProfile extends Component {
       <div styleName="styles.candidate-profile">
         <div>
           <Breadcrumb size={"massive"}>
-            <Breadcrumb.Section>INSTITUTE CANDIDATES</Breadcrumb.Section>
+            <Breadcrumb.Section as={Link} to={baseNavUrl()}>
+              INSTITUTE CANDIDATES
+            </Breadcrumb.Section>
             <Breadcrumb.Divider icon="right chevron" />
             <Breadcrumb.Section>
               {candidateDetails.postFullname}
@@ -168,7 +170,7 @@ class candidateProfile extends Component {
               </div>
             )}
             <div>
-              {particularQuestions.map(element => (
+              {particularQuestions.map((element) => (
                 <QuestionCard
                   question={element.question}
                   asker={element.askerFullName}
@@ -189,7 +191,7 @@ class candidateProfile extends Component {
               "hostel",
               "cult",
               "prof",
-              "acad_pg"
+              "acad_pg",
             ]}
             currentClassName="navbar"
             style={{
@@ -200,7 +202,7 @@ class candidateProfile extends Component {
               margin: "0",
               width: "15%",
               backgroundColor: "#FFFFFF",
-              height: "100%"
+              height: "100%",
             }}
           >
             <div
@@ -210,7 +212,7 @@ class candidateProfile extends Component {
                 marginTop: "4px",
                 padding: "15px",
                 textAlign: "center",
-                backgroundColor: "#356DBF"
+                backgroundColor: "#356DBF",
               }}
             >
               <a href={baseNavUrl("")} style={{ color: "white" }}>
@@ -275,7 +277,7 @@ class candidateProfile extends Component {
                 margin: "0px",
                 marginTop: "4px",
                 padding: "15px",
-                color: "#131313"
+                color: "#131313",
               }}
             >
               <a href={baseNavUrl("/questions")} style={{ color: "#131313" }}>
@@ -283,7 +285,7 @@ class candidateProfile extends Component {
               </a>
             </div>
           </Scrollspy>
-          </div>
+        </div>
       </div>
     ) : (
       "No Details"
@@ -295,21 +297,21 @@ function mapStateToProps(state) {
   return {
     whoAmI: state.whoAmI,
     candidateDetails: state.candidateDetails,
-    particularQuestions: state.particularQuestions
+    particularQuestions: state.particularQuestions,
   };
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     SetUser: () => {
       dispatch(setUser());
     },
-    GetCandidateDetails: id => {
+    GetCandidateDetails: (id) => {
       dispatch(getCandidateDetails(id));
     },
-    GetParticularQuestions: id => {
+    GetParticularQuestions: (id) => {
       dispatch(getParticularQuestions(id));
-    }
+    },
   };
 };
 

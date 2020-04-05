@@ -11,7 +11,7 @@ class askAQuestion extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      quest: ""
+      quest: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,7 +19,7 @@ class askAQuestion extends Component {
   handleChange(e) {
     const name = e.target.name;
     this.setState({
-      [name]: e.target.value
+      [name]: e.target.value,
     });
   }
   handleSubmit() {
@@ -28,68 +28,49 @@ class askAQuestion extends Component {
       formData.append("asker", this.props.askerId);
       formData.append("question", this.state.quest);
       formData.append("candidate", this.props.candidateId);
-      formData.append("post", "tech");
-      // console.log(formData['candidate']);
       this.props.AskQuestion(formData);
       this.setState({
-        quest: ""
+        quest: "",
       });
     }
   }
   render() {
     return (
       <div>
-          <div styleName = "styles.heading">Question and Answer with {this.props.candidateName}</div>
-          {/* <form>
-            <div styleName = "styles.inputbox">
-              <input
-                name="quest"
-                value={this.state.quest}
-                onChange={this.handleChange}
-                type="text"
-                placeholder="Ask your question"
-              />
-            <input
-            styleName = "styles.submit"
-              type="submit"
-              value = "Submit"
-              position="right"
-              content="Submit"
-              onClick={this.handleSubmit}
+        <div styleName="styles.heading">
+          Question and Answer with {this.props.candidateName}
+        </div>
+        <Form>
+          <Form.Field>
+            <Form.Input
+              styleName="styles.inputbox"
+              name="quest"
+              value={this.state.quest}
+              onChange={this.handleChange}
+              type="text"
+              rows="3"
+              placeholder="Ask your question"
             />
-            </div>
-          </form> */}
-          <Form>
-            <Form.Field>
-              <Form.Input
-                styleName="styles.inputbox"
-                name="quest"
-                value={this.state.quest}
-                onChange={this.handleChange}
-                type="text"
-                rows="3"
-                placeholder="Ask your question"
-              />
-            </Form.Field>
-            <Button
-              styleName="styles.submit"
-              type="submit"
-              position="right"
-              primary
-              content="Submit"
-              onClick={this.handleSubmit}
-            />
-          </Form>
+          </Form.Field>
+          <Button
+            styleName="styles.submit"
+            type="submit"
+            position="right"
+            primary
+            content="Submit"
+            onClick={this.handleSubmit}
+          />
+        </Form>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    AskQuestion: data => {
+    AskQuestion: (data) => {
       dispatch(askQuestion(data));
-    }
+    },
   };
 };
 

@@ -5,7 +5,8 @@ import Scrollspy from "react-scrollspy";
 import { getUnansweredQuestions, getCandidateDetails } from "../../actions";
 
 import styles from "../../css/answers/answers.css";
-import { Breadcrumb, Segment, Menu, Divider} from "semantic-ui-react";
+import styles2 from "../../css/candidate/candidate.css";
+import { Breadcrumb, Segment, Menu, Divider, Modal } from "semantic-ui-react";
 import { baseNavUrl } from "../../urls";
 
 import AnswerCard from "./answerCard";
@@ -19,27 +20,27 @@ class answerQuestions extends Component {
   }
   render() {
     console.log(this.props.unansweredQuestions);
-    const { unansweredQuestions } = this.props;
+    const { unansweredQuestions, candidateDetails } = this.props;
     const activeStyle = {
       fontSize: "1.2em",
       color: "#606060",
       paddingLeft: "10px",
       margin: "15px",
-      padding: "2px"
+      padding: "2px",
     };
     const ColoredLine = ({ color }) => (
       <hr
         style={{
           color: color,
           backgroundColor: color,
-          height: "0.2px"
+          height: "0.2px",
         }}
       />
     );
 
     return (
       <div styleName="styles.answerQuestions-container">
-        <div styleName = "styles.answerques-brdcrumb">
+        <div styleName="styles.answerques-brdcrumb">
           <Breadcrumb size={"massive"}>
             <Breadcrumb.Section> MY PROFILE </Breadcrumb.Section>
             <Breadcrumb.Divider icon="right chevron" />
@@ -48,7 +49,57 @@ class answerQuestions extends Component {
           <Divider />
         </div>
         <div>
-          {unansweredQuestions.map(element => (
+          <div>
+            <div>
+              <img
+                src="https://imgix-media.wbdndc.net/cms/filer_public_thumbnails/filer_public/d8/5a/d85a3ec6-79c5-49ae-86e9-902c74546e69/batman-profile-293d6d-bm_cv17_ns-1-v1-600x600-marquee-thumb.jpg__600x600_q85_crop_subsampling-2_upscale.jpg"
+                styleName="styles2.profileCard-card-profile-photo"
+              />
+            </div>
+            <div styleName="styles2.heading">{candidateDetails.fullName}</div>
+            <div styleName="styles2.headingdetailstwo">
+              {candidateDetails.degree} {candidateDetails.branchName}
+            </div>
+            <div styleName="styles2.headingdetailstwo">
+              {candidateDetails.currentYear} Year
+            </div>
+            <div styleName="styles2.headingdetails">
+              {candidateDetails.emailAddress}
+            </div>
+            <div styleName="styles2.headingdetailsthree">Standing for</div>
+            <div styleName="styles2.headingdetailslink">
+              {" "}
+              {candidateDetails.postFullname}{" "}
+            </div>
+          </div>
+          <div>
+            <Modal trigger={<a styleName="styles2.resume">Electoral Resume</a>}>
+              <Modal.Header>
+                Electoral Resume of {candidateDetails.fullName}
+              </Modal.Header>
+              <Modal.Content>
+                <Modal.Description>
+                  <iframe
+                    src={candidateDetails.resume}
+                    width="800"
+                    height="800"
+                  ></iframe>
+                </Modal.Description>
+              </Modal.Content>
+            </Modal>
+          </div>
+          <div>
+            <video
+              styleName="styles2.video"
+              width="300"
+              height="200"
+              src={candidateDetails.video}
+              controls
+            />
+          </div>
+        </div>
+        <div>
+          {unansweredQuestions.map((element) => (
             <AnswerCard
               question={element.question}
               asker={element.askerFullName}
@@ -67,7 +118,7 @@ class answerQuestions extends Component {
               "hostel",
               "cult",
               "prof",
-              "acad_pg"
+              "acad_pg",
             ]}
             currentClassName="navbar"
             style={{
@@ -78,7 +129,7 @@ class answerQuestions extends Component {
               margin: "0",
               width: "15%",
               backgroundColor: "#FFFFFF",
-              height: "100%"
+              height: "100%",
             }}
           >
             <div
@@ -88,7 +139,7 @@ class answerQuestions extends Component {
                 marginTop: "4px",
                 padding: "15px",
                 textAlign: "center",
-                backgroundColor: "#356DBF"
+                backgroundColor: "#356DBF",
               }}
             >
               <a href={baseNavUrl("")} style={{ color: "white" }}>
@@ -153,7 +204,7 @@ class answerQuestions extends Component {
                 margin: "0px",
                 marginTop: "4px",
                 padding: "15px",
-                color: "#131313"
+                color: "#131313",
               }}
             >
               <a href={baseNavUrl("/questions")} style={{ color: "#131313" }}>
@@ -161,8 +212,7 @@ class answerQuestions extends Component {
               </a>
             </div>
           </Scrollspy>
-          </div>
-
+        </div>
       </div>
     );
   }
@@ -171,18 +221,18 @@ class answerQuestions extends Component {
 function mapStateToProps(state) {
   return {
     unansweredQuestions: state.unansweredQuestions,
-    candidateDetails: state.candidateDetails
+    candidateDetails: state.candidateDetails,
   };
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    GetUnansweredQuestions: id => {
+    GetUnansweredQuestions: (id) => {
       dispatch(getUnansweredQuestions(id));
     },
-    GetCandidateDetails: id => {
+    GetCandidateDetails: (id) => {
       dispatch(getCandidateDetails(id));
-    }
+    },
   };
 };
 

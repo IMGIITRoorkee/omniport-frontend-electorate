@@ -8,133 +8,133 @@ import {
   urlGetParticularQuestions,
   urlGetUnansweredQuestions,
   urlGetCandidateDetails,
-  urlGetQuestionDetails
+  urlGetQuestionDetails,
 } from "../urls";
 
 //Set User
 export const setUser = () => {
-  return dispatch => {
+  return (dispatch) => {
     axios
       .get(urlWhoAmI())
-      .then(res => {
+      .then((res) => {
         dispatch({
           type: "SET_USER",
-          payload: res.data
+          payload: res.data,
         });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 };
 
 //Get All Profiles for HomePage
 export const getAllProfiles = () => {
-  return dispatch => {
+  return (dispatch) => {
     axios
       .get(urlGetAllProfiles())
-      .then(res => {
+      .then((res) => {
         dispatch({
           type: "GET_ALL_PROFILES",
-          payload: res.data
+          payload: res.data,
         });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 };
 
 //Get PostDict for making homepage dynamic
 export const getPostOptions = () => {
-  return dispatch => {
+  return (dispatch) => {
     axios
       .options(urlGetAllProfiles())
-      .then(res => {
+      .then((res) => {
         //console.log(res.data.actions.POST.post.choices);
         dispatch({
           type: "GET_POST_OPTIONS",
-          payload: res.data.actions.POST.post.choices
+          payload: res.data.actions.POST.post.choices,
         });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 };
 
 //Get AllQuestions for Questions and Answers Page
 export const getAllQuestions = () => {
-  return dispatch => {
+  return (dispatch) => {
     axios
       .get(urlGetAllQuestions())
-      .then(res => {
+      .then((res) => {
         dispatch({
           type: "GET_ALL_QUESTIONS",
-          payload: res.data.results
+          payload: res.data.results,
         });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 };
 
 //Get Questions for a partitcular Candidate for Answers Page
-export const getParticularQuestions = id => {
-  return dispatch => {
+export const getParticularQuestions = (id) => {
+  return (dispatch) => {
     axios
       .get(urlGetParticularQuestions(id))
-      .then(res => {
+      .then((res) => {
         dispatch({
           type: "GET_PARTICULAR_QUESTIONS",
-          payload: res.data.results
+          payload: res.data.results,
         });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 };
 
 //Get unanswered questions from answer_view endpoint
-export const getUnansweredQuestions = id => {
-  return dispatch => {
+export const getUnansweredQuestions = (id) => {
+  return (dispatch) => {
     axios
       .get(urlGetUnansweredQuestions(id))
-      .then(res => {
+      .then((res) => {
         dispatch({
           type: "GET_UNANSWERED_QUESTIONS",
-          payload: res.data.results
+          payload: res.data.results,
         });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 };
 
 //Get Individual Candidate Details for their profile page
-export const getCandidateDetails = id => {
-  return dispatch => {
+export const getCandidateDetails = (id) => {
+  return (dispatch) => {
     dispatch({
       type: "GET_CANDIDATE_DETAILS_LOADING",
-      payload: true
+      payload: true,
     });
     axios
       .get(urlGetCandidateDetails(id))
-      .then(res => {
+      .then((res) => {
         dispatch({
           type: "GET_CANDIDATE_DETAILS",
-          payload: { ...res.data, loading: false }
+          payload: { ...res.data, loading: false },
         });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 };
 
 //Post a Question
-export const askQuestion = data => {
+export const askQuestion = (data) => {
   let headers = {
     "Content-Type": "multipart/form-data",
-    "X-CSRFToken": getCookie("csrftoken")
+    "X-CSRFToken": getCookie("csrftoken"),
   };
-  return dispatch => {
+  return (dispatch) => {
     axios
       .post(urlGetAllQuestions(), data, { headers: headers })
-      .then(res => {
+      .then((res) => {
         dispatch(getAllQuestions());
         console.log(res);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -143,17 +143,16 @@ export const askQuestion = data => {
 //Answer a question
 export const answerQuestion = (id, data) => {
   let headers = {
-    "Content-Type": "multipart/form-data",
-    "X-CSRFToken": getCookie("csrftoken")
+    "X-CSRFToken": getCookie("csrftoken"),
   };
-  return dispatch => {
+  return (dispatch) => {
     axios
       .patch(urlGetQuestionDetails(id), data, { headers: headers })
-      .then(res => {
+      .then((res) => {
         dispatch(getAllQuestions());
         console.log(res);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
