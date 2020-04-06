@@ -23,12 +23,13 @@ class askAQuestion extends Component {
     });
   }
   handleSubmit() {
-    if (this.state.quest && this.props.askerId && this.props.candidateId) {
+    if (this.state.quest && this.props.askerId && this.props.cid) {
       var formData = new FormData();
       formData.append("asker", this.props.askerId);
       formData.append("question", this.state.quest);
-      formData.append("candidate", this.props.candidateId);
-      this.props.AskQuestion(formData);
+      formData.append("candidate", this.props.cid);
+      formData.append("post", this.props.post);
+      this.props.AskQuestion(formData, this.props.cid);
       this.setState({
         quest: "",
       });
@@ -38,7 +39,7 @@ class askAQuestion extends Component {
     return (
       <div>
         <div styleName="styles.heading">
-          Question and Answer with {this.props.candidateName}
+          Question and Answer with {this.props.candidate}
         </div>
         <Form>
           <Form.Field>
@@ -68,8 +69,8 @@ class askAQuestion extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    AskQuestion: (data) => {
-      dispatch(askQuestion(data));
+    AskQuestion: (data, cid) => {
+      dispatch(askQuestion(data, cid));
     },
   };
 };

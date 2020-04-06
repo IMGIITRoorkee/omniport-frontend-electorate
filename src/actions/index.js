@@ -124,7 +124,7 @@ export const getCandidateDetails = (id) => {
 };
 
 //Post a Question
-export const askQuestion = (data) => {
+export const askQuestion = (data, cid) => {
   let headers = {
     "Content-Type": "multipart/form-data",
     "X-CSRFToken": getCookie("csrftoken"),
@@ -134,6 +134,7 @@ export const askQuestion = (data) => {
       .post(urlGetAllQuestions(), data, { headers: headers })
       .then((res) => {
         dispatch(getAllQuestions());
+        dispatch(getParticularQuestions(cid));
         console.log(res);
       })
       .catch((err) => {

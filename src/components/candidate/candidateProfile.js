@@ -43,7 +43,7 @@ class candidateProfile extends Component {
   }
 
   render() {
-    // console.log(this.props.candidateDetails);
+    console.log(this.props.candidateDetails);
     // console.log(this.props.whoAmI.roles);
     const { candidateDetails, whoAmI, particularQuestions } = this.props;
 
@@ -163,9 +163,10 @@ class candidateProfile extends Component {
             ) : (
               <div>
                 <AskAQuestion
-                  candidateName={candidateDetails.fullName}
+                  candidate={candidateDetails.fullName}
                   askerId={whoAmI.id}
-                  candidateId={candidateDetails.id}
+                  cid={candidateDetails.id}
+                  post={candidateDetails.post}
                 />
               </div>
             )}
