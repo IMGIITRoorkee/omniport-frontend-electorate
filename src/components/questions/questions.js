@@ -23,6 +23,7 @@ import { getAllQuestions, setUser, getPostOptions } from "../../actions";
 import styles from "../../css/questions/questions.css";
 import home from "../../css/home/home.css";
 import { element } from "prop-types";
+import { Link } from "react-router-dom";
 
 class questions extends Component {
   constructor(props) {
@@ -94,21 +95,21 @@ class questions extends Component {
           </div>
         </div>
         <div styleName="styles.allquestions-questions-all">
-          <h2>QUESTION AND ANSWER</h2>
+          <h1>QUESTION AND ANSWER</h1>
           <Divider />
           {/* <PostQuestion /> */}
-          <div styleName = "styles.dropdown">
-            <div styleName = "styles.dropdowntext">Filter By Post</div>
-          <Dropdown
-            name="post"
-            value={this.state.post}
-            placeholder="Select a Post"
-            options={dropDownPostOptions}
-            styleName = "styles.dropdownfilter"
-            onChange={this.handleDropdownChange}
-            scrolling
-            selection
-          />
+          <div styleName="styles.dropdown">
+            <div styleName="styles.dropdowntext">Filter By Post</div>
+            <Dropdown
+              name="post"
+              value={this.state.post}
+              placeholder="Select a Post"
+              options={dropDownPostOptions}
+              styleName="styles.dropdownfilter"
+              onChange={this.handleDropdownChange}
+              scrolling
+              selection
+            />
           </div>
           {allQuestionsFiltered[this.state.post] ? (
             allQuestionsFiltered[this.state.post].map((element) => (
@@ -148,89 +149,89 @@ class questions extends Component {
               left: "0px",
               padding: "0px",
               margin: "0",
-              width: "16%",
+              width: "15.5%",
               backgroundColor: "#FFFFFF",
               height: "100%",
             }}
           >
             <div
               style={{
-                fontSize: "1.5em",
+                fontSize: "1.4em",
                 margin: "0px",
                 marginTop: "4px",
                 padding: "12px",
                 textAlign: "center",
               }}
             >
-              <a href={baseNavUrl("")} style={{ color: "#131313" }}>
+              <Link to={baseNavUrl("")} style={{ color: "#131313" }}>
                 INSTITUTE CANDIDATES
-              </a>
+              </Link>
             </div>
-            <a href={baseNavUrl("#acad_ug")}>
+            <Link to={baseNavUrl("#acad_ug")}>
               {" "}
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Academic(UG) Affairs"
               />{" "}
-            </a>
-            <a href={baseNavUrl("#tech")}>
+            </Link>
+            <Link to={baseNavUrl("#tech")}>
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Technical Affairs"
               />{" "}
-            </a>
-            <a href={baseNavUrl("#sport")}>
+            </Link>
+            <Link to={baseNavUrl("#sport")}>
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Sports Affairs"
               />
-            </a>
-            <a href={baseNavUrl("#hostel")}>
+            </Link>
+            <Link to={baseNavUrl("#hostel")}>
               {" "}
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Hostel Affairs"
               />
-            </a>
-            <a href={baseNavUrl("#cult")}>
+            </Link>
+            <Link to={baseNavUrl("#cult")}>
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Cultural Affairs"
               />
-            </a>
-            <a href={baseNavUrl("#prof")}>
+            </Link>
+            <Link to={baseNavUrl("#prof")}>
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Professional Affairs"
               />
-            </a>
-            <a href={baseNavUrl("#acad_pg")}>
+            </Link>
+            <Link to={baseNavUrl("#acad_pg")}>
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Academic(PG) Affairs"
               />
-            </a>
+            </Link>
             <ColoredLine color="#BEBEBE" />
             <div
               style={{
-                fontSize: "1.3em",
+                fontSize: "1.4em",
                 margin: "0px",
                 marginTop: "4px",
-                padding: "10px",
+                padding: "12px",
                 color: "#131313",
                 backgroundColor: "#356DBF",
               }}
             >
-              <a href={baseNavUrl("/questions")} style={{ color: "white" }}>
+              <Link to={baseNavUrl("/questions")} style={{ color: "white" }}>
                 QUESTION AND ANSWER
-              </a>
+              </Link>
             </div>
           </Scrollspy>
         </div>

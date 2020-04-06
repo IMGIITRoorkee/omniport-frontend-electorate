@@ -44,7 +44,7 @@ class candidateProfile extends Component {
 
   render() {
     const { candidateDetails, whoAmI, particularQuestions } = this.props;
-
+    console.log(candidateDetails);
     const activeStyle = {
       fontSize: "1.2em",
       color: "#606060",
@@ -63,156 +63,176 @@ class candidateProfile extends Component {
     );
 
     return !candidateDetails.isEmpty ? (
-      <div styleName = "home.allcontainer">
-      <div styleName="home.MobileNavbar">
-       <div styleName = "home.mobiletext1"><a href = {baseNavUrl("")} style = {{ color : "white", fontSize : "1.2em"}}>INSTITUTE CANDIDATES</a></div>
-       <div styleName ="home.mobiletext"><a href = {baseNavUrl("/questions")} style = {{ color : "black", fontSize : "1.2em"}}>QUESTION AND ANSWER</a></div>
-       </div>
- 
-      <div styleName="styles.candidate-profile">
-        <div>
-          <Breadcrumb size={"massive"}>
-            <Breadcrumb.Section as={Link} to={baseNavUrl("/")}>
+      <div styleName="home.allcontainer">
+        <div styleName="home.MobileNavbar">
+          <div styleName="home.mobiletext1">
+            <a
+              href={baseNavUrl("")}
+              style={{ color: "white", fontSize: "1.2em" }}
+            >
               INSTITUTE CANDIDATES
-            </Breadcrumb.Section>
-            <Breadcrumb.Divider icon="right chevron" />
-            <Breadcrumb.Section>
-              {candidateDetails.postFullname}
-            </Breadcrumb.Section>
-            <Breadcrumb.Divider icon="right chevron" />
-            {candidateDetails.isCandidate ? (
-              <Breadcrumb.Section>{"My Profile"}</Breadcrumb.Section>
-            ) : (
-              <Breadcrumb.Section>
-                {candidateDetails.fullName}
-              </Breadcrumb.Section>
-            )}
-          </Breadcrumb>
-        </div>
-        <Divider />
-        <div styleName="styles.container">
-          <div>
-            <div>
-              <div>
-                <img
-                  src="https://imgix-media.wbdndc.net/cms/filer_public_thumbnails/filer_public/d8/5a/d85a3ec6-79c5-49ae-86e9-902c74546e69/batman-profile-293d6d-bm_cv17_ns-1-v1-600x600-marquee-thumb.jpg__600x600_q85_crop_subsampling-2_upscale.jpg"
-                  styleName="styles.profileCard-card-profile-photo"
-                />
-              </div>
-              <div styleName="styles.heading">{candidateDetails.fullName}</div>
-              <div styleName="styles.headingdetailstwo">
-                {candidateDetails.degree} {candidateDetails.branchName}
-              </div>
-              <div styleName="styles.headingdetailstwo">
-                {candidateDetails.currentYear} Year
-              </div>
-              <div styleName="styles.headingdetails">
-                {candidateDetails.emailAddress}
-              </div>
-              <div styleName="styles.headingdetailsthree">Standing for</div>
-              <div styleName="styles.headingdetailslink">
-                {" "}
-                {candidateDetails.postFullname}{" "}
-              </div>
-            </div>
-            <div>
-              <Modal
-                trigger={<a styleName="styles.resume">Electoral Resume</a>}
-              >
-                <Modal.Header>
-                  Electoral Resume of {candidateDetails.fullName}
-                </Modal.Header>
-                <Modal.Content>
-                  <Modal.Description>
-                    <iframe
-                      src={candidateDetails.resume}
-                      width="800"
-                      height="800"
-                    ></iframe>
-                  </Modal.Description>
-                </Modal.Content>
-              </Modal>
-            </div>
-            <div>
-              <video
-                styleName="styles.video"
-                width="300"
-                height="200"
-                src={candidateDetails.video}
-                controls
-              />
-            </div>
+            </a>
           </div>
-          <div styleName="styles.rightside">
-            <div styleName = "styles.manifesto">
-              <div styleName="styles.headingmanifesto">Manifesto</div>
-              <iframe
-                src={candidateDetails.manifesto}
-                width="800"
-                height="480"
-              ></iframe>
-            </div>
-            <div styleName = "styles.mobile-manifesto">
-              <Modal
-                trigger={<a styleName="styles.resume">Manifesto</a>}
-              >
-                <Modal.Header>
-                  Electoral Manifesto of {candidateDetails.fullName}
-                </Modal.Header>
-                <Modal.Content>
-                  <Modal.Description>
-                    <iframe
-                      src={candidateDetails.resume}
-                      width="800"
-                      height="480"
-                    ></iframe>
-                  </Modal.Description>
-                </Modal.Content>
-              </Modal>
-            </div>
+          <div styleName="home.mobiletext">
+            <a
+              href={baseNavUrl("/questions")}
+              style={{ color: "black", fontSize: "1.2em" }}
+            >
+              QUESTION AND ANSWER
+            </a>
+          </div>
+        </div>
 
-            {candidateDetails.isCandidate ? (
-              <div styleName="styles.answer">
-                <div styleName="styles.heading">
-                  Question and Answer with {candidateDetails.fullName}
-                </div>
-                <a
-                  styleName="styles.answer-question"
-                  href={baseNavUrl(`/profiles/${candidateDetails.id}/answer`)}
-                >
-                  Answer Questions
-                </a>
-              </div>
-            ) : (
-              <div>
-                <AskAQuestion
-                  candidate={candidateDetails.fullName}
-                  askerId={whoAmI.id}
-                  cid={candidateDetails.id}
-                  post={candidateDetails.post}
-                />
-              </div>
-            )}
+        <div styleName="styles.candidate-profile">
+          <div>
+            <Breadcrumb size={"massive"}>
+              <Breadcrumb.Section as={Link} to={baseNavUrl("/")}>
+                INSTITUTE CANDIDATES
+              </Breadcrumb.Section>
+              <Breadcrumb.Divider icon="right chevron" />
+              <Breadcrumb.Section
+                as={Link}
+                to={baseNavUrl(`#${candidateDetails.post}`)}
+              >
+                {candidateDetails.postFullname}
+              </Breadcrumb.Section>
+              <Breadcrumb.Divider icon="right chevron" />
+              {candidateDetails.isCandidate ? (
+                <Breadcrumb.Section active>{"My Profile"}</Breadcrumb.Section>
+              ) : (
+                <Breadcrumb.Section active>
+                  {candidateDetails.fullName}
+                </Breadcrumb.Section>
+              )}
+            </Breadcrumb>
+          </div>
+          <Divider />
+          <div styleName="styles.container">
             <div>
-              {particularQuestions.map((element) => (
-                <QuestionCard
-                  qid={element.id}
-                  uid={whoAmI.id}
-                  lid={element.likedQuestionId}
-                  cid={element.candidate}
-                  question={element.question}
-                  asker={element.askerFullName}
-                  candidate={element.candidateFullName}
-                  answer={element.answer}
-                  likes={element.numberOfLikes}
-                  liked={element.didUserLike}
+              <div>
+                <div>
+                  <img
+                    src="https://imgix-media.wbdndc.net/cms/filer_public_thumbnails/filer_public/d8/5a/d85a3ec6-79c5-49ae-86e9-902c74546e69/batman-profile-293d6d-bm_cv17_ns-1-v1-600x600-marquee-thumb.jpg__600x600_q85_crop_subsampling-2_upscale.jpg"
+                    styleName="styles.profileCard-card-profile-photo"
+                  />
+                </div>
+                <div styleName="styles.heading">
+                  {candidateDetails.fullName}
+                </div>
+                <div styleName="styles.headingdetailstwo">
+                  {candidateDetails.degree} {candidateDetails.branchName}
+                </div>
+                <div styleName="styles.headingdetailstwo">
+                  {candidateDetails.currentYear} Year
+                </div>
+                <div styleName="styles.headingdetails">
+                  {candidateDetails.emailAddress}
+                </div>
+                <div styleName="styles.headingdetailsthree">Standing for</div>
+                <div styleName="styles.headingdetailslink">
+                  {" "}
+                  {candidateDetails.postFullname}{" "}
+                </div>
+              </div>
+              <div>
+                <Modal
+                  trigger={
+                    <Button styleName="styles.resume">Electoral Resume</Button>
+                  }
+                >
+                  <Modal.Header>
+                    Electoral Resume of {candidateDetails.fullName}
+                  </Modal.Header>
+                  <Modal.Content>
+                    <Modal.Description>
+                      <iframe
+                        src={candidateDetails.resume}
+                        width="800"
+                        height="800"
+                      ></iframe>
+                    </Modal.Description>
+                  </Modal.Content>
+                </Modal>
+              </div>
+              <div>
+                <video
+                  styleName="styles.video"
+                  width="300"
+                  height="200"
+                  src={candidateDetails.video}
+                  controls
                 />
-              ))}
+              </div>
+            </div>
+            <div styleName="styles.rightside">
+              <div styleName="styles.manifesto">
+                <div styleName="styles.headingmanifesto">Manifesto</div>
+                <iframe
+                  src={candidateDetails.manifesto}
+                  width="800"
+                  height="480"
+                ></iframe>
+              </div>
+              <div styleName="styles.mobile-manifesto">
+                <Modal trigger={<a styleName="styles.resume">Manifesto</a>}>
+                  <Modal.Header>
+                    Electoral Manifesto of {candidateDetails.fullName}
+                  </Modal.Header>
+                  <Modal.Content>
+                    <Modal.Description>
+                      <iframe
+                        src={candidateDetails.resume}
+                        width="800"
+                        height="480"
+                      ></iframe>
+                    </Modal.Description>
+                  </Modal.Content>
+                </Modal>
+              </div>
+
+              {candidateDetails.isCandidate ? (
+                <div styleName="styles.answer">
+                  <div styleName="styles.questionHeading">
+                    Question and Answer with {candidateDetails.fullName}
+                  </div>
+                  <Button
+                    styleName="styles.answerButton"
+                    as={Link}
+                    to={baseNavUrl(`/profiles/${candidateDetails.id}/answer`)}
+                  >
+                    Answer Questions
+                  </Button>
+                </div>
+              ) : (
+                <div>
+                  <AskAQuestion
+                    candidate={candidateDetails.fullName}
+                    askerId={whoAmI.id}
+                    cid={candidateDetails.id}
+                    post={candidateDetails.post}
+                  />
+                </div>
+              )}
+              <div>
+                {particularQuestions.map((element) => (
+                  <QuestionCard
+                    qid={element.id}
+                    uid={whoAmI.id}
+                    lid={element.likedQuestionId}
+                    cid={element.candidate}
+                    question={element.question}
+                    asker={element.askerFullName}
+                    candidate={element.candidateFullName}
+                    answer={element.answer}
+                    likes={element.numberOfLikes}
+                    liked={element.didUserLike}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div styleName = "home.Navbar">
+        <div styleName="home.Navbar">
           <Scrollspy
             items={[
               "acad_ug",
@@ -245,61 +265,61 @@ class candidateProfile extends Component {
                 backgroundColor: "#356DBF",
               }}
             >
-              <a href={baseNavUrl("")} style={{ color: "white" }}>
+              <Link to={baseNavUrl("")} style={{ color: "white" }}>
                 INSTITUTE CANDIDATES
-              </a>
+              </Link>
             </div>
-            <a href={baseNavUrl("#acad_ug")}>
+            <Link to={baseNavUrl("#acad_ug")}>
               {" "}
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Academic(UG) Affairs"
               />{" "}
-            </a>
-            <a href={baseNavUrl("#tech")}>
+            </Link>
+            <Link to={baseNavUrl("#tech")}>
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Technical Affairs"
               />{" "}
-            </a>
-            <a href={baseNavUrl("#sport")}>
+            </Link>
+            <Link to={baseNavUrl("#sport")}>
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Sports Affairs"
               />
-            </a>
-            <a href={baseNavUrl("#hostel")}>
+            </Link>
+            <Link to={baseNavUrl("#hostel")}>
               {" "}
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Hostel Affairs"
               />
-            </a>
-            <a href={baseNavUrl("#cult")}>
+            </Link>
+            <Link to={baseNavUrl("#cult")}>
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Cultural Affairs"
               />
-            </a>
-            <a href={baseNavUrl("#prof")}>
+            </Link>
+            <Link to={baseNavUrl("#prof")}>
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Professional Affairs"
               />
-            </a>
-            <a href={baseNavUrl("#acad_pg")}>
+            </Link>
+            <Link to={baseNavUrl("#acad_pg")}>
               <Menu.Item
                 styleName="styles.Link"
                 style={activeStyle}
                 name="GS Academic(PG) Affairs"
               />
-            </a>
+            </Link>
             <ColoredLine color="#BEBEBE" />
             <div
               style={{
@@ -310,13 +330,12 @@ class candidateProfile extends Component {
                 color: "#131313",
               }}
             >
-              <a href={baseNavUrl("/questions")} style={{ color: "#131313" }}>
+              <Link to={baseNavUrl("/questions")} style={{ color: "#131313" }}>
                 QUESTION AND ANSWER
-              </a>
+              </Link>
             </div>
           </Scrollspy>
         </div>
-
       </div>
     ) : (
       "No Details"
