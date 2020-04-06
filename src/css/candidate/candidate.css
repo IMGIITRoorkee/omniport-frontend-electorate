@@ -1,5 +1,137 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .candidate-profile {
   display: flex;
   flex-direction: column;
   height: 100%;
+  margin-left: 18%;
+}
+
+.Link:hover {
+  background-color: #EDF2F9;
+}
+
+.heading {
+  color: #0B1626;
+  line-height: 23px;
+  font-size: 25px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.profileCard-card-profile-photo {
+  border-radius: 50%;
+  width: 12rem !important;
+  height: auto !important;
+  margin: 2em;
+  margin-left: 0.1em;
+}
+
+.headingdetails {
+  line-height: 20px;
+  margin : 15px;
+  margin-left: 0px;
+  font-size: 20px;
+  color: #606060;
+}
+.headingdetailstwo {
+  line-height: 20px;
+  margin-left: 0px;
+  font-size: 20px;
+  color: #606060;
+}
+.headingdetailsthree {
+  margin : 0px;
+  margin-left: 0px;
+  font-size: 15px;
+  color: #606060;
+}
+.headingdetailslink {
+  margin : 5px;
+  margin-left: 0px;
+  font-size: 20px;
+  color: #356DBF;
+  margin-bottom: 60px;
+}
+.resume, .resume:hover {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #356DBF;
+  color: white;
+  font-size: 20px;
+  margin-top: 20px;
+}
+.video {
+margin-top: 60px;
+}
+
+.rightside{
+  margin-right: 10%;
+  margin-left: 15%;
+}
+
+
+.headingmanifesto {
+  color: #0B1626;
+  line-height: 23px;
+  font-size: 25px;
+  margin-bottom: 20px;
+  margin-top: 24px;
+}
+.mobile-manifesto {
+  visibility: hidden;
+}
+.answer {
+  color: #0B1626;
+  line-height: 23px;
+  font-size: 25px;
+  margin-bottom: 15px;
+  margin-top: 20px; 
+  display: flex;
+  flex-direction: row;
+  
+}
+.answer-question, .answer-question:hover {
+  margin-bottom: 10px;
+  margin-left: 2%;
+  padding: 8px;
+  background-color: #356DBF;
+  color: white;
+  font-size: 20px;
+
+}
+
+@media only screen and (max-width: 1390px) {
+  .rightside{
+    margin-right: 5%;
+    margin-left: 0%;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .candidate-profile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* margin-left:2%; */
+  }
+  .manifesto {
+    display: none;
+  }
+  .mobile-manifesto {
+    visibility: visible !important;
+    margin-top: 4%;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .candidate-profile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left:2%;
+  }
 }

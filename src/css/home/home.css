@@ -1,8 +1,18 @@
+
+.allcontainer {
+  height: 100%;
+  margin: 0px;
+  margin-top: 10px ;
+  padding: 0px;
+  width: 100%;
+}
 .allProfiles-container {
   display: flex;
   flex-direction: column;
   height: 100%;
+  margin-top: 0px;
   padding-left: 3.5em;
+  margin-left: 16%;
 }
 
 .allProfiles-post {
@@ -23,9 +33,10 @@
 .profileCard-card-candidate-info {
   font-size: 1em !important;
   font-weight: 500;
+  color: #606060;
   text-align: center;
   text-transform: capitalize !important;
-  margin-top: 0.25rem;
+  /* margin-top: 0.5rem; */
 }
 
 .profileCard-card-profile-photo-padding {
@@ -35,14 +46,87 @@
 .profileCard-card-profile-photo {
   text-align: center;
   border-radius: 50%;
-  width: 15rem !important;
+  width: 12rem !important;
   height: auto !important;
   margin: 2.5em;
+  margin-bottom: 1em;
 }
 
 .profileCard-card-candidate-name {
   font-size: 1.5em !important;
   font-weight: 600;
   text-align: center;
+  margin-bottom: 0.7em;
   text-transform: capitalize !important;
 }
+
+.Link:hover {
+  background-color: #EDF2F9;
+}
+
+.navbar {
+font-size: 2em;
+background-color: black !important;
+margin: 20em !important;
+}
+
+.MobileNavbar {
+  display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+
+.allcontainer {
+  height: 100%;
+  margin: 0px;
+  margin-top: 110px ;
+  padding: 0px;
+  width: 100%;
+}
+  .Navbar {
+    display: none !important;
+  }
+  .allProfiles-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 0%;
+    margin-right: 0px;
+    padding-right: 0px;
+    padding-left: 10%;
+    top : 0px !important;
+    /* padding-left: 3.5em; */
+  }
+  .MobileNavbar{
+    visibility: visible !important;
+    position: fixed;
+    z-index: 2;
+    background-color: white;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    margin-left: 0px;
+    display: flex;
+    width: 100% !important;
+    flex-direction: row;
+    margin-top: 0px !important;
+    padding: 0px !important;
+    margin-bottom: 10%;
+  }
+  .mobiletext1 {
+    flex: 1;
+    width: 100%;
+    font-size: 1.2em;
+    background-color: #356DBF;
+    text-align: center;
+    padding: 2%;
+  }
+  .mobiletext {
+    flex: 1;
+    width: 100%;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 2%;
+  }
+}
+
