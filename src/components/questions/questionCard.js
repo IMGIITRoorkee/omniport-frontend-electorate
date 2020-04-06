@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Segment, Button, Menu, Icon } from "semantic-ui-react";
 import Scrollspy from "react-scrollspy";
 import { baseNavUrl } from "../../urls";
+import moment from 'moment';
 
 import { createLike, deleteLike } from "../../actions";
 
@@ -44,8 +45,8 @@ class questionCard extends Component {
             </div>
             <div styleName="styles.question-card-meta-header">
               <span styleName="styles.question-card-meta">
-                {this.props.asker} asked {this.props.candidate} | |{" "}
-                {this.props.askedOn}
+                {this.props.asker} asked {this.props.candidate} |{" "}
+                {moment(this.props.askedOn).format('Do MMMM')} | {moment(this.props.askedOn).format('h:mm a')}
               </span>
             </div>
             <div>

@@ -91,6 +91,9 @@
 ::placeholder {
   font-size: 18px;
 }
+alert {
+  font-size: 3em;
+}
 
 .question-card-container {
   padding-bottom: 20px;
@@ -103,7 +106,7 @@
     width: 100%;
     margin-right: 0px;
     margin-left: 0.2em;
-    flex-direction: row;
+    flex-direction: column;
   }
   .allquestions-container {
     display: flex;

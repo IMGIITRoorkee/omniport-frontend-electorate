@@ -24,7 +24,7 @@
 
 .profileCard-card-profile-photo {
   border-radius: 50%;
-  width: 15rem !important;
+  width: 12rem !important;
   height: auto !important;
   margin: 2em;
   margin-left: 0.1em;
@@ -69,9 +69,8 @@ margin-top: 60px;
 }
 
 .rightside{
-  margin-right: 9%;
-  margin-left: 10%;
-  /* width: 50%; */
+  margin-right: 10%;
+  margin-left: 20%;
 }
 
 

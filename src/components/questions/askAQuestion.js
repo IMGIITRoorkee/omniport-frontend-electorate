@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Segment, Form, Button } from "semantic-ui-react";
+import { Segment, Form, Button,Portal } from "semantic-ui-react";
 
 import { askQuestion } from "../../actions";
 
@@ -12,18 +12,32 @@ class askAQuestion extends Component {
     super(props);
     this.state = {
       quest: "",
+      open: false,
+      firstclickdone : false,
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleClose = () => this.setState({ open: false })
+
   handleChange(e) {
     const name = e.target.name;
     this.setState({
       [name]: e.target.value,
     });
   }
+
   handleSubmit() {
-    if (this.state.quest && this.props.askerId && this.props.candidateId) {
+    if ((this.state.firstclickdone) == false) {
+      this.setState({
+       open : true,
+       firstclickdone: true,
+      });
+    }
+
+    if (this.state.quest && this.props.askerId && this.props.candidateId && this.state.firstclickdone) {
       var formData = new FormData();
       formData.append("asker", this.props.askerId);
       formData.append("question", this.state.quest);
@@ -35,9 +49,30 @@ class askAQuestion extends Component {
     }
   }
   render() {
+    const { open } = this.state.open;
     return (
       <div>
           <div styleName = "styles.heading">Question and Answer with {this.props.candidateName}</div>
+          <Portal onClose={this.handleClose} open={this.state.open}>
+            <Segment
+              style={{
+                fontSize: '1.5em',
+                top: '0%',
+                left: '35%',
+                position: 'fixed',
+                zIndex: 1000,
+              }}
+            >
+              <p>You cannot edit the question after submitting. </p>
+              <p> Please recheck your question.</p>
+
+              <Button
+                content='OK'
+                negative
+                onClick={this.handleClose}
+              />
+            </Segment>
+          </Portal>
 
           <Form>
           <div styleName="styles.inputbox">
@@ -60,6 +95,7 @@ class askAQuestion extends Component {
             />
             </div>
           </Form>
+
       </div>
     );
   }

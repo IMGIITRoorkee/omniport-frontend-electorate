@@ -43,8 +43,6 @@ class candidateProfile extends Component {
   }
 
   render() {
-    // console.log(this.props.candidateDetails);
-    // console.log(this.props.whoAmI.roles);
     const { candidateDetails, whoAmI, particularQuestions } = this.props;
 
     const activeStyle = {

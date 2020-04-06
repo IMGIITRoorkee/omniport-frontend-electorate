@@ -38,14 +38,15 @@ margin-bottom: 1%;
 .answer-card-unanswered {
   color: #356DBF;
 }
+
 .inputtext {
   border: none !important;
   border-radius: 0px !important;
   margin-right: 2%;
   width: 85%;
   padding-left: 2%;
-  /* flex: 8; */
 }
+
 .inputsubmit {
   color: aliceblue !important;
   margin-left: 1% !important;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Segment, Form, Button, Icon } from "semantic-ui-react";
-
+import moment from 'moment';
 import { answerQuestion, createLike, deleteLike } from "../../actions";
 
 import styles from "../../css/questions/questions.css";
@@ -62,8 +62,9 @@ class answerCard extends Component {
           </div>
           <div styleName="styles.question-card-meta-header">
             <span styleName="styles.question-card-meta">
-              {this.props.asker} asked on {this.props.askedOn} | |{" "}
-              <label styleName = "style.answer-card-unanswered">UNANSWERED</label>
+              {this.props.asker} |  {" "}
+              {moment(this.props.askedOn).format('Do MMMM')} | {moment(this.props.askedOn).format('h:mm a')} |
+              <label styleName = "style.answer-card-unanswered"> UNANSWERED</label>
             </span>
           </div>
           <div>
