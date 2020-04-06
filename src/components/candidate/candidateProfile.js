@@ -43,8 +43,8 @@ class candidateProfile extends Component {
   }
 
   render() {
-    console.log(this.props.candidateDetails);
-    console.log(this.props.whoAmI.roles);
+    // console.log(this.props.candidateDetails);
+    // console.log(this.props.whoAmI.roles);
     const { candidateDetails, whoAmI, particularQuestions } = this.props;
 
     const activeStyle = {
@@ -172,11 +172,16 @@ class candidateProfile extends Component {
             <div>
               {particularQuestions.map((element) => (
                 <QuestionCard
+                  qid={element.id}
+                  uid={whoAmI.id}
+                  lid={element.likedQuestionId}
+                  cid={element.candidate}
                   question={element.question}
                   asker={element.askerFullName}
                   candidate={element.candidateFullName}
                   answer={element.answer}
                   likes={element.numberOfLikes}
+                  liked={element.didUserLike}
                 />
               ))}
             </div>

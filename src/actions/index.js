@@ -9,6 +9,8 @@ import {
   urlGetUnansweredQuestions,
   urlGetCandidateDetails,
   urlGetQuestionDetails,
+  urlLikeView,
+  urlLikeDetail,
 } from "../urls";
 
 //Set User
@@ -150,6 +152,51 @@ export const answerQuestion = (id, data) => {
       .patch(urlGetQuestionDetails(id), data, { headers: headers })
       .then((res) => {
         dispatch(getAllQuestions());
+        dispatch(getUnansweredQuestions());
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+//Like Function
+export const createLike = (qid, uid, cid) => {
+  const headers = {
+    "Content-Type": "application/json",
+    "X-CSRFToken": getCookie("csrftoken"),
+  };
+  let data = {
+    question: qid,
+    user: uid,
+  };
+  return (dispatch) => {
+    axios
+      .post(urlLikeView(), data, { headers: headers })
+      .then((res) => {
+        dispatch(getAllQuestions());
+        dispatch(getParticularQuestions(cid));
+        dispatch(getUnansweredQuestions(cid));
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const deleteLike = (id, cid) => {
+  let headers = {
+    "X-CSRFToken": getCookie("csrftoken"),
+  };
+  return (dispatch) => {
+    axios
+      .delete(urlLikeDetail(id), { headers: headers })
+      .then((res) => {
+        dispatch(getAllQuestions());
+        dispatch(getParticularQuestions(cid));
+        dispatch(getUnansweredQuestions(cid));
         console.log(res);
       })
       .catch((err) => {

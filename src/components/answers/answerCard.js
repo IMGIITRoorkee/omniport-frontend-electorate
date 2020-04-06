@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Segment, Form, Button, Icon } from "semantic-ui-react";
 
-import { answerQuestion } from "../../actions";
+import { answerQuestion, createLike, deleteLike } from "../../actions";
 
 import styles from "../../css/questions/questions.css";
 import style from "../../css/answers/answers.css";
@@ -12,9 +12,11 @@ class answerCard extends Component {
     super(props);
     this.state = {
       answer: "",
+      isLiked: this.props.liked,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   handleChange(e) {
     const name = e.target.name;
@@ -29,6 +31,19 @@ class answerCard extends Component {
       this.props.AnswerQuestion(this.props.questionId, formData);
       this.setState({
         answer: "",
+      });
+    }
+  }
+  handleClick() {
+    if (this.state.isLiked) {
+      this.props.DeleteLike(this.props.lid, this.props.cid);
+      this.setState({
+        isLiked: false,
+      });
+    } else {
+      this.props.CreateLike(this.props.qid, this.props.uid, this.props.cid);
+      this.setState({
+        isLiked: true,
       });
     }
   }
@@ -76,7 +91,16 @@ class answerCard extends Component {
                 </div>
                 <div styleName="style.question-card-button">
                   <span styleName="style.question-card-meta-like">
-                    <Icon name="thumbs up" /> {this.props.likes} likes
+                    {this.state.isLiked ? (
+                      <Button basic onClick={this.handleClick}>
+                        <Icon name="thumbs up" color="blue" />{" "}
+                        {this.props.likes} likes
+                      </Button>
+                    ) : (
+                      <Button basic onClick={this.handleClick}>
+                        <Icon name="thumbs up" /> {this.props.likes} likes
+                      </Button>
+                    )}
                   </span>
                 </div>
               </Form>
@@ -92,6 +116,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     AnswerQuestion: (id, data) => {
       dispatch(answerQuestion(id, data));
+    },
+    CreateLike: (qid, uid, cid) => {
+      dispatch(createLike(qid, uid, cid));
+    },
+    DeleteLike: (id, cid) => {
+      dispatch(deleteLike(id, cid));
     },
   };
 };

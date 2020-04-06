@@ -29,6 +29,14 @@ export const urlGetQuestionDetails = (id) => {
   return `${baseApiUrl()}question_view/${id}/`;
 };
 
+export const urlLikeView = () => {
+  return `${baseApiUrl()}like_view/`;
+};
+
+export const urlLikeDetail = (id) => {
+  return `${baseApiUrl()}like_view/${id}/`;
+};
+
 //Frontend URLs
 export const baseNavUrl = (forwardLink) => {
   return `${config.baseUrl}${forwardLink}`;
