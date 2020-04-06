@@ -10,7 +10,7 @@ import {
   Form,
   Segment,
 } from "semantic-ui-react";
-import Scrollspy from 'react-scrollspy';
+import Scrollspy from "react-scrollspy";
 import { connect } from "react-redux";
 import { baseNavUrl } from "../../urls";
 
@@ -21,7 +21,7 @@ import { getAllQuestions, setUser, getPostOptions } from "../../actions";
 
 // import blocks from "../../css/app.css";
 import styles from "../../css/questions/questions.css";
-import home from "../../css/home/home.css"
+import home from "../../css/home/home.css";
 import { element } from "prop-types";
 
 class questions extends Component {
@@ -41,26 +41,26 @@ class questions extends Component {
     this.setState({ [name]: value });
   };
   render() {
+    const { allQuestions, whoAmI, getPostOptions } = this.props;
     console.log(this.props.allQuestions);
     const activeStyle = {
-      fontSize : "1.2em",
-      color : "#606060",
-      paddingLeft : "10px",
-      margin : "15px",
-      padding : "2px"
+      fontSize: "1.2em",
+      color: "#606060",
+      paddingLeft: "10px",
+      margin: "15px",
+      padding: "2px",
     };
 
     const ColoredLine = ({ color }) => (
       <hr
-          style={{
-              color: color,
-              backgroundColor: color,
-              height: "0.2px",
-          }}
+        style={{
+          color: color,
+          backgroundColor: color,
+          height: "0.2px",
+        }}
       />
-  );
+    );
 
-    const { allQuestions, whoAmI, getPostOptions } = this.props;
     var allQuestionsFiltered;
     if (allQuestions) {
       allQuestionsFiltered = groupBy(allQuestions, "post");
@@ -75,10 +75,24 @@ class questions extends Component {
     });
     return allQuestionsFiltered ? (
       <div styleName="styles.allquestions-container">
-      <div styleName="home.MobileNavbar">
-       <div styleName = "home.mobiletext"><a href = {baseNavUrl("")} style = {{ color : "black", fontSize : "1.2em"}}>INSTITUTE CANDIDATES</a></div>
-       <div styleName ="home.mobiletext1"><a href = {baseNavUrl("/questions")} style = {{ color : "white", fontSize : "1.2em"}}>QUESTION AND ANSWER</a></div>
-       </div>
+        <div styleName="home.MobileNavbar">
+          <div styleName="home.mobiletext">
+            <a
+              href={baseNavUrl("")}
+              style={{ color: "black", fontSize: "1.2em" }}
+            >
+              INSTITUTE CANDIDATES
+            </a>
+          </div>
+          <div styleName="home.mobiletext1">
+            <a
+              href={baseNavUrl("/questions")}
+              style={{ color: "white", fontSize: "1.2em" }}
+            >
+              QUESTION AND ANSWER
+            </a>
+          </div>
+        </div>
         <div styleName="styles.allquestions-questions-all">
           <h2>QUESTION AND ANSWER</h2>
           <Divider />
@@ -116,7 +130,7 @@ class questions extends Component {
             <Segment>No questions yet!</Segment>
           )}
         </div>
-        <div styleName = "home.Navbar">
+        <div styleName="home.Navbar">
           <Scrollspy
             items={[
               "acad_ug",
@@ -214,13 +228,12 @@ class questions extends Component {
                 backgroundColor: "#356DBF",
               }}
             >
-              <a href={baseNavUrl("/questions")} style={{ color: "white" }} >
+              <a href={baseNavUrl("/questions")} style={{ color: "white" }}>
                 QUESTION AND ANSWER
               </a>
             </div>
           </Scrollspy>
         </div>
-
       </div>
     ) : (
       "No Questions"

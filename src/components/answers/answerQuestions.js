@@ -47,10 +47,24 @@ class answerQuestions extends Component {
 
     return (
       <div styleName="styles.answerQuestions-container">
-      <div styleName="home.MobileNavbar">
-       <div styleName = "home.mobiletext1"><a href = {baseNavUrl("")} style = {{ color : "white", fontSize : "1.2em"}}>INSTITUTE CANDIDATES</a></div>
-       <div styleName ="home.mobiletext"><a href = {baseNavUrl("/questions")} style = {{ color : "black", fontSize : "1.2em"}}>QUESTION AND ANSWER</a></div>
-       </div>
+        <div styleName="home.MobileNavbar">
+          <div styleName="home.mobiletext1">
+            <a
+              href={baseNavUrl("")}
+              style={{ color: "white", fontSize: "1.2em" }}
+            >
+              INSTITUTE CANDIDATES
+            </a>
+          </div>
+          <div styleName="home.mobiletext">
+            <a
+              href={baseNavUrl("/questions")}
+              style={{ color: "black", fontSize: "1.2em" }}
+            >
+              QUESTION AND ANSWER
+            </a>
+          </div>
+        </div>
         <div styleName="styles.answerques-brdcrumb">
           <Breadcrumb size={"massive"}>
             <Breadcrumb.Section
@@ -65,75 +79,77 @@ class answerQuestions extends Component {
           </Breadcrumb>
           <Divider />
         </div>
-        <div styleName = "styles.answercontainer">
-        <div>
+        <div styleName="styles.answercontainer">
           <div>
             <div>
-              <img
-                src="https://imgix-media.wbdndc.net/cms/filer_public_thumbnails/filer_public/d8/5a/d85a3ec6-79c5-49ae-86e9-902c74546e69/batman-profile-293d6d-bm_cv17_ns-1-v1-600x600-marquee-thumb.jpg__600x600_q85_crop_subsampling-2_upscale.jpg"
-                styleName="styles2.profileCard-card-profile-photo"
+              <div>
+                <img
+                  src="https://imgix-media.wbdndc.net/cms/filer_public_thumbnails/filer_public/d8/5a/d85a3ec6-79c5-49ae-86e9-902c74546e69/batman-profile-293d6d-bm_cv17_ns-1-v1-600x600-marquee-thumb.jpg__600x600_q85_crop_subsampling-2_upscale.jpg"
+                  styleName="styles2.profileCard-card-profile-photo"
+                />
+              </div>
+              <div styleName="styles2.heading">{candidateDetails.fullName}</div>
+              <div styleName="styles2.headingdetailstwo">
+                {candidateDetails.degree} {candidateDetails.branchName}
+              </div>
+              <div styleName="styles2.headingdetailstwo">
+                {candidateDetails.currentYear} Year
+              </div>
+              <div styleName="styles2.headingdetails">
+                {candidateDetails.emailAddress}
+              </div>
+              <div styleName="styles2.headingdetailsthree">Standing for</div>
+              <div styleName="styles2.headingdetailslink">
+                {" "}
+                {candidateDetails.postFullname}{" "}
+              </div>
+            </div>
+            <div>
+              <Modal
+                trigger={<a styleName="styles2.resume">Electoral Resume</a>}
+              >
+                <Modal.Header>
+                  Electoral Resume of {candidateDetails.fullName}
+                </Modal.Header>
+                <Modal.Content>
+                  <Modal.Description>
+                    <iframe
+                      src={candidateDetails.resume}
+                      width="800"
+                      height="800"
+                    ></iframe>
+                  </Modal.Description>
+                </Modal.Content>
+              </Modal>
+            </div>
+            <div>
+              <video
+                styleName="styles2.video"
+                width="300"
+                height="200"
+                src={candidateDetails.video}
+                controls
               />
             </div>
-            <div styleName="styles2.heading">{candidateDetails.fullName}</div>
-            <div styleName="styles2.headingdetailstwo">
-              {candidateDetails.degree} {candidateDetails.branchName}
-            </div>
-            <div styleName="styles2.headingdetailstwo">
-              {candidateDetails.currentYear} Year
-            </div>
-            <div styleName="styles2.headingdetails">
-              {candidateDetails.emailAddress}
-            </div>
-            <div styleName="styles2.headingdetailsthree">Standing for</div>
-            <div styleName="styles2.headingdetailslink">
-              {" "}
-              {candidateDetails.postFullname}{" "}
-            </div>
           </div>
-          <div>
-            <Modal trigger={<a styleName="styles2.resume">Electoral Resume</a>}>
-              <Modal.Header>
-                Electoral Resume of {candidateDetails.fullName}
-              </Modal.Header>
-              <Modal.Content>
-                <Modal.Description>
-                  <iframe
-                    src={candidateDetails.resume}
-                    width="800"
-                    height="800"
-                  ></iframe>
-                </Modal.Description>
-              </Modal.Content>
-            </Modal>
-          </div>
-          <div>
-            <video
-              styleName="styles2.video"
-              width="300"
-              height="200"
-              src={candidateDetails.video}
-              controls
-            />
+          <div styleName="styles.rightside">
+            {unansweredQuestions.map((element) => (
+              <AnswerCard
+                qid={element.id}
+                uid={whoAmI.id}
+                lid={element.likedQuestionId}
+                cid={element.candidate}
+                question={element.question}
+                asker={element.askerFullName}
+                askedOn={element.answered}
+                candidate={element.candidateFullName}
+                likes={element.numberOfLikes}
+                liked={element.didUserLike}
+              />
+            ))}
           </div>
         </div>
-        <div styleName = "styles.rightside">
-          {unansweredQuestions.map((element) => (
-            <AnswerCard
-              qid={element.id}
-              uid={whoAmI.id}
-              lid={element.likedQuestionId}
-              cid={element.candidate}
-              question={element.question}
-              asker={element.askerFullName}
-              askedOn={element.answered}
-              candidate={element.candidateFullName}
-              likes={element.numberOfLikes}
-              liked={element.didUserLike}
-            />
-          ))}
-        </div>
-        </div>
-        <div styleName = "home.Navbar">
+        <div styleName="home.Navbar">
           <Scrollspy
             items={[
               "acad_ug",

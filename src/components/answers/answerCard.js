@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Segment, Form, Button, Icon } from "semantic-ui-react";
+import { Segment, Form, Button, Icon, Portal } from "semantic-ui-react";
 import moment from 'moment';
 import { answerQuestion, createLike, deleteLike } from "../../actions";
 
@@ -13,11 +13,16 @@ class answerCard extends Component {
     this.state = {
       answer: "",
       isLiked: this.props.liked,
+      open: false,
+      firstclickdone : false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
+
+  handleClose = () => this.setState({ open: false })
+
   handleChange(e) {
     const name = e.target.name;
     this.setState({
@@ -25,10 +30,18 @@ class answerCard extends Component {
     });
   }
   handleSubmit() {
-    if (this.state.answer) {
+    
+    if ((this.state.firstclickdone) == false) {
+      this.setState({
+       open : true,
+       firstclickdone: true,
+      });
+    }
+
+    if (this.state.answer && this.state.firstclickdone) {
       var formData = new FormData();
       formData.append("answer", this.state.answer);
-      this.props.AnswerQuestion(this.props.questionId, formData);
+      this.props.AnswerQuestion(this.props.qid, formData, this.props.cid);
       this.setState({
         answer: "",
       });
@@ -67,6 +80,27 @@ class answerCard extends Component {
               <label styleName = "style.answer-card-unanswered"> UNANSWERED</label>
             </span>
           </div>
+          <Portal onClose={this.handleClose} open={this.state.open}>
+            <Segment
+              style={{
+                fontSize: '1.5em',
+                top: '0%',
+                left: '35%',
+                position: 'fixed',
+                zIndex: 1000,
+              }}
+            >
+              <p>You cannot edit the Answer after submitting. </p>
+              <p> Please recheck your Answer.</p>
+
+              <Button
+                content='OK'
+                negative
+                onClick={this.handleClose}
+              />
+            </Segment>
+          </Portal>
+
           <div>
             <Form>
               <div styleName="style.inputbox">
@@ -111,8 +145,8 @@ class answerCard extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    AnswerQuestion: (id, data) => {
-      dispatch(answerQuestion(id, data));
+    AnswerQuestion: (id, data, cid) => {
+      dispatch(answerQuestion(id, data, cid));
     },
     CreateLike: (qid, uid, cid) => {
       dispatch(createLike(qid, uid, cid));

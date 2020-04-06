@@ -144,7 +144,7 @@ export const askQuestion = (data, cid) => {
 };
 
 //Answer a question
-export const answerQuestion = (id, data) => {
+export const answerQuestion = (id, data, cid) => {
   let headers = {
     "X-CSRFToken": getCookie("csrftoken"),
   };
@@ -153,7 +153,7 @@ export const answerQuestion = (id, data) => {
       .patch(urlGetQuestionDetails(id), data, { headers: headers })
       .then((res) => {
         dispatch(getAllQuestions());
-        dispatch(getUnansweredQuestions());
+        dispatch(getUnansweredQuestions(cid));
         console.log(res);
       })
       .catch((err) => {

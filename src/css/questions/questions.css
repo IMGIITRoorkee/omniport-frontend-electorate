@@ -81,12 +81,11 @@
   border-radius: 2px !important;
   font-size: 20px !important;
   font-weight: normal !important;
-  background-color: #356DBF !important;
-  background: #356DBF !important;
+  background-color: #356dbf !important;
+  background: #356dbf !important;
   padding: 1% !important;
   margin-right: 1% !important;
 }
-
 
 ::placeholder {
   font-size: 18px;
@@ -113,7 +112,7 @@
 }
 
 @media only screen and (max-width: 1000px) {
-.inputbox {
+  .inputbox {
     margin-top: 20px;
     display: flex;
     width: 100%;
@@ -128,11 +127,11 @@
     margin-left: 0%;
     width: 95%;
     margin-top: 12%;
-  }  
-.inputsubmit {
+  }
+  .inputsubmit {
     width: 90px !important;
     margin-left: 0 !important;
-  } 
+  }
 }
 @media only screen and (max-width: 500px) {
   .allquestions-container {
@@ -142,5 +141,5 @@
     margin-left: 0%;
     width: 95%;
     margin-top: 25%;
-  }  
+  }
 }
