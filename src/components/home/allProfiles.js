@@ -38,6 +38,9 @@ class allProfiles extends Component {
     if (allProfiles) {
       allProfilesFiltered = groupBy(allProfiles, "post");
     }
+    if (getPostOptions.length === 8) {
+      getPostOptions.shift();
+    }
     return allProfiles ? (
       <div styleName = "styles.allcontainer">
      <div styleName="styles.MobileNavbar">

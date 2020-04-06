@@ -37,12 +37,13 @@ class askAQuestion extends Component {
       });
     }
 
-    if (this.state.quest && this.props.askerId && this.props.candidateId && this.state.firstclickdone) {
+    if (this.state.quest && this.props.askerId && this.props.cid && this.state.firstclickdone) {
       var formData = new FormData();
       formData.append("asker", this.props.askerId);
       formData.append("question", this.state.quest);
-      formData.append("candidate", this.props.candidateId);
-      this.props.AskQuestion(formData);
+      formData.append("candidate", this.props.cid);
+      formData.append("post", this.props.post);
+      this.props.AskQuestion(formData, this.props.cid);
       this.setState({
         quest: "",
       });
@@ -103,8 +104,8 @@ class askAQuestion extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    AskQuestion: (data) => {
-      dispatch(askQuestion(data));
+    AskQuestion: (data, cid) => {
+      dispatch(askQuestion(data, cid));
     },
   };
 };

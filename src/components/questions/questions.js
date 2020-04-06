@@ -7,7 +7,8 @@ import {
   Label,
   Dropdown,
   Menu,
-  Form
+  Form,
+  Segment,
 } from "semantic-ui-react";
 import Scrollspy from 'react-scrollspy';
 import { connect } from "react-redux";
@@ -16,7 +17,7 @@ import { baseNavUrl } from "../../urls";
 import QuestionCard from "./questionCard";
 import PostQuestion from "./postQuestion";
 
-import { getAllQuestions, setUser } from "../../actions";
+import { getAllQuestions, setUser, getPostOptions } from "../../actions";
 
 // import blocks from "../../css/app.css";
 import styles from "../../css/questions/questions.css";
@@ -24,10 +25,21 @@ import home from "../../css/home/home.css"
 import { element } from "prop-types";
 
 class questions extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      post: "all",
+    };
+    this.handleDropdownChange = this.handleDropdownChange.bind(this);
+  }
   componentDidMount() {
     this.props.GetAllQuestions();
     this.props.SetUser();
+    this.props.GetPostOptions();
   }
+  handleDropdownChange = (e, { name, value }) => {
+    this.setState({ [name]: value });
+  };
   render() {
     console.log(this.props.allQuestions);
     const activeStyle = {
@@ -48,13 +60,20 @@ class questions extends Component {
       />
   );
 
+    const { allQuestions, whoAmI, getPostOptions } = this.props;
     var allQuestionsFiltered;
-    const { allQuestions, whoAmI } = this.props;
-
     if (allQuestions) {
       allQuestionsFiltered = groupBy(allQuestions, "post");
+      Object.assign(allQuestionsFiltered, { all: allQuestions });
     }
-    return (
+    var dropDownPostOptions = getPostOptions.map(function (element) {
+      return {
+        key: getPostOptions.indexOf(element),
+        text: element.displayName,
+        value: element.value,
+      };
+    });
+    return allQuestionsFiltered ? (
       <div styleName="styles.allquestions-container">
       <div styleName="home.MobileNavbar">
        <div styleName = "home.mobiletext"><a href = {baseNavUrl("")} style = {{ color : "black", fontSize : "1.2em"}}>INSTITUTE CANDIDATES</a></div>
@@ -64,21 +83,38 @@ class questions extends Component {
           <h2>QUESTION AND ANSWER</h2>
           <Divider />
           {/* <PostQuestion /> */}
-          {allQuestions.map((element) => (
-            <QuestionCard
-              qid={element.id}
-              uid={whoAmI.id}
-              lid={element.likedQuestionId}
-              cid={element.candidate}
-              question={element.question}
-              asker={element.askerFullName}
-              askedOn={element.answered}
-              candidate={element.candidateFullName}
-              answer={element.answer}
-              likes={element.numberOfLikes}
-              liked={element.didUserLike}
-            />
-          ))}
+          <div styleName = "styles.dropdown">
+            <div styleName = "styles.dropdowntext">Filter By Post</div>
+          <Dropdown
+            name="post"
+            value={this.state.post}
+            placeholder="Select a Post"
+            options={dropDownPostOptions}
+            styleName = "styles.dropdownfilter"
+            onChange={this.handleDropdownChange}
+            scrolling
+            selection
+          />
+          </div>
+          {allQuestionsFiltered[this.state.post] ? (
+            allQuestionsFiltered[this.state.post].map((element) => (
+              <QuestionCard
+                qid={element.id}
+                uid={whoAmI.id}
+                lid={element.likedQuestionId}
+                cid={element.candidate}
+                question={element.question}
+                asker={element.askerFullName}
+                askedOn={element.answered}
+                candidate={element.candidateFullName}
+                answer={element.answer}
+                likes={element.numberOfLikes}
+                liked={element.didUserLike}
+              />
+            ))
+          ) : (
+            <Segment>No questions yet!</Segment>
+          )}
         </div>
         <div styleName = "home.Navbar">
           <Scrollspy
@@ -186,6 +222,8 @@ class questions extends Component {
         </div>
 
       </div>
+    ) : (
+      "No Questions"
     );
   }
 }
@@ -194,6 +232,7 @@ function mapStateToProps(state) {
   return {
     allQuestions: state.allQuestions,
     whoAmI: state.whoAmI,
+    getPostOptions: state.getPostOptions,
   };
 }
 
@@ -204,6 +243,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     SetUser: () => {
       dispatch(setUser());
+    },
+    GetPostOptions: () => {
+      dispatch(getPostOptions());
     },
   };
 };

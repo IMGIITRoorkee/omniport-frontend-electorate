@@ -186,9 +186,10 @@ class candidateProfile extends Component {
             ) : (
               <div>
                 <AskAQuestion
-                  candidateName={candidateDetails.fullName}
+                  candidate={candidateDetails.fullName}
                   askerId={whoAmI.id}
-                  candidateId={candidateDetails.id}
+                  cid={candidateDetails.id}
+                  post={candidateDetails.post}
                 />
               </div>
             )}

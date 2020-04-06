@@ -7,7 +7,7 @@ import {
   Divider,
   TextArea,
   Button,
-  Container
+  Container,
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 
@@ -15,7 +15,7 @@ import {
   getPostOptions,
   setUser,
   getAllProfiles,
-  askQuestion
+  askQuestion,
 } from "../../actions";
 
 // import blocks from "../../css/app.css";
@@ -27,7 +27,7 @@ class postQuestion extends Component {
     this.state = {
       post: "",
       question: "",
-      candidate: ""
+      candidate: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -41,12 +41,13 @@ class postQuestion extends Component {
 
   handleDropdownChange = (e, { name, value }) => {
     this.setState({ [name]: value });
+    console.log(this.state);
   };
 
   handleChange(e) {
     const name = e.target.name;
     this.setState({
-      [name]: e.target.value
+      [name]: e.target.value,
     });
   }
 
@@ -61,25 +62,24 @@ class postQuestion extends Component {
       this.setState({
         post: "",
         question: "",
-        candidate: ""
+        candidate: "",
       });
     }
   }
   render() {
-    console.log(this.props);
     const { getPostOptions, allProfiles } = this.props;
-    var dropDownPostOptions = getPostOptions.map(function(element) {
+    var dropDownPostOptions = getPostOptions.map(function (element) {
       return {
         key: getPostOptions.indexOf(element),
         text: element.displayName,
-        value: element.value
+        value: element.value,
       };
     });
-    var dropDownCandidateOptions = allProfiles.map(function(element) {
+    var dropDownCandidateOptions = allProfiles.map(function (element) {
       return {
         key: allProfiles.indexOf(element),
         text: element.fullName,
-        value: element.id
+        value: element.id,
       };
     });
     return (
@@ -151,11 +151,11 @@ function mapStateToProps(state) {
   return {
     whoAmI: state.whoAmI,
     getPostOptions: state.getPostOptions,
-    allProfiles: state.allProfiles
+    allProfiles: state.allProfiles,
   };
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     SetUser: () => {
       dispatch(setUser());
@@ -166,9 +166,9 @@ const mapDispatchToProps = dispatch => {
     GetAllProfiles: () => {
       dispatch(getAllProfiles());
     },
-    AskQuestion: data => {
+    AskQuestion: (data) => {
       dispatch(askQuestion(data));
-    }
+    },
   };
 };
 

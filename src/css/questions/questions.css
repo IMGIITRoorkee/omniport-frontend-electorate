@@ -91,10 +91,23 @@
 ::placeholder {
   font-size: 18px;
 }
-alert {
-  font-size: 3em;
-}
 
+.dropdown {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 4%;
+  margin-top: 2%;
+}
+.dropdownfilter {
+  margin-left: 2%;
+  width: 25%;
+}
+.dropdowntext {
+  color: #0b1626;
+  font-size: 1.4em;
+  padding-top: 10px;
+}
 .question-card-container {
   padding-bottom: 20px;
 }
