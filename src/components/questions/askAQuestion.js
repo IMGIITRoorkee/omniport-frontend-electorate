@@ -53,7 +53,7 @@ class askAQuestion extends Component {
     const { open } = this.state.open;
     return (
       <div>
-          <div styleName = "styles.heading">Question and Answer with {this.props.candidateName}</div>
+          <div styleName = "styles.heading">Question and Answer with {this.props.candidate}</div>
           <Portal onClose={this.handleClose} open={this.state.open}>
             <Segment
               style={{
