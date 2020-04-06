@@ -17,7 +17,7 @@ const rootReducers = combineReducers({
   allQuestions: AllQuestionsReducers,
   candidateDetails: CandidateDetailsReducer,
   particularQuestions: ParticularQuestionsReducer,
-  unansweredQuestions: UnansweredQuestionsReducer
+  unansweredQuestions: UnansweredQuestionsReducer,
 });
 
 export default rootReducers;

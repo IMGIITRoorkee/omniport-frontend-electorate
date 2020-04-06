@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Scrollspy from "react-scrollspy";
 
-import { getUnansweredQuestions, getCandidateDetails } from "../../actions";
+import {
+  setUser,
+  getUnansweredQuestions,
+  getCandidateDetails,
+} from "../../actions";
 
 import home from "../../css/home/home.css";
 import styles from "../../css/answers/answers.css";
@@ -19,10 +23,11 @@ class answerQuestions extends Component {
     //console.log(cid);
     this.props.GetCandidateDetails(cid);
     this.props.GetUnansweredQuestions(cid);
+    this.props.SetUser();
   }
   render() {
     console.log(this.props.unansweredQuestions);
-    const { unansweredQuestions, candidateDetails } = this.props;
+    const { unansweredQuestions, candidateDetails, whoAmI } = this.props;
     const activeStyle = {
       fontSize: "1.2em",
       color: "#606060",
@@ -114,11 +119,16 @@ class answerQuestions extends Component {
         <div styleName = "styles.rightside">
           {unansweredQuestions.map((element) => (
             <AnswerCard
+              qid={element.id}
+              uid={whoAmI.id}
+              lid={element.likedQuestionId}
+              cid={element.candidate}
               question={element.question}
               asker={element.askerFullName}
               askedOn={element.answered}
+              candidate={element.candidateFullName}
               likes={element.numberOfLikes}
-              questionId={element.id}
+              liked={element.didUserLike}
             />
           ))}
         </div>
@@ -236,6 +246,7 @@ function mapStateToProps(state) {
   return {
     unansweredQuestions: state.unansweredQuestions,
     candidateDetails: state.candidateDetails,
+    whoAmI: state.whoAmI,
   };
 }
 
@@ -246,6 +257,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     GetCandidateDetails: (id) => {
       dispatch(getCandidateDetails(id));
+    },
+    SetUser: () => {
+      dispatch(setUser());
     },
   };
 };

@@ -6,21 +6,21 @@
 
 .question-card-question {
   font-size: 17px;
-  color: #1D1D1D;
+  color: #1d1d1d;
 }
 
 .question-card-unanswered {
-  color: #356DBF;
+  color: #356dbf;
   padding-left: 1.5em;
 }
 
 .question-card-meta {
   padding-left: 1.5em;
-  color: #A7A7A7;
+  color: #a7a7a7;
 }
 
 .question-card-meta-like {
-  color: #A7A7A7;
+  color: #a7a7a7;
 }
 
 .question-card-meta-header {
@@ -47,17 +47,16 @@
 }
 
 .Link:hover {
-  background-color: #EDF2F9;
+  background-color: #edf2f9;
 }
 
 .heading {
-  color: #0B1626;
+  color: #0b1626;
   line-height: 23px;
   font-size: 25px;
   margin-bottom: 10px;
   margin-top: 30px;
 }
-
 
 .inputbox {
   display: flex;
@@ -93,7 +92,7 @@
   font-size: 18px;
 }
 
-.question-card-container{
+.question-card-container {
   padding-bottom: 20px;
 }
 
