@@ -5,11 +5,9 @@ import { groupBy } from "lodash";
 import ProfileCard from "./profileCard";
 import Scrollspy from "react-scrollspy";
 import { baseNavUrl } from "../../urls";
-
 import { setUser, getAllProfiles, getPostOptions } from "../../actions";
-// import "../../css/home.css";
-// import blocks from "../../css/app.css";
 import styles from "../../css/home/home.css";
+import navMenu from "../navMenu";
 
 class allProfiles extends Component {
   componentDidMount() {
@@ -41,6 +39,11 @@ class allProfiles extends Component {
       allProfilesFiltered = groupBy(allProfiles, "post");
     }
     return allProfiles ? (
+      <div styleName = "styles.allcontainer">
+     <div styleName="styles.MobileNavbar">
+      <div styleName = "styles.mobiletext1"><a href = {baseNavUrl("")} style = {{ color : "white", fontSize : "1.2em"}}>INSTITUTE CANDIDATES</a></div>
+      <div styleName ="styles.mobiletext"><a href = {baseNavUrl("/questions")} style = {{ color : "black", fontSize : "1.2em"}}>QUESTION AND ANSWER</a></div>
+      </div>
       <div styleName="styles.allProfiles-container">
         <div>
           <h1>INSTITUTE CANDIDATES</h1>
@@ -68,7 +71,7 @@ class allProfiles extends Component {
             </div>
           ))}
         </div>
-        <Fragment>
+        <div styleName = "styles.Navbar">
           <Scrollspy
             items={[
               "acad_ug",
@@ -86,17 +89,17 @@ class allProfiles extends Component {
               left: "0px",
               padding: "0px",
               margin: "0",
-              width: "15%",
+              width: "15.5%",
               backgroundColor: "#FFFFFF",
               height: "100%",
             }}
           >
             <div
               style={{
-                fontSize: "1.5em",
+                fontSize: "1.4em",
                 margin: "0px",
                 marginTop: "4px",
-                padding: "15px",
+                padding: "12px",
                 textAlign: "center",
                 backgroundColor: "#356DBF",
               }}
@@ -159,19 +162,20 @@ class allProfiles extends Component {
             <ColoredLine color="#BEBEBE" />
             <div
               style={{
-                fontSize: "1.5em",
+                fontSize: "1.3em",
                 margin: "0px",
                 marginTop: "4px",
-                padding: "15px",
+                padding: "10px",
                 color: "#131313",
               }}
             >
               <a href={baseNavUrl("/questions")} style={{ color: "#131313" }}>
-                Question And Answer
+                QUESTION AND ANSWER
               </a>
             </div>
           </Scrollspy>
-        </Fragment>
+        </div>
+      </div>
       </div>
     ) : (
       "No Candidates"

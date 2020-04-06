@@ -69,15 +69,21 @@ margin-top: 60px;
 }
 
 .rightside{
-  margin-right: 5%;
+  margin-right: 3%;
+  margin-left: 2%;
   /* width: 50%; */
 }
+
+
 .headingmanifesto {
   color: #0B1626;
   line-height: 23px;
   font-size: 25px;
   margin-bottom: 20px;
   margin-top: 24px;
+}
+.mobile-manifesto {
+  visibility: hidden;
 }
 .answer {
   color: #0B1626;
@@ -97,4 +103,36 @@ margin-top: 60px;
   color: white;
   font-size: 20px;
 
+}
+
+@media only screen and (max-width: 1390px) {
+  .rightside{
+    margin-right: 5%;
+    margin-left: 0%;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .candidate-profile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* margin-left:2%; */
+  }
+  .manifesto {
+    display: none;
+  }
+  .mobile-manifesto {
+    visibility: visible !important;
+    margin-top: 4%;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .candidate-profile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left:2%;
+  }
 }

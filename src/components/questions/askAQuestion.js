@@ -37,30 +37,29 @@ class askAQuestion extends Component {
   render() {
     return (
       <div>
-        <div styleName="styles.heading">
-          Question and Answer with {this.props.candidateName}
-        </div>
-        <Form>
-          <Form.Field>
-            <Form.Input
-              styleName="styles.inputbox"
-              name="quest"
-              value={this.state.quest}
-              onChange={this.handleChange}
-              type="text"
-              rows="3"
-              placeholder="Ask your question"
+          <div styleName = "styles.heading">Question and Answer with {this.props.candidateName}</div>
+
+          <Form>
+          <div styleName="styles.inputbox">
+              <Form.Input
+                styleName="styles.inputtext"
+                name="quest"
+                value={this.state.quest}
+                onChange={this.handleChange}
+                type="text"
+                rows="3"
+                placeholder="Ask your question"
+              />
+            <Button
+              styleName="styles.inputsubmit"
+              type="submit"
+              position="right"
+              primary
+              content="Submit"
+              onClick={this.handleSubmit}
             />
-          </Form.Field>
-          <Button
-            styleName="styles.submit"
-            type="submit"
-            position="right"
-            primary
-            content="Submit"
-            onClick={this.handleSubmit}
-          />
-        </Form>
+            </div>
+          </Form>
       </div>
     );
   }
