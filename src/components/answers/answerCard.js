@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Segment, Form, Button, Icon, Portal } from "semantic-ui-react";
-import moment from 'moment';
+import moment from "moment";
 import { answerQuestion, createLike, deleteLike } from "../../actions";
 
 import styles from "../../css/questions/questions.css";
@@ -14,14 +14,14 @@ class answerCard extends Component {
       answer: "",
       isLiked: this.props.liked,
       open: false,
-      firstclickdone : false,
+      firstclickdone: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClose = () => this.setState({ open: false })
+  handleClose = () => this.setState({ open: false });
 
   handleChange(e) {
     const name = e.target.name;
@@ -30,11 +30,10 @@ class answerCard extends Component {
     });
   }
   handleSubmit() {
-    
-    if ((this.state.firstclickdone) == false) {
+    if (this.state.firstclickdone == false) {
       this.setState({
-       open : true,
-       firstclickdone: true,
+        open: true,
+        firstclickdone: true,
       });
     }
 
@@ -65,59 +64,61 @@ class answerCard extends Component {
     return (
       <div>
         {/* Add Answer form here */}
-        <div styleName = "style.question-card-container">
-        <Segment>
-          <div styleName="styles.question-card-question">
-            <label>
-              <b>Q. </b>
-            </label>
-            {this.props.question}
-          </div>
-          <div styleName="styles.question-card-meta-header">
-            <span styleName="styles.question-card-meta">
-              {this.props.asker} |  {" "}
-              {moment(this.props.askedOn).format('Do MMMM')} | {moment(this.props.askedOn).format('h:mm a')} |
-              <label styleName = "style.answer-card-unanswered"> UNANSWERED</label>
-            </span>
-          </div>
-          <Portal onClose={this.handleClose} open={this.state.open}>
-            <Segment
-              style={{
-                fontSize: '1.5em',
-                top: '0%',
-                left: '35%',
-                position: 'fixed',
-                zIndex: 1000,
-              }}
-            >
-              <p>You cannot edit the Answer after submitting. </p>
-              <p> Please recheck your Answer.</p>
+        <div styleName="style.question-card-container">
+          <Segment>
+            <div styleName="styles.question-card-question">
+              <label>
+                <b>Q. </b>
+              </label>
+              {this.props.question}
+            </div>
+            <div styleName="styles.question-card-meta-header">
+              <span styleName="styles.question-card-meta">
+                {this.props.asker} |{" "}
+                {moment(this.props.askedOn).format("Do MMMM")} |{" "}
+                {moment(this.props.askedOn).format("h:mm a")} |
+                <label styleName="style.answer-card-unanswered">
+                  {" "}
+                  UNANSWERED
+                </label>
+              </span>
+            </div>
+            <Portal onClose={this.handleClose} open={this.state.open}>
+              <Segment
+                style={{
+                  fontSize: "1.5em",
+                  top: "0%",
+                  left: "35%",
+                  position: "fixed",
+                  zIndex: 1000,
+                }}
+              >
+                <p>You cannot edit the Answer after submitting. </p>
+                <p> Please recheck your Answer.</p>
 
-              <Button
-                content='OK'
-                negative
-                onClick={this.handleClose}
-              />
-            </Segment>
-          </Portal>
+                <Button content="OK" negative onClick={this.handleClose} />
+              </Segment>
+            </Portal>
 
-          <div>
-            <Form>
-              <div styleName="style.inputbox">
-                <Form.Input
-                  styleName="style.inputtext"
-                  name="answer"
-                  value={this.state.answer}
-                  onChange={this.handleChange}
-                  type="text"
-                  placeholder="Type your answer"
-                />
-                <Button
-                  styleName = "style.inputsubmit"
-                  type="submit"
-                  value="Submit"
-                  onClick={this.handleSubmit}
-                > Submit
+            <div>
+              <Form>
+                <div styleName="style.inputbox">
+                  <Form.Input
+                    styleName="style.inputtext"
+                    name="answer"
+                    value={this.state.answer}
+                    onChange={this.handleChange}
+                    type="text"
+                    placeholder="Type your answer"
+                  />
+                  <Button
+                    styleName="style.inputsubmit"
+                    type="submit"
+                    value="Submit"
+                    onClick={this.handleSubmit}
+                  >
+                    {" "}
+                    Submit
                   </Button>
                 </div>
                 <div styleName="style.question-card-button">
