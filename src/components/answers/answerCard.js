@@ -28,7 +28,7 @@ class answerCard extends Component {
     if (this.state.answer) {
       var formData = new FormData();
       formData.append("answer", this.state.answer);
-      this.props.AnswerQuestion(this.props.questionId, formData);
+      this.props.AnswerQuestion(this.props.qid, formData, this.props.cid);
       this.setState({
         answer: "",
       });
@@ -114,8 +114,8 @@ class answerCard extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    AnswerQuestion: (id, data) => {
-      dispatch(answerQuestion(id, data));
+    AnswerQuestion: (id, data, cid) => {
+      dispatch(answerQuestion(id, data, cid));
     },
     CreateLike: (qid, uid, cid) => {
       dispatch(createLike(qid, uid, cid));
