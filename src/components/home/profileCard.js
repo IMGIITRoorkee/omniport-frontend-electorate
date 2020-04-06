@@ -23,11 +23,12 @@ class profileCard extends Component {
             {this.props.name}
           </div>
           <div styleName="styles.profileCard-card-candidate-info">
-            {this.props.degree} {this.props.branchName}
+            <div>
+              {this.props.degree} {this.props.branchName}
+            </div>
+            <div>{this.props.currentYear} Year</div>
           </div>
-          <div styleName="styles.profileCard-card-candidate-info">
-            {this.props.currentYear} Year
-          </div>
+
           <Card.Content
             extra
             textAlign="center"

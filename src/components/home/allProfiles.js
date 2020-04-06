@@ -1,5 +1,12 @@
 import React, { Component, Fragment } from "react";
-import { Card, Segment, Divider, Menu, Container } from "semantic-ui-react";
+import {
+  Card,
+  Segment,
+  Divider,
+  Menu,
+  Container,
+  Loader,
+} from "semantic-ui-react";
 import { connect } from "react-redux";
 import { groupBy } from "lodash";
 import ProfileCard from "./profileCard";
@@ -201,7 +208,7 @@ class allProfiles extends Component {
         </div>
       </div>
     ) : (
-      "No Candidates"
+      <Loader />
     );
   }
 }

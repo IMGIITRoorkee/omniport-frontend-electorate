@@ -1,8 +1,7 @@
-
 .allcontainer {
   height: 100%;
   margin: 0px;
-  margin-top: 10px ;
+  margin-top: 10px;
   padding: 0px;
   width: 100%;
 }
@@ -36,17 +35,17 @@
   color: #606060;
   text-align: center;
   text-transform: capitalize !important;
-  /* margin-top: 0.5rem; */
+  margin-bottom: 1em;
 }
 
 .profileCard-card-profile-photo-padding {
-  padding: 2rem;
+  padding: 0rem 2rem;
 }
 
 .profileCard-card-profile-photo {
   text-align: center;
   border-radius: 50%;
-  width: 12rem !important;
+  width: 11rem !important;
   height: auto !important;
   margin: 2.5em;
   margin-bottom: 1em;
@@ -56,18 +55,18 @@
   font-size: 1.5em !important;
   font-weight: 600;
   text-align: center;
-  margin-bottom: 0.7em;
+  margin-bottom: 0.5em;
   text-transform: capitalize !important;
 }
 
 .Link:hover {
-  background-color: #EDF2F9;
+  background-color: #edf2f9;
 }
 
 .navbar {
-font-size: 2em;
-background-color: black !important;
-margin: 20em !important;
+  font-size: 2em;
+  background-color: black !important;
+  margin: 20em !important;
 }
 
 .MobileNavbar {
@@ -75,14 +74,13 @@ margin: 20em !important;
 }
 
 @media only screen and (max-width: 1000px) {
-
-.allcontainer {
-  height: 100%;
-  margin: 0px;
-  margin-top: 110px ;
-  padding: 0px;
-  width: 100%;
-}
+  .allcontainer {
+    height: 100%;
+    margin: 0px;
+    margin-top: 110px;
+    padding: 0px;
+    width: 100%;
+  }
   .Navbar {
     display: none !important;
   }
@@ -94,10 +92,10 @@ margin: 20em !important;
     margin-right: 0px;
     padding-right: 0px;
     padding-left: 10%;
-    top : 0px !important;
+    top: 0px !important;
     /* padding-left: 3.5em; */
   }
-  .MobileNavbar{
+  .MobileNavbar {
     visibility: visible !important;
     position: fixed;
     z-index: 2;
@@ -117,7 +115,7 @@ margin: 20em !important;
     flex: 1;
     width: 100%;
     font-size: 1.2em;
-    background-color: #356DBF;
+    background-color: #356dbf;
     text-align: center;
     padding: 2%;
   }
@@ -129,4 +127,3 @@ margin: 20em !important;
     padding: 2%;
   }
 }
-

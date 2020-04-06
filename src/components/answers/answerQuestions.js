@@ -144,20 +144,26 @@ class answerQuestions extends Component {
             </div>
           </div>
           <div styleName="styles.rightside">
-            {unansweredQuestions.map((element) => (
-              <AnswerCard
-                qid={element.id}
-                uid={whoAmI.id}
-                lid={element.likedQuestionId}
-                cid={element.candidate}
-                question={element.question}
-                asker={element.askerFullName}
-                askedOn={element.answered}
-                candidate={element.candidateFullName}
-                likes={element.numberOfLikes}
-                liked={element.didUserLike}
-              />
-            ))}
+            {unansweredQuestions.length > 0 ? (
+              <div>
+                {unansweredQuestions.map((element) => (
+                  <AnswerCard
+                    qid={element.id}
+                    uid={whoAmI.id}
+                    lid={element.likedQuestionId}
+                    cid={element.candidate}
+                    question={element.question}
+                    asker={element.askerFullName}
+                    askedOn={element.answered}
+                    candidate={element.candidateFullName}
+                    likes={element.numberOfLikes}
+                    liked={element.didUserLike}
+                  />
+                ))}
+              </div>
+            ) : (
+              <Segment>You have answered all the the questions!</Segment>
+            )}
           </div>
         </div>
         <div styleName="home.Navbar">

@@ -7,6 +7,7 @@ import {
   setUser,
   getCandidateDetails,
   getParticularQuestions,
+  getUnansweredQuestions,
 } from "../../actions";
 
 import { getTheme } from "formula_one";
@@ -24,6 +25,7 @@ import {
   Card,
   Image,
   Icon,
+  Loader,
 } from "semantic-ui-react";
 
 import blocks from "../../css/app.css";
@@ -40,11 +42,17 @@ class candidateProfile extends Component {
     this.props.SetUser();
     this.props.GetCandidateDetails(id);
     this.props.GetParticularQuestions(id);
+    this.props.GetUnansweredQuestions(id);
   }
 
   render() {
-    const { candidateDetails, whoAmI, particularQuestions } = this.props;
-    console.log(candidateDetails);
+    const {
+      candidateDetails,
+      whoAmI,
+      particularQuestions,
+      unansweredQuestions,
+    } = this.props;
+    console.log(particularQuestions);
     const activeStyle = {
       fontSize: "1.2em",
       color: "#606060",
@@ -195,13 +203,17 @@ class candidateProfile extends Component {
                   <div styleName="styles.questionHeading">
                     Question and Answer with {candidateDetails.fullName}
                   </div>
-                  <Button
-                    styleName="styles.answerButton"
-                    as={Link}
-                    to={baseNavUrl(`/profiles/${candidateDetails.id}/answer`)}
-                  >
-                    Answer Questions
-                  </Button>
+                  {unansweredQuestions.length > 0 ? (
+                    <Button
+                      styleName="styles.answerButton"
+                      as={Link}
+                      to={baseNavUrl(`/profiles/${candidateDetails.id}/answer`)}
+                    >
+                      Answer Questions
+                    </Button>
+                  ) : (
+                    void 0
+                  )}
                 </div>
               ) : (
                 <div>
@@ -214,20 +226,26 @@ class candidateProfile extends Component {
                 </div>
               )}
               <div>
-                {particularQuestions.map((element) => (
-                  <QuestionCard
-                    qid={element.id}
-                    uid={whoAmI.id}
-                    lid={element.likedQuestionId}
-                    cid={element.candidate}
-                    question={element.question}
-                    asker={element.askerFullName}
-                    candidate={element.candidateFullName}
-                    answer={element.answer}
-                    likes={element.numberOfLikes}
-                    liked={element.didUserLike}
-                  />
-                ))}
+                {particularQuestions.length > 0 ? (
+                  <div>
+                    {particularQuestions.map((element) => (
+                      <QuestionCard
+                        qid={element.id}
+                        uid={whoAmI.id}
+                        lid={element.likedQuestionId}
+                        cid={element.candidate}
+                        question={element.question}
+                        asker={element.askerFullName}
+                        candidate={element.candidateFullName}
+                        answer={element.answer}
+                        likes={element.numberOfLikes}
+                        liked={element.didUserLike}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <Segment>No questions yet!</Segment>
+                )}
               </div>
             </div>
           </div>
@@ -338,7 +356,7 @@ class candidateProfile extends Component {
         </div>
       </div>
     ) : (
-      "No Details"
+      <Loader />
     );
   }
 }
@@ -348,6 +366,7 @@ function mapStateToProps(state) {
     whoAmI: state.whoAmI,
     candidateDetails: state.candidateDetails,
     particularQuestions: state.particularQuestions,
+    unansweredQuestions: state.unansweredQuestions,
   };
 }
 
@@ -361,6 +380,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     GetParticularQuestions: (id) => {
       dispatch(getParticularQuestions(id));
+    },
+    GetUnansweredQuestions: (id) => {
+      dispatch(getUnansweredQuestions(id));
     },
   };
 };

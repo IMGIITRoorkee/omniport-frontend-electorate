@@ -9,13 +9,13 @@ import {
   Menu,
   Form,
   Segment,
+  Loader,
 } from "semantic-ui-react";
 import Scrollspy from "react-scrollspy";
 import { connect } from "react-redux";
 import { baseNavUrl } from "../../urls";
 
 import QuestionCard from "./questionCard";
-import PostQuestion from "./postQuestion";
 
 import { getAllQuestions, setUser, getPostOptions } from "../../actions";
 
@@ -97,7 +97,6 @@ class questions extends Component {
         <div styleName="styles.allquestions-questions-all">
           <h1>QUESTION AND ANSWER</h1>
           <Divider />
-          {/* <PostQuestion /> */}
           <div styleName="styles.dropdown">
             <div styleName="styles.dropdowntext">Filter By Post</div>
             <Dropdown
@@ -237,7 +236,7 @@ class questions extends Component {
         </div>
       </div>
     ) : (
-      "No Questions"
+      <Loader />
     );
   }
 }
