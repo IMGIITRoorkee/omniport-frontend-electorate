@@ -3,20 +3,28 @@
   flex-direction: column;
   height: 100%;
   margin-left: 17%;
-  width: 65%;
 }
 .answerques-brdcrumb {
 margin-bottom: 1%;
 }
+.answercontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .Link:hover {
   background-color: #EDF2F9;
 }
-
+.rightside {
+  margin-right: 2%;
+  width: 90%;
+}
 .inputbox {
   margin-top: 20px;
   display: flex;
-  width: 95%;
-  margin-left: 1.6em;
+  width: 100%;
+  /* margin-left: 1.6em; */
+  margin-right: 2em;
   flex-direction: row;
 }
 
@@ -24,6 +32,7 @@ margin-bottom: 1%;
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
+  margin-top: 3%;
 }
 
 .answer-card-unanswered {
@@ -33,15 +42,15 @@ margin-bottom: 1%;
   border: none !important;
   border-radius: 0px !important;
   margin-right: 2%;
-  width: 90%;
+  width: 85%;
+  padding-left: 2%;
   /* flex: 8; */
 }
 .inputsubmit {
   color: aliceblue !important;
   margin-left: 1% !important;
   height: 40px;
-  /* flex: 1 !important; */
-  width: 10% !important;
+  width: 15% !important;
   border-radius: 2px !important;
   font-size: 20px !important;
   font-weight: normal !important;
@@ -60,22 +69,41 @@ margin-bottom: 1%;
   margin-left: 1.5em;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1000px) {
   .inputbox {
     margin-top: 20px;
     display: flex;
-    width: 95%;
-    margin-left: 1.6em;
+    margin-left: 0.2em;
     flex-direction: column;
+    margin-bottom: 2%;
   }
   .inputsubmit {
     width: 90px !important;
+    margin-left: 3% !important;
   }
   .answerQuestions-container {
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin-left: 17%;
-    width: 80%;
+    margin-top: 15%;
+    margin-left: 5%;
+    margin-right: 0%;
+    width: 100%;
+  }  
+  .answercontainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+}
+@media only screen and (max-width: 500px) {
+  .answerQuestions-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 30%;
+    margin-left: 2%;
+    width: 100%;
   }  
 }

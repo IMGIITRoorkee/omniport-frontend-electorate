@@ -9,6 +9,7 @@ import {
   getCandidateDetails,
 } from "../../actions";
 
+import home from "../../css/home/home.css";
 import styles from "../../css/answers/answers.css";
 import styles2 from "../../css/candidate/candidate.css";
 import { Breadcrumb, Segment, Menu, Divider, Modal } from "semantic-ui-react";
@@ -46,6 +47,10 @@ class answerQuestions extends Component {
 
     return (
       <div styleName="styles.answerQuestions-container">
+      <div styleName="home.MobileNavbar">
+       <div styleName = "home.mobiletext1"><a href = {baseNavUrl("")} style = {{ color : "white", fontSize : "1.2em"}}>INSTITUTE CANDIDATES</a></div>
+       <div styleName ="home.mobiletext"><a href = {baseNavUrl("/questions")} style = {{ color : "black", fontSize : "1.2em"}}>QUESTION AND ANSWER</a></div>
+       </div>
         <div styleName="styles.answerques-brdcrumb">
           <Breadcrumb size={"massive"}>
             <Breadcrumb.Section
@@ -60,6 +65,7 @@ class answerQuestions extends Component {
           </Breadcrumb>
           <Divider />
         </div>
+        <div styleName = "styles.answercontainer">
         <div>
           <div>
             <div>
@@ -110,7 +116,7 @@ class answerQuestions extends Component {
             />
           </div>
         </div>
-        <div>
+        <div styleName = "styles.rightside">
           {unansweredQuestions.map((element) => (
             <AnswerCard
               qid={element.id}
@@ -126,7 +132,8 @@ class answerQuestions extends Component {
             />
           ))}
         </div>
-        <div>
+        </div>
+        <div styleName = "home.Navbar">
           <Scrollspy
             items={[
               "acad_ug",
@@ -151,10 +158,10 @@ class answerQuestions extends Component {
           >
             <div
               style={{
-                fontSize: "1.5em",
+                fontSize: "1.4em",
                 margin: "0px",
                 marginTop: "4px",
-                padding: "15px",
+                padding: "12px",
                 textAlign: "center",
                 backgroundColor: "#356DBF",
               }}
@@ -217,15 +224,15 @@ class answerQuestions extends Component {
             <ColoredLine color="#BEBEBE" />
             <div
               style={{
-                fontSize: "1.5em",
+                fontSize: "1.3em",
                 margin: "0px",
                 marginTop: "4px",
-                padding: "15px",
+                padding: "12px",
                 color: "#131313",
               }}
             >
               <a href={baseNavUrl("/questions")} style={{ color: "#131313" }}>
-                Question And Answer
+                QUESTION AND ANSWER
               </a>
             </div>
           </Scrollspy>

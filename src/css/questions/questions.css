@@ -1,5 +1,7 @@
 .question-segment {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .question-card-question {
@@ -36,6 +38,7 @@
   height: 100%;
   margin-left: 16%;
   width: 60%;
+  /* margin-top: 12%; */
 }
 
 .allquestions-questions-all {
@@ -54,54 +57,73 @@
   margin-bottom: 10px;
   margin-top: 30px;
 }
-input[type="text"] {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #000000;
-  width: 85%;
-  margin-right: 10px;
-}
 
 .inputbox {
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
+  margin-top: 20px;
+}
+.inputtext {
+  border: none !important;
+  border-radius: 0px !important;
+  margin-right: 2%;
+  width: 90%;
+  /* flex: 8; */
+}
+
+.inputsubmit {
+  color: aliceblue !important;
+  margin-left: 1% !important;
+  height: 38px;
+  /* flex: 1 !important; */
+  width: 10% !important;
+  border-radius: 2px !important;
+  font-size: 20px !important;
+  font-weight: normal !important;
+  background-color: #356dbf !important;
+  background: #356dbf !important;
+  padding: 1% !important;
+  margin-right: 1% !important;
 }
 
 ::placeholder {
   font-size: 18px;
-}
-.submit,
-.submit:hover {
-  padding: 5px;
-  padding-left: 15px;
-  padding-right: 15px;
-  background-color: #356dbf;
-  color: white;
-  font-size: 20px;
-  margin-top: 20px;
 }
 
 .question-card-container {
   padding-bottom: 20px;
 }
 
-@media only screen and (max-width: 1200px) {
-  /* .inputbox {
+@media only screen and (max-width: 1000px) {
+  .inputbox {
     margin-top: 20px;
     display: flex;
-    width: 95%;
-    margin-left: 1.6em;
-    flex-direction: column;
+    width: 100%;
+    margin-right: 0px;
+    margin-left: 0.2em;
+    flex-direction: row;
   }
-  .inputsubmit {
-    width: 90px !important;
-  } */
   .allquestions-container {
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin-left: 17%;
-    width: 80%;
+    margin-left: 0%;
+    width: 95%;
+    margin-top: 12%;
+  }
+  .inputsubmit {
+    width: 90px !important;
+    margin-left: 0 !important;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .allquestions-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 0%;
+    width: 95%;
+    margin-top: 25%;
   }
 }

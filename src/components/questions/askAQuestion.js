@@ -39,12 +39,13 @@ class askAQuestion extends Component {
     return (
       <div>
         <div styleName="styles.heading">
-          Question and Answer with {this.props.candidate}
+          Question and Answer with {this.props.candidateName}
         </div>
+
         <Form>
-          <Form.Field>
+          <div styleName="styles.inputbox">
             <Form.Input
-              styleName="styles.inputbox"
+              styleName="styles.inputtext"
               name="quest"
               value={this.state.quest}
               onChange={this.handleChange}
@@ -52,15 +53,15 @@ class askAQuestion extends Component {
               rows="3"
               placeholder="Ask your question"
             />
-          </Form.Field>
-          <Button
-            styleName="styles.submit"
-            type="submit"
-            position="right"
-            primary
-            content="Submit"
-            onClick={this.handleSubmit}
-          />
+            <Button
+              styleName="styles.inputsubmit"
+              type="submit"
+              position="right"
+              primary
+              content="Submit"
+              onClick={this.handleSubmit}
+            />
+          </div>
         </Form>
       </div>
     );

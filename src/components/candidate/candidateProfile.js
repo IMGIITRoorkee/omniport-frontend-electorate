@@ -65,6 +65,12 @@ class candidateProfile extends Component {
     );
 
     return !candidateDetails.isEmpty ? (
+      <div styleName = "home.allcontainer">
+      <div styleName="home.MobileNavbar">
+       <div styleName = "home.mobiletext1"><a href = {baseNavUrl("")} style = {{ color : "white", fontSize : "1.2em"}}>INSTITUTE CANDIDATES</a></div>
+       <div styleName ="home.mobiletext"><a href = {baseNavUrl("/questions")} style = {{ color : "black", fontSize : "1.2em"}}>QUESTION AND ANSWER</a></div>
+       </div>
+ 
       <div styleName="styles.candidate-profile">
         <div>
           <Breadcrumb size={"massive"}>
@@ -140,7 +146,7 @@ class candidateProfile extends Component {
             </div>
           </div>
           <div styleName="styles.rightside">
-            <div>
+            <div styleName = "styles.manifesto">
               <div styleName="styles.headingmanifesto">Manifesto</div>
               <iframe
                 src={candidateDetails.manifesto}
@@ -148,6 +154,25 @@ class candidateProfile extends Component {
                 height="480"
               ></iframe>
             </div>
+            <div styleName = "styles.mobile-manifesto">
+              <Modal
+                trigger={<a styleName="styles.resume">Manifesto</a>}
+              >
+                <Modal.Header>
+                  Electoral Manifesto of {candidateDetails.fullName}
+                </Modal.Header>
+                <Modal.Content>
+                  <Modal.Description>
+                    <iframe
+                      src={candidateDetails.resume}
+                      width="800"
+                      height="480"
+                    ></iframe>
+                  </Modal.Description>
+                </Modal.Content>
+              </Modal>
+            </div>
+
             {candidateDetails.isCandidate ? (
               <div styleName="styles.answer">
                 <div styleName="styles.heading">
@@ -188,7 +213,8 @@ class candidateProfile extends Component {
             </div>
           </div>
         </div>
-        <div>
+      </div>
+      <div styleName = "home.Navbar">
           <Scrollspy
             items={[
               "acad_ug",
@@ -206,17 +232,17 @@ class candidateProfile extends Component {
               left: "0px",
               padding: "0px",
               margin: "0",
-              width: "15%",
+              width: "15.5%",
               backgroundColor: "#FFFFFF",
               height: "100%",
             }}
           >
             <div
               style={{
-                fontSize: "1.5em",
+                fontSize: "1.4em",
                 margin: "0px",
                 marginTop: "4px",
-                padding: "15px",
+                padding: "12px",
                 textAlign: "center",
                 backgroundColor: "#356DBF",
               }}
@@ -279,19 +305,20 @@ class candidateProfile extends Component {
             <ColoredLine color="#BEBEBE" />
             <div
               style={{
-                fontSize: "1.5em",
+                fontSize: "1.4em",
                 margin: "0px",
                 marginTop: "4px",
-                padding: "15px",
+                padding: "12px",
                 color: "#131313",
               }}
             >
               <a href={baseNavUrl("/questions")} style={{ color: "#131313" }}>
-                Question And Answer
+                QUESTION AND ANSWER
               </a>
             </div>
           </Scrollspy>
         </div>
+
       </div>
     ) : (
       "No Details"
