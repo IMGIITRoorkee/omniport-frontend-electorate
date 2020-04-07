@@ -4,7 +4,6 @@ import { Segment, Form, Button, Portal } from "semantic-ui-react";
 
 import { askQuestion } from "../../actions";
 
-// import blocks from "../css/app.css";
 import styles from "../../css/questions/questions.css";
 
 class askAQuestion extends Component {
@@ -15,20 +14,16 @@ class askAQuestion extends Component {
       open: false,
       firstclickdone: false,
     };
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
   handleClose = () => this.setState({ open: false });
-
   handleChange(e) {
     const name = e.target.name;
     this.setState({
       [name]: e.target.value,
     });
   }
-
   handleSubmit() {
     if (this.state.firstclickdone == false) {
       this.setState({
@@ -36,7 +31,6 @@ class askAQuestion extends Component {
         firstclickdone: true,
       });
     }
-
     if (
       this.state.quest &&
       this.props.askerId &&

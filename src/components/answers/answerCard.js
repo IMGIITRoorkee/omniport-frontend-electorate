@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Segment, Form, Button, Icon, Portal } from "semantic-ui-react";
 import moment from "moment";
+
 import { answerQuestion, createLike, deleteLike } from "../../actions";
 
 import styles from "../../css/questions/questions.css";
@@ -20,9 +21,7 @@ class answerCard extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
-
   handleClose = () => this.setState({ open: false });
-
   handleChange(e) {
     const name = e.target.name;
     this.setState({
@@ -36,7 +35,6 @@ class answerCard extends Component {
         firstclickdone: true,
       });
     }
-
     if (this.state.answer && this.state.firstclickdone) {
       var formData = new FormData();
       formData.append("answer", this.state.answer);
@@ -60,10 +58,8 @@ class answerCard extends Component {
     }
   }
   render() {
-    console.log(this.props.questionId);
     return (
       <div>
-        {/* Add Answer form here */}
         <div styleName="style.question-card-container">
           <Segment>
             <div styleName="styles.question-card-question">
@@ -99,7 +95,6 @@ class answerCard extends Component {
                 <Button content="OK" negative onClick={this.handleClose} />
               </Segment>
             </Portal>
-
             <div>
               <Form>
                 <div styleName="style.inputbox">

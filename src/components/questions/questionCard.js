@@ -1,13 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Segment, Button, Menu, Icon } from "semantic-ui-react";
-import Scrollspy from "react-scrollspy";
-import { baseNavUrl } from "../../urls";
-import moment from 'moment';
+import moment from "moment";
 
 import { createLike, deleteLike } from "../../actions";
 
-// import blocks from "../../css/app.css";
 import styles from "../../css/questions/questions.css";
 
 class questionCard extends Component {
@@ -32,7 +29,6 @@ class questionCard extends Component {
     }
   }
   render() {
-
     return (
       <div>
         <div styleName="styles.question-card-container">
@@ -46,7 +42,8 @@ class questionCard extends Component {
             <div styleName="styles.question-card-meta-header">
               <span styleName="styles.question-card-meta">
                 {this.props.asker} asked {this.props.candidate} |{" "}
-                {moment(this.props.askedOn).format('Do MMMM')} | {moment(this.props.askedOn).format('h:mm a')}
+                {moment(this.props.askedOn).format("Do MMMM")} |{" "}
+                {moment(this.props.askedOn).format("h:mm a")}
               </span>
             </div>
             <div>

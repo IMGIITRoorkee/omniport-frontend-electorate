@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
 .candidate-profile {
   display: flex;
   flex-direction: column;
@@ -11,15 +12,15 @@
 }
 
 .Link:hover {
-  background-color: #EDF2F9;
+  background-color: #edf2f9;
 }
 
 .heading {
-  color: #0B1626;
-  line-height: 23px;
-  font-size: 25px;
-  margin-bottom: 15px;
-  margin-top: 10px;
+  color: #0b1626;
+  line-height: 1.5em;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  margin-top: 0.1em;
 }
 
 .profileCard-card-profile-photo {
@@ -27,86 +28,103 @@
   width: 12rem !important;
   height: auto !important;
   margin: 2em;
-  margin-left: 0.1em;
+  margin-left: 3em;
 }
 
 .headingdetails {
-  line-height: 20px;
-  margin : 15px;
-  margin-left: 0px;
-  font-size: 20px;
+  line-height: 0.5em;
+  margin: 1em;
+  margin-left: 0em;
+  font-size: 1.4em;
   color: #606060;
-}
-.headingdetailstwo {
-  line-height: 20px;
-  margin-left: 0px;
-  font-size: 20px;
-  color: #606060;
-}
-.headingdetailsthree {
-  margin : 0px;
-  margin-left: 0px;
-  font-size: 15px;
-  color: #606060;
-}
-.headingdetailslink {
-  margin : 5px;
-  margin-left: 0px;
-  font-size: 20px;
-  color: #356DBF;
-  margin-bottom: 60px;
-}
-.resume, .resume:hover {
-  margin-bottom: 15px;
-  padding: 10px;
-  background-color: #356DBF;
-  color: white;
-  font-size: 20px;
-  margin-top: 20px;
-}
-.video {
-margin-top: 60px;
-margin-bottom: 1em;
 }
 
-.rightside{
+.headingdetailstwo {
+  line-height: 1em;
+  margin-left: 0em;
+  font-size: 1.4em;
+  color: #606060;
+}
+
+.headingdetailsthree {
+  margin: 0em;
+  margin-left: 0em;
+  font-size: 1.1em;
+  color: #606060;
+}
+
+.headingdetailslink {
+  margin: 0.2em;
+  margin-left: 0em;
+  font-size: 1.4em;
+  color: #356dbf;
+  margin-bottom: 1em;
+}
+
+.resume,
+.resume:hover {
+  margin-bottom: 0em !important;
+  padding: 0.9em !important;
+  background-color: #356dbf !important;
+  color: white !important;
+  font-size: 1.2em !important;
+  margin-top: 1.4em !important;
+}
+
+.video {
+  margin-top: 1.5em;
+  margin-bottom: 2.5em;
+}
+
+.rightside {
   margin-right: 10%;
   margin-left: 15%;
 }
 
-
 .headingmanifesto {
-  color: #0B1626;
-  line-height: 23px;
-  font-size: 25px;
-  margin-bottom: 20px;
-  margin-top: 24px;
+  color: #0b1626;
+  line-height: 1em;
+  font-size: 1.6em;
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
+
 .mobile-manifesto {
   visibility: hidden;
 }
+
 .answer {
-  color: #0B1626;
-  line-height: 23px;
-  font-size: 25px;
-  margin-bottom: 15px;
-  margin-top: 20px; 
+  color: #0b1626;
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  margin-top: 1.5em;
   display: flex;
   flex-direction: row;
-  
+  justify-content: space-between;
 }
-.answer-question, .answer-question:hover {
+
+.answerButton {
+  background-color: #356dbf !important;
+  color: white !important;
+}
+
+.questionHeading {
+  padding-top: 0.7em;
+  padding-bottom: 0.1em;
+}
+
+.answer-question,
+.answer-question:hover {
   margin-bottom: 10px;
   margin-left: 2%;
   padding: 8px;
-  background-color: #356DBF;
+  background-color: #356dbf;
   color: white;
   font-size: 20px;
-
 }
 
 @media only screen and (max-width: 1390px) {
-  .rightside{
+  .rightside {
     margin-right: 5%;
     margin-left: 0%;
   }
@@ -118,7 +136,6 @@ margin-bottom: 1em;
     display: flex;
     flex-direction: column;
     height: 100%;
-    /* margin-left:2%; */
   }
   .manifesto {
     display: none;
@@ -128,11 +145,12 @@ margin-bottom: 1em;
     margin-top: 4%;
   }
 }
+
 @media only screen and (max-width: 1000px) {
   .candidate-profile {
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin-left:2%;
+    margin-left: 2%;
   }
 }

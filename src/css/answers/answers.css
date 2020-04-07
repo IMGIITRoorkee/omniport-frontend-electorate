@@ -4,17 +4,21 @@
   height: 100%;
   margin-left: 18%;
 }
+
 .answerques-brdcrumb {
-margin-bottom: 1%;
+  margin-bottom: 1%;
 }
+
 .answercontainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 .Link:hover {
-  background-color: #EDF2F9;
+  background-color: #edf2f9;
 }
+
 .rightside {
   margin-right: 2%;
   width: 90%;
@@ -25,12 +29,11 @@ margin-bottom: 1%;
   margin-top: 20px;
   display: flex;
   width: 100%;
-  /* margin-left: 1.6em; */
   margin-right: 2em;
   flex-direction: row;
 }
 
-.question-card-container{
+.question-card-container {
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -38,7 +41,7 @@ margin-bottom: 1%;
 }
 
 .answer-card-unanswered {
-  color: #356DBF;
+  color: #356dbf;
 }
 
 .inputtext {
@@ -57,16 +60,17 @@ margin-bottom: 1%;
   border-radius: 2px !important;
   font-size: 20px !important;
   font-weight: normal !important;
-  background-color: #356DBF !important;
-  background: #356DBF !important;
+  background-color: #356dbf !important;
+  background: #356dbf !important;
   padding: 1% !important;
   margin-right: 1% !important;
 }
 
 .question-card-meta-like {
-  color: #A7A7A7;
+  color: #a7a7a7;
   margin-top: 0px;
 }
+
 .question-card-button {
   margin-top: 0px;
   margin-left: 1.5em;
@@ -92,7 +96,7 @@ margin-bottom: 1%;
     margin-left: 5%;
     margin-right: 0%;
     width: 100%;
-  }  
+  }
   .answercontainer {
     display: flex;
     flex-direction: column;
@@ -103,6 +107,7 @@ margin-bottom: 1%;
     margin-left: 0%;
   }
 }
+
 @media only screen and (max-width: 500px) {
   .answerQuestions-container {
     display: flex;
@@ -111,5 +116,5 @@ margin-bottom: 1%;
     margin-top: 30%;
     margin-left: 2%;
     width: 100%;
-  }  
+  }
 }

@@ -1,13 +1,17 @@
-import React, { Component, Fragment } from "react";
-import { Card, Segment, Divider, Menu, Container } from "semantic-ui-react";
+import React, { Component } from "react";
+import { Card, Segment, Divider, Menu, Loader } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { groupBy } from "lodash";
-import ProfileCard from "./profileCard";
 import Scrollspy from "react-scrollspy";
+import { Link } from "react-router-dom";
+
 import { baseNavUrl } from "../../urls";
+
 import { setUser, getAllProfiles, getPostOptions } from "../../actions";
+
+import ProfileCard from "./profileCard";
+
 import styles from "../../css/home/home.css";
-import navMenu from "../navMenu";
 
 class allProfiles extends Component {
   componentDidMount() {
@@ -123,9 +127,9 @@ class allProfiles extends Component {
                   backgroundColor: "#356DBF",
                 }}
               >
-                <a href={baseNavUrl("")} style={{ color: "white" }}>
+                <Link to={baseNavUrl("")} style={{ color: "white" }}>
                   INSTITUTE CANDIDATES
-                </a>
+                </Link>
               </div>
               <a href={baseNavUrl("#acad_ug")}>
                 {" "}
@@ -181,23 +185,26 @@ class allProfiles extends Component {
               <ColoredLine color="#BEBEBE" />
               <div
                 style={{
-                  fontSize: "1.3em",
+                  fontSize: "1.4em",
                   margin: "0px",
                   marginTop: "4px",
-                  padding: "10px",
+                  padding: "12px",
                   color: "#131313",
                 }}
               >
-                <a href={baseNavUrl("/questions")} style={{ color: "#131313" }}>
+                <Link
+                  to={baseNavUrl("/questions")}
+                  style={{ color: "#131313" }}
+                >
                   QUESTION AND ANSWER
-                </a>
+                </Link>
               </div>
             </Scrollspy>
           </div>
         </div>
       </div>
     ) : (
-      "No Candidates"
+      <Loader />
     );
   }
 }
