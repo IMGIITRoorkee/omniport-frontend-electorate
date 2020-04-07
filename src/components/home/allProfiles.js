@@ -47,22 +47,20 @@ class allProfiles extends Component {
     return allProfiles ? (
       <div styleName="styles.allcontainer">
         <div styleName="styles.MobileNavbar">
-          <div styleName="styles.mobiletext1">
-            <a
-              href={baseNavUrl("")}
-              style={{ color: "white", fontSize: "1.2em" }}
-            >
-              INSTITUTE CANDIDATES
-            </a>
-          </div>
-          <div styleName="styles.mobiletext">
-            <a
-              href={baseNavUrl("/questions")}
-              style={{ color: "black", fontSize: "1.2em" }}
-            >
-              QUESTION AND ANSWER
-            </a>
-          </div>
+          <Link
+            styleName="styles.mobiletext1"
+            to={baseNavUrl("")}
+            style={{ color: "white" }}
+          >
+            INSTITUTE CANDIDATES
+          </Link>
+          <Link
+            styleName="styles.mobiletext"
+            to={baseNavUrl("/questions")}
+            style={{ color: "black" }}
+          >
+            QUESTION AND ANSWER
+          </Link>
         </div>
         <div styleName="styles.allProfiles-container">
           <div>

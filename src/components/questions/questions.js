@@ -64,22 +64,20 @@ class questions extends Component {
     return allQuestionsFiltered ? (
       <div styleName="styles.allquestions-container">
         <div styleName="home.MobileNavbar">
-          <div styleName="home.mobiletext">
-            <a
-              href={baseNavUrl("")}
-              style={{ color: "black", fontSize: "1.2em" }}
-            >
-              INSTITUTE CANDIDATES
-            </a>
-          </div>
-          <div styleName="home.mobiletext1">
-            <a
-              href={baseNavUrl("/questions")}
-              style={{ color: "white", fontSize: "1.2em" }}
-            >
-              QUESTION AND ANSWER
-            </a>
-          </div>
+          <Link
+            styleName="home.mobiletext"
+            to={baseNavUrl("")}
+            style={{ color: "black" }}
+          >
+            INSTITUTE CANDIDATES
+          </Link>
+          <Link
+            styleName="home.mobiletext1"
+            to={baseNavUrl("/questions")}
+            style={{ color: "white" }}
+          >
+            QUESTION AND ANSWER
+          </Link>
         </div>
         <div styleName="styles.allquestions-questions-all">
           <h1>QUESTION AND ANSWER</h1>
