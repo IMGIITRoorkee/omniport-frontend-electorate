@@ -49,7 +49,6 @@ export const getPostOptions = () => {
     axios
       .options(urlGetAllProfiles())
       .then((res) => {
-        //console.log(res.data.actions.POST.post.choices);
         dispatch({
           type: "GET_POST_OPTIONS",
           payload: res.data.actions.POST.post.choices,
@@ -74,7 +73,7 @@ export const getAllQuestions = () => {
   };
 };
 
-//Get Questions for a partitcular Candidate for Answers Page
+//Get Questions for a partitcular candidate
 export const getParticularQuestions = (id) => {
   return (dispatch) => {
     axios

@@ -38,7 +38,6 @@
   height: 100%;
   margin-left: 16%;
   width: 60%;
-  /* margin-top: 12%; */
 }
 
 .allquestions-questions-all {
@@ -64,19 +63,18 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
 .inputtext {
   border: none !important;
   border-radius: 0px !important;
   margin-right: 2%;
   width: 90%;
-  /* flex: 8; */
 }
 
 .inputsubmit {
   color: aliceblue !important;
   margin-left: 1% !important;
   height: 38px;
-  /* flex: 1 !important; */
   width: 10% !important;
   border-radius: 2px !important;
   font-size: 20px !important;
@@ -98,15 +96,18 @@
   margin-bottom: 4%;
   margin-top: 2%;
 }
+
 .dropdownfilter {
   margin-left: 2%;
   width: 25%;
 }
+
 .dropdowntext {
   color: #0b1626;
   font-size: 1.4em;
   padding-top: 10px;
 }
+
 .question-card-container {
   padding-bottom: 20px;
 }
@@ -133,6 +134,7 @@
     margin-left: 0 !important;
   }
 }
+
 @media only screen and (max-width: 500px) {
   .allquestions-container {
     display: flex;

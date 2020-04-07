@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import { getTheme } from "formula_one";
 
-// import blocks from "../../css/app.css";
 import styles from "../../css/home/home.css";
 
 class profileCard extends Component {

@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { Scrollbars } from "react-custom-scrollbars";
-import { Segment, Container, Sidebar, Menu } from "semantic-ui-react";
+import { Sidebar } from "semantic-ui-react";
 
-import { AppHeader, AppFooter, AppMain, getTheme } from "formula_one";
+import { AppHeader, AppFooter, AppMain } from "formula_one";
 
-import NavMenu from "./navMenu";
 import AllProfiles from "./home/allProfiles";
 import Questions from "./questions/questions";
 import CandidateProfile from "./candidate/candidateProfile";
@@ -17,6 +16,16 @@ import blocks from "../css/app.css";
 
 class App extends Component {
   render() {
+    const creators = [
+      {
+        name: "Nisarg Patel",
+        role: "Frontend Developer",
+      },
+      {
+        name: "Anshul Dutt Sharma",
+        role: "Backend Developer",
+      },
+    ];
     const { match } = this.props;
     return (
       <div styleName="main.app">
@@ -26,10 +35,6 @@ class App extends Component {
             <Scrollbars autoHide>
               <div styleName="blocks.content-div">
                 <Sidebar.Pushable fluid styleName="blocks.pushable">
-                  {/* Add side navbar here */}
-                  {/* <Sidebar as={Menu} vertical visible>
-                    <NavMenu />
-                  </Sidebar> */}
                   <Sidebar.Pusher styleName="blocks.pusher-content">
                     <Switch>
                       <Route
@@ -52,7 +57,7 @@ class App extends Component {
                         path={`${match.path}questions/`}
                         component={Questions}
                       />
-                      <Route render={props => <Redirect to="/404" />} />
+                      <Route render={(props) => <Redirect to="/404" />} />
                     </Switch>
                   </Sidebar.Pusher>
                 </Sidebar.Pushable>
@@ -60,7 +65,7 @@ class App extends Component {
             </Scrollbars>
           </div>
         </AppMain>
-        <AppFooter />
+        <AppFooter creators={creators} />
       </div>
     );
   }

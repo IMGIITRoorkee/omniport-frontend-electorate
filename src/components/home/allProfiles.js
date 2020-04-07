@@ -1,21 +1,17 @@
-import React, { Component, Fragment } from "react";
-import {
-  Card,
-  Segment,
-  Divider,
-  Menu,
-  Container,
-  Loader,
-} from "semantic-ui-react";
+import React, { Component } from "react";
+import { Card, Segment, Divider, Menu, Loader } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { groupBy } from "lodash";
-import ProfileCard from "./profileCard";
 import Scrollspy from "react-scrollspy";
-import { baseNavUrl } from "../../urls";
-import { setUser, getAllProfiles, getPostOptions } from "../../actions";
-import styles from "../../css/home/home.css";
-import navMenu from "../navMenu";
 import { Link } from "react-router-dom";
+
+import { baseNavUrl } from "../../urls";
+
+import { setUser, getAllProfiles, getPostOptions } from "../../actions";
+
+import ProfileCard from "./profileCard";
+
+import styles from "../../css/home/home.css";
 
 class allProfiles extends Component {
   componentDidMount() {

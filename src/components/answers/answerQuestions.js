@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Scrollspy from "react-scrollspy";
+import { Breadcrumb, Segment, Menu, Divider, Modal } from "semantic-ui-react";
+
+import { baseNavUrl } from "../../urls";
 
 import {
   setUser,
@@ -9,24 +12,20 @@ import {
   getCandidateDetails,
 } from "../../actions";
 
+import AnswerCard from "./answerCard";
+
 import home from "../../css/home/home.css";
 import styles from "../../css/answers/answers.css";
 import styles2 from "../../css/candidate/candidate.css";
-import { Breadcrumb, Segment, Menu, Divider, Modal } from "semantic-ui-react";
-import { baseNavUrl } from "../../urls";
-
-import AnswerCard from "./answerCard";
 
 class answerQuestions extends Component {
   componentDidMount() {
     const cid = this.props.match.params.id;
-    //console.log(cid);
     this.props.GetCandidateDetails(cid);
     this.props.GetUnansweredQuestions(cid);
     this.props.SetUser();
   }
   render() {
-    console.log(this.props.unansweredQuestions);
     const { unansweredQuestions, candidateDetails, whoAmI } = this.props;
     const activeStyle = {
       fontSize: "1.2em",
@@ -44,7 +43,6 @@ class answerQuestions extends Component {
         }}
       />
     );
-
     return (
       <div styleName="styles.answerQuestions-container">
         <div styleName="home.MobileNavbar">

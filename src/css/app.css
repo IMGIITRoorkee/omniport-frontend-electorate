@@ -17,7 +17,6 @@
 }
 
 .pusher-content {
-  /*width: calc(100% - 260px);*/
   overflow: auto !important;
   display: flex;
   flex-direction: column;

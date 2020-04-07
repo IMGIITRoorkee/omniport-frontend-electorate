@@ -1,29 +1,19 @@
 import React, { Component } from "react";
 import { groupBy } from "lodash";
-import {
-  Divider,
-  Input,
-  Button,
-  Label,
-  Dropdown,
-  Menu,
-  Form,
-  Segment,
-  Loader,
-} from "semantic-ui-react";
+import { Divider, Dropdown, Menu, Segment, Loader } from "semantic-ui-react";
 import Scrollspy from "react-scrollspy";
 import { connect } from "react-redux";
-import { baseNavUrl } from "../../urls";
+import { Link } from "react-router-dom";
 
-import QuestionCard from "./questionCard";
+import { baseNavUrl } from "../../urls";
 
 import { getAllQuestions, setUser, getPostOptions } from "../../actions";
 
-// import blocks from "../../css/app.css";
+import QuestionCard from "./questionCard";
+
 import styles from "../../css/questions/questions.css";
 import home from "../../css/home/home.css";
 import { element } from "prop-types";
-import { Link } from "react-router-dom";
 
 class questions extends Component {
   constructor(props) {
@@ -43,7 +33,6 @@ class questions extends Component {
   };
   render() {
     const { allQuestions, whoAmI, getPostOptions } = this.props;
-    console.log(this.props.allQuestions);
     const activeStyle = {
       fontSize: "1.2em",
       color: "#606060",
@@ -51,7 +40,6 @@ class questions extends Component {
       margin: "15px",
       padding: "2px",
     };
-
     const ColoredLine = ({ color }) => (
       <hr
         style={{
@@ -61,7 +49,6 @@ class questions extends Component {
         }}
       />
     );
-
     var allQuestionsFiltered;
     if (allQuestions) {
       allQuestionsFiltered = groupBy(allQuestions, "post");

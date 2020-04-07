@@ -1,8 +1,19 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
+import {
+  Segment,
+  Menu,
+  Breadcrumb,
+  Divider,
+  Modal,
+  Button,
+  Loader,
+} from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import Scrollspy from "react-scrollspy";
+
 import { baseNavUrl } from "../../urls";
+
 import {
   setUser,
   getCandidateDetails,
@@ -10,30 +21,12 @@ import {
   getUnansweredQuestions,
 } from "../../actions";
 
-import { getTheme } from "formula_one";
-
-import CustomBreadcrumb from "core/common/src/components/custom-breadcrumb";
-import {
-  Segment,
-  Container,
-  Menu,
-  Breadcrumb,
-  Divider,
-  Modal,
-  Button,
-  Grid,
-  Card,
-  Image,
-  Icon,
-  Loader,
-} from "semantic-ui-react";
+import AskAQuestion from "../questions/askAQuestion";
+import QuestionCard from "../questions/questionCard";
 
 import blocks from "../../css/app.css";
 import styles from "../../css/candidate/candidate.css";
 import home from "../../css/home/home.css";
-
-import AskAQuestion from "../questions/askAQuestion";
-import QuestionCard from "../questions/questionCard";
 import { element } from "prop-types";
 
 class candidateProfile extends Component {
@@ -44,7 +37,6 @@ class candidateProfile extends Component {
     this.props.GetParticularQuestions(id);
     this.props.GetUnansweredQuestions(id);
   }
-
   render() {
     const {
       candidateDetails,
@@ -52,7 +44,6 @@ class candidateProfile extends Component {
       particularQuestions,
       unansweredQuestions,
     } = this.props;
-    console.log(particularQuestions);
     const activeStyle = {
       fontSize: "1.2em",
       color: "#606060",
@@ -69,7 +60,6 @@ class candidateProfile extends Component {
         }}
       />
     );
-
     return !candidateDetails.isEmpty ? (
       <div styleName="home.allcontainer">
         <div styleName="home.MobileNavbar">
