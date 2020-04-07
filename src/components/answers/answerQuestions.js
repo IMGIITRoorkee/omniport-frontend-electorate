@@ -46,22 +46,20 @@ class answerQuestions extends Component {
     return (
       <div styleName="styles.answerQuestions-container">
         <div styleName="home.MobileNavbar">
-          <div styleName="home.mobiletext1">
-            <a
-              href={baseNavUrl("")}
-              style={{ color: "white", fontSize: "1.2em" }}
-            >
-              INSTITUTE CANDIDATES
-            </a>
-          </div>
-          <div styleName="home.mobiletext">
-            <a
-              href={baseNavUrl("/questions")}
-              style={{ color: "black", fontSize: "1.2em" }}
-            >
-              QUESTION AND ANSWER
-            </a>
-          </div>
+          <Link
+            styleName="home.mobiletext1"
+            to={baseNavUrl("")}
+            style={{ color: "white" }}
+          >
+            INSTITUTE CANDIDATES
+          </Link>
+          <Link
+            styleName="home.mobiletext"
+            to={baseNavUrl("/questions")}
+            style={{ color: "black" }}
+          >
+            QUESTION AND ANSWER
+          </Link>
         </div>
         <div styleName="styles.answerques-brdcrumb">
           <Breadcrumb size={"massive"}>

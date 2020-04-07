@@ -20,6 +20,7 @@ class allProfiles extends Component {
     this.props.GetPostOptions();
   }
   render() {
+    console.log(this.props.allProfiles);
     const { allProfiles, getPostOptions } = this.props;
     var allProfilesFiltered;
     const activeStyle = {
@@ -47,22 +48,20 @@ class allProfiles extends Component {
     return allProfiles ? (
       <div styleName="styles.allcontainer">
         <div styleName="styles.MobileNavbar">
-          <div styleName="styles.mobiletext1">
-            <a
-              href={baseNavUrl("")}
-              style={{ color: "white", fontSize: "1.2em" }}
-            >
-              INSTITUTE CANDIDATES
-            </a>
-          </div>
-          <div styleName="styles.mobiletext">
-            <a
-              href={baseNavUrl("/questions")}
-              style={{ color: "black", fontSize: "1.2em" }}
-            >
-              QUESTION AND ANSWER
-            </a>
-          </div>
+          <Link
+            styleName="styles.mobiletext1"
+            to={baseNavUrl("")}
+            style={{ color: "white" }}
+          >
+            INSTITUTE CANDIDATES
+          </Link>
+          <Link
+            styleName="styles.mobiletext"
+            to={baseNavUrl("/questions")}
+            style={{ color: "black" }}
+          >
+            QUESTION AND ANSWER
+          </Link>
         </div>
         <div styleName="styles.allProfiles-container">
           <div>
@@ -85,6 +84,8 @@ class allProfiles extends Component {
                         branchName={profile.branchName}
                         currentYear={profile.currentYear}
                         id={profile.id}
+                        gravatarHash={profile.gravatarHash}
+                        photo={profile.displayPicture}
                       />
                     ))
                   ) : (

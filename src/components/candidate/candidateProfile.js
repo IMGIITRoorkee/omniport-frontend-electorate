@@ -8,9 +8,11 @@ import {
   Modal,
   Button,
   Loader,
+  Placeholder,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import Scrollspy from "react-scrollspy";
+import { DefaultDP } from "formula_one";
 
 import { baseNavUrl } from "../../urls";
 
@@ -38,6 +40,7 @@ class candidateProfile extends Component {
     this.props.GetUnansweredQuestions(id);
   }
   render() {
+    console.log(`${this.props.candidateDetails.manifesto}#toolbar=0`);
     const {
       candidateDetails,
       whoAmI,
@@ -63,22 +66,20 @@ class candidateProfile extends Component {
     return !candidateDetails.isEmpty ? (
       <div styleName="home.allcontainer">
         <div styleName="home.MobileNavbar">
-          <div styleName="home.mobiletext1">
-            <a
-              href={baseNavUrl("")}
-              style={{ color: "white", fontSize: "1.2em" }}
-            >
-              INSTITUTE CANDIDATES
-            </a>
-          </div>
-          <div styleName="home.mobiletext">
-            <a
-              href={baseNavUrl("/questions")}
-              style={{ color: "black", fontSize: "1.2em" }}
-            >
-              QUESTION AND ANSWER
-            </a>
-          </div>
+          <Link
+            styleName="home.mobiletext1"
+            to={baseNavUrl("")}
+            style={{ color: "white" }}
+          >
+            INSTITUTE CANDIDATES
+          </Link>
+          <Link
+            styleName="home.mobiletext"
+            to={baseNavUrl("/questions")}
+            style={{ color: "black" }}
+          >
+            QUESTION AND ANSWER
+          </Link>
         </div>
 
         <div styleName="styles.candidate-profile">
@@ -109,10 +110,24 @@ class candidateProfile extends Component {
             <div>
               <div>
                 <div>
-                  <img
-                    src="https://imgix-media.wbdndc.net/cms/filer_public_thumbnails/filer_public/d8/5a/d85a3ec6-79c5-49ae-86e9-902c74546e69/batman-profile-293d6d-bm_cv17_ns-1-v1-600x600-marquee-thumb.jpg__600x600_q85_crop_subsampling-2_upscale.jpg"
-                    styleName="styles.profileCard-card-profile-photo"
-                  />
+                  {candidateDetails.loading ? (
+                    <Placeholder style={{ height: 160, width: 160 }}>
+                      <Placeholder.Image />
+                    </Placeholder>
+                  ) : candidateDetails.displayPicture ? (
+                    <img
+                      src={candidateDetails.displayPicture}
+                      styleName="home.profileCard-card-profile-photo-candidate-page"
+                    />
+                  ) : candidateDetails.fullName ? (
+                    <div styleName="home.profileCard-card-profile-photo-candidate-page">
+                      <DefaultDP
+                        gravatarHash={candidateDetails.gravatarHash}
+                        name={candidateDetails.fullName}
+                        size={"5em"}
+                      />
+                    </div>
+                  ) : null}
                 </div>
                 <div styleName="styles.heading">
                   {candidateDetails.fullName}
@@ -166,7 +181,7 @@ class candidateProfile extends Component {
               <div styleName="styles.manifesto">
                 <div styleName="styles.headingmanifesto">Manifesto</div>
                 <iframe
-                  src={candidateDetails.manifesto}
+                  src={`${candidateDetails.manifesto}#toolbar=0`}
                   width="800"
                   height="480"
                 ></iframe>
