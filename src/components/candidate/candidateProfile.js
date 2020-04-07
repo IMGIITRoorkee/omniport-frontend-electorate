@@ -40,7 +40,6 @@ class candidateProfile extends Component {
     this.props.GetUnansweredQuestions(id);
   }
   render() {
-    console.log(`${this.props.candidateDetails.manifesto}#toolbar=0`);
     const {
       candidateDetails,
       whoAmI,

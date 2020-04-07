@@ -20,7 +20,6 @@ class allProfiles extends Component {
     this.props.GetPostOptions();
   }
   render() {
-    console.log(this.props.allProfiles);
     const { allProfiles, getPostOptions } = this.props;
     var allProfilesFiltered;
     const activeStyle = {
