@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Scrollspy from "react-scrollspy";
-import { Breadcrumb, Segment, Menu, Divider, Modal } from "semantic-ui-react";
+import { Breadcrumb, Segment, Menu, Divider, Modal, Button } from "semantic-ui-react";
 
 import { baseNavUrl } from "../../urls";
 
@@ -112,9 +112,11 @@ class answerQuestions extends Component {
               </div>
             </div>
             <div>
-              <Modal
-                trigger={<a styleName="styles2.resume">Electoral Resume</a>}
-              >
+              <Modal 
+                  trigger={
+                    <Button styleName="styles2.resume">Electoral Resume</Button>
+                  }
+                >
                 <Modal.Header>
                   Electoral Resume of {candidateDetails.fullName}
                 </Modal.Header>
