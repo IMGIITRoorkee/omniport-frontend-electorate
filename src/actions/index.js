@@ -143,7 +143,7 @@ export const askQuestion = (data, cid) => {
 };
 
 //Answer a question
-export const answerQuestion = (id, data, cid) => {
+export const answerQuestion = (id, data, cid, successCallback, errCallback) => {
   let headers = {
     "X-CSRFToken": getCookie("csrftoken"),
   };
@@ -153,10 +153,10 @@ export const answerQuestion = (id, data, cid) => {
       .then((res) => {
         dispatch(getAllQuestions());
         dispatch(getUnansweredQuestions(cid));
-        console.log(res);
+        successCallback(res);
       })
       .catch((err) => {
-        console.log(err);
+        errCallback(err);
       });
   };
 };
