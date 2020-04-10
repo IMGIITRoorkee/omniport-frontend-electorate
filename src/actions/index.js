@@ -59,14 +59,19 @@ export const getPostOptions = () => {
 };
 
 //Get AllQuestions for Questions and Answers Page
-export const getAllQuestions = () => {
+export const getAllQuestions = (index) => {
+  index = Math.ceil(index);
   return (dispatch) => {
     axios
-      .get(urlGetAllQuestions())
+      .get(urlGetAllQuestions(), {
+        params: {
+          page: index,
+        },
+      })
       .then((res) => {
         dispatch({
           type: "GET_ALL_QUESTIONS",
-          payload: res.data.results,
+          payload: res.data,
         });
       })
       .catch((err) => console.log(err));
@@ -74,14 +79,19 @@ export const getAllQuestions = () => {
 };
 
 //Get Questions for a partitcular candidate
-export const getParticularQuestions = (id) => {
+export const getParticularQuestions = (id, index) => {
+  index = Math.ceil(index);
   return (dispatch) => {
     axios
-      .get(urlGetParticularQuestions(id))
+      .get(urlGetParticularQuestions(id), {
+        params: {
+          page: index,
+        },
+      })
       .then((res) => {
         dispatch({
           type: "GET_PARTICULAR_QUESTIONS",
-          payload: res.data.results,
+          payload: res.data,
         });
       })
       .catch((err) => console.log(err));
@@ -89,14 +99,18 @@ export const getParticularQuestions = (id) => {
 };
 
 //Get unanswered questions from answer_view endpoint
-export const getUnansweredQuestions = (id) => {
+export const getUnansweredQuestions = (id, index) => {
   return (dispatch) => {
     axios
-      .get(urlGetUnansweredQuestions(id))
+      .get(urlGetUnansweredQuestions(id), {
+        params: {
+          page: index,
+        },
+      })
       .then((res) => {
         dispatch({
           type: "GET_UNANSWERED_QUESTIONS",
-          payload: res.data.results,
+          payload: res.data,
         });
       })
       .catch((err) => console.log(err));
@@ -123,7 +137,7 @@ export const getCandidateDetails = (id) => {
 };
 
 //Post a Question
-export const askQuestion = (data, cid) => {
+export const askQuestion = (data, cid, index) => {
   let headers = {
     "Content-Type": "multipart/form-data",
     "X-CSRFToken": getCookie("csrftoken"),
@@ -132,8 +146,8 @@ export const askQuestion = (data, cid) => {
     axios
       .post(urlGetAllQuestions(), data, { headers: headers })
       .then((res) => {
-        dispatch(getAllQuestions());
-        dispatch(getParticularQuestions(cid));
+        dispatch(getAllQuestions(index));
+        dispatch(getParticularQuestions(cid, index));
         console.log(res);
       })
       .catch((err) => {
@@ -143,7 +157,14 @@ export const askQuestion = (data, cid) => {
 };
 
 //Answer a question
-export const answerQuestion = (id, data, cid, successCallback, errCallback) => {
+export const answerQuestion = (
+  id,
+  data,
+  cid,
+  index,
+  successCallback,
+  errCallback
+) => {
   let headers = {
     "X-CSRFToken": getCookie("csrftoken"),
   };
@@ -151,8 +172,8 @@ export const answerQuestion = (id, data, cid, successCallback, errCallback) => {
     axios
       .patch(urlGetQuestionDetails(id), data, { headers: headers })
       .then((res) => {
-        dispatch(getAllQuestions());
-        dispatch(getUnansweredQuestions(cid));
+        dispatch(getAllQuestions(index));
+        dispatch(getUnansweredQuestions(cid, index));
         successCallback(res);
       })
       .catch((err) => {
@@ -162,7 +183,7 @@ export const answerQuestion = (id, data, cid, successCallback, errCallback) => {
 };
 
 //Like Function
-export const createLike = (qid, uid, cid) => {
+export const createLike = (qid, uid, cid, index) => {
   const headers = {
     "Content-Type": "application/json",
     "X-CSRFToken": getCookie("csrftoken"),
@@ -175,9 +196,9 @@ export const createLike = (qid, uid, cid) => {
     axios
       .post(urlLikeView(), data, { headers: headers })
       .then((res) => {
-        dispatch(getAllQuestions());
-        dispatch(getParticularQuestions(cid));
-        dispatch(getUnansweredQuestions(cid));
+        dispatch(getAllQuestions(index));
+        dispatch(getParticularQuestions(cid, index));
+        dispatch(getUnansweredQuestions(cid, index));
         console.log(res);
       })
       .catch((err) => {
@@ -186,7 +207,7 @@ export const createLike = (qid, uid, cid) => {
   };
 };
 
-export const deleteLike = (id, cid) => {
+export const deleteLike = (id, cid, index) => {
   let headers = {
     "X-CSRFToken": getCookie("csrftoken"),
   };
@@ -194,13 +215,20 @@ export const deleteLike = (id, cid) => {
     axios
       .delete(urlLikeDetail(id), { headers: headers })
       .then((res) => {
-        dispatch(getAllQuestions());
-        dispatch(getParticularQuestions(cid));
-        dispatch(getUnansweredQuestions(cid));
+        dispatch(getAllQuestions(index));
+        dispatch(getParticularQuestions(cid, index));
+        dispatch(getUnansweredQuestions(cid, index));
         console.log(res);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+};
+
+export const changePage = (index) => {
+  return {
+    type: "CHANGE_PAGE",
+    payload: { index: index },
   };
 };

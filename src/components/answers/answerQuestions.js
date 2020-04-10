@@ -2,7 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Scrollspy from "react-scrollspy";
-import { Breadcrumb, Segment, Menu, Divider, Modal, Button } from "semantic-ui-react";
+import {
+  Breadcrumb,
+  Segment,
+  Menu,
+  Divider,
+  Modal,
+  Button,
+} from "semantic-ui-react";
 
 import { baseNavUrl } from "../../urls";
 
@@ -13,6 +20,7 @@ import {
 } from "../../actions";
 
 import AnswerCard from "./answerCard";
+import AnswerPagination from "./answerPagination";
 
 import home from "../../css/home/home.css";
 import styles from "../../css/answers/answers.css";
@@ -112,11 +120,11 @@ class answerQuestions extends Component {
               </div>
             </div>
             <div>
-              <Modal 
-                  trigger={
-                    <Button styleName="styles2.resume">Electoral Resume</Button>
-                  }
-                >
+              <Modal
+                trigger={
+                  <Button styleName="styles2.resume">Electoral Resume</Button>
+                }
+              >
                 <Modal.Header>
                   Electoral Resume of {candidateDetails.fullName}
                 </Modal.Header>
@@ -142,25 +150,32 @@ class answerQuestions extends Component {
             </div>
           </div>
           <div styleName="styles.rightside">
-            {unansweredQuestions.length > 0 ? (
+            {unansweredQuestions.results ? (
               <div>
-                {unansweredQuestions.map((element) => (
-                  <AnswerCard
-                    qid={element.id}
-                    uid={whoAmI.id}
-                    lid={element.likedQuestionId}
-                    cid={element.candidate}
-                    question={element.question}
-                    asker={element.askerFullName}
-                    askedOn={element.answered}
-                    candidate={element.candidateFullName}
-                    likes={element.numberOfLikes}
-                    liked={element.didUserLike}
-                  />
-                ))}
+                {unansweredQuestions.results.length > 0 ? (
+                  <div>
+                    {unansweredQuestions.results.map((element) => (
+                      <AnswerCard
+                        qid={element.id}
+                        uid={whoAmI.id}
+                        lid={element.likedQuestionId}
+                        cid={element.candidate}
+                        question={element.question}
+                        asker={element.askerFullName}
+                        askedOn={element.answered}
+                        candidate={element.candidateFullName}
+                        likes={element.numberOfLikes}
+                        liked={element.didUserLike}
+                      />
+                    ))}
+                    <AnswerPagination cid={this.props.match.params.id} />
+                  </div>
+                ) : (
+                  <Segment>You have answered all the the questions!</Segment>
+                )}
               </div>
             ) : (
-              <Segment>You have answered all the the questions!</Segment>
+              void 0
             )}
           </div>
         </div>
