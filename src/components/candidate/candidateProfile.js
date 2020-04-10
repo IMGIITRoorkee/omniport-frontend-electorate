@@ -21,10 +21,12 @@ import {
   getCandidateDetails,
   getParticularQuestions,
   getUnansweredQuestions,
+  changePage,
 } from "../../actions";
 
 import AskAQuestion from "../questions/askAQuestion";
 import QuestionCard from "../questions/questionCard";
+import ProfilePagination from "./profilePagination";
 
 import blocks from "../../css/app.css";
 import styles from "../../css/candidate/candidate.css";
@@ -36,8 +38,8 @@ class candidateProfile extends Component {
     const id = this.props.match.params.id;
     this.props.SetUser();
     this.props.GetCandidateDetails(id);
-    this.props.GetParticularQuestions(id);
-    this.props.GetUnansweredQuestions(id);
+    this.props.GetParticularQuestions(id, 1);
+    this.props.GetUnansweredQuestions(id, 1);
   }
   render() {
     const {
@@ -207,14 +209,22 @@ class candidateProfile extends Component {
                   <div styleName="styles.questionHeading">
                     Question and Answer with {candidateDetails.fullName}
                   </div>
-                  {unansweredQuestions.length > 0 ? (
-                    <Button
-                      styleName="styles.answerButton"
-                      as={Link}
-                      to={baseNavUrl(`/profiles/${candidateDetails.id}/answer`)}
-                    >
-                      Answer Questions
-                    </Button>
+                  {unansweredQuestions.results ? (
+                    <div>
+                      {unansweredQuestions.results.length > 0 ? (
+                        <Button
+                          styleName="styles.answerButton"
+                          as={Link}
+                          to={baseNavUrl(
+                            `/profiles/${candidateDetails.id}/answer`
+                          )}
+                        >
+                          Answer Questions
+                        </Button>
+                      ) : (
+                        void 0
+                      )}
+                    </div>
                   ) : (
                     void 0
                   )}
@@ -230,25 +240,32 @@ class candidateProfile extends Component {
                 </div>
               )}
               <div>
-                {particularQuestions.length > 0 ? (
+                {particularQuestions.results ? (
                   <div>
-                    {particularQuestions.map((element) => (
-                      <QuestionCard
-                        qid={element.id}
-                        uid={whoAmI.id}
-                        lid={element.likedQuestionId}
-                        cid={element.candidate}
-                        question={element.question}
-                        asker={element.askerFullName}
-                        candidate={element.candidateFullName}
-                        answer={element.answer}
-                        likes={element.numberOfLikes}
-                        liked={element.didUserLike}
-                      />
-                    ))}
+                    {particularQuestions.results.length > 0 ? (
+                      <div>
+                        {particularQuestions.results.map((element) => (
+                          <QuestionCard
+                            qid={element.id}
+                            uid={whoAmI.id}
+                            lid={element.likedQuestionId}
+                            cid={element.candidate}
+                            question={element.question}
+                            asker={element.askerFullName}
+                            candidate={element.candidateFullName}
+                            answer={element.answer}
+                            likes={element.numberOfLikes}
+                            liked={element.didUserLike}
+                          />
+                        ))}
+                        <ProfilePagination cid={this.props.match.params.id} />
+                      </div>
+                    ) : (
+                      <Segment>No questions yet!</Segment>
+                    )}
                   </div>
                 ) : (
-                  <Segment>No questions yet!</Segment>
+                  void 0
                 )}
               </div>
             </div>
@@ -382,11 +399,14 @@ const mapDispatchToProps = (dispatch) => {
     GetCandidateDetails: (id) => {
       dispatch(getCandidateDetails(id));
     },
-    GetParticularQuestions: (id) => {
-      dispatch(getParticularQuestions(id));
+    GetParticularQuestions: (id, index) => {
+      dispatch(getParticularQuestions(id, index));
     },
-    GetUnansweredQuestions: (id) => {
-      dispatch(getUnansweredQuestions(id));
+    GetUnansweredQuestions: (id, index) => {
+      dispatch(getUnansweredQuestions(id, index));
+    },
+    ChangePage: (index) => {
+      dispatch(changePage(index));
     },
   };
 };

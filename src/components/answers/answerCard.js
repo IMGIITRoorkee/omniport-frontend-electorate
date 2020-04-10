@@ -10,7 +10,12 @@ import {
 } from "semantic-ui-react";
 import moment from "moment";
 
-import { answerQuestion, createLike, deleteLike } from "../../actions";
+import {
+  answerQuestion,
+  createLike,
+  deleteLike,
+  changePage,
+} from "../../actions";
 
 import styles from "../../css/questions/questions.css";
 import style from "../../css/answers/answers.css";
@@ -61,12 +66,21 @@ class answerCard extends Component {
   }
   handleClick() {
     if (this.state.isLiked) {
-      this.props.DeleteLike(this.props.lid, this.props.cid);
+      this.props.DeleteLike(
+        this.props.lid,
+        this.props.cid,
+        this.props.page["index"]
+      );
       this.setState({
         isLiked: false,
       });
     } else {
-      this.props.CreateLike(this.props.qid, this.props.uid, this.props.cid);
+      this.props.CreateLike(
+        this.props.qid,
+        this.props.uid,
+        this.props.cid,
+        this.props.page["index"]
+      );
       this.setState({
         isLiked: true,
       });
@@ -185,18 +199,27 @@ class answerCard extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    page: state.paginationIndex,
+  };
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     AnswerQuestion: (id, data, cid, successCallBack, errCallback) => {
       dispatch(answerQuestion(id, data, cid, successCallBack, errCallback));
     },
-    CreateLike: (qid, uid, cid) => {
-      dispatch(createLike(qid, uid, cid));
+    CreateLike: (qid, uid, cid, index) => {
+      dispatch(createLike(qid, uid, cid, index));
     },
-    DeleteLike: (id, cid) => {
-      dispatch(deleteLike(id, cid));
+    DeleteLike: (id, cid, index) => {
+      dispatch(deleteLike(id, cid, index));
+    },
+    ChangePage: (index) => {
+      dispatch(changePage(index));
     },
   };
 };
 
-export default connect(null, mapDispatchToProps)(answerCard);
+export default connect(mapStateToProps, mapDispatchToProps)(answerCard);

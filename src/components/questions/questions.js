@@ -10,6 +10,7 @@ import { baseNavUrl } from "../../urls";
 import { getAllQuestions, setUser, getPostOptions } from "../../actions";
 
 import QuestionCard from "./questionCard";
+import QuestionPagination from "./questionsPagination";
 
 import styles from "../../css/questions/questions.css";
 import home from "../../css/home/home.css";
@@ -24,7 +25,7 @@ class questions extends Component {
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
   }
   componentDidMount() {
-    this.props.GetAllQuestions();
+    this.props.GetAllQuestions(1);
     this.props.SetUser();
     this.props.GetPostOptions();
   }
@@ -51,8 +52,8 @@ class questions extends Component {
     );
     var allQuestionsFiltered;
     if (allQuestions) {
-      allQuestionsFiltered = groupBy(allQuestions, "post");
-      Object.assign(allQuestionsFiltered, { all: allQuestions });
+      allQuestionsFiltered = groupBy(allQuestions.results, "post");
+      Object.assign(allQuestionsFiltered, { all: allQuestions.results });
     }
     var dropDownPostOptions = getPostOptions.map(function (element) {
       return {
@@ -96,21 +97,24 @@ class questions extends Component {
             />
           </div>
           {allQuestionsFiltered[this.state.post] ? (
-            allQuestionsFiltered[this.state.post].map((element) => (
-              <QuestionCard
-                qid={element.id}
-                uid={whoAmI.id}
-                lid={element.likedQuestionId}
-                cid={element.candidate}
-                question={element.question}
-                asker={element.askerFullName}
-                askedOn={element.answered}
-                candidate={element.candidateFullName}
-                answer={element.answer}
-                likes={element.numberOfLikes}
-                liked={element.didUserLike}
-              />
-            ))
+            <div>
+              {allQuestionsFiltered[this.state.post].map((element) => (
+                <QuestionCard
+                  qid={element.id}
+                  uid={whoAmI.id}
+                  lid={element.likedQuestionId}
+                  cid={element.candidate}
+                  question={element.question}
+                  asker={element.askerFullName}
+                  askedOn={element.answered}
+                  candidate={element.candidateFullName}
+                  answer={element.answer}
+                  likes={element.numberOfLikes}
+                  liked={element.didUserLike}
+                />
+              ))}
+              <QuestionPagination />
+            </div>
           ) : (
             <Segment>No questions yet!</Segment>
           )}
@@ -236,8 +240,8 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    GetAllQuestions: () => {
-      dispatch(getAllQuestions());
+    GetAllQuestions: (index) => {
+      dispatch(getAllQuestions(index));
     },
     SetUser: () => {
       dispatch(setUser());
