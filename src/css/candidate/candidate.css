@@ -94,15 +94,15 @@
 }
 
 .mobile-manifesto {
-  visibility: hidden;
+  display: none;
 }
 
 .mobile-resume {
-  visibility: hidden;
+  display: none;
 }
 
 .web-resume {
-  visibility: visible;
+  display: inline;
 }
 
 .answer {
@@ -153,13 +153,13 @@
     display: none;
   }
   .mobile-manifesto {
-    visibility: visible !important;
+    display: inline;
   }
   .web-resume {
     display: none;
   }
   .mobile-resume {
-    visibility: visible !important;
+    display: inline;
   }
 }
 
