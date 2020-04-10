@@ -11,6 +11,10 @@
   margin-left: 18%;
 }
 
+.candidate-questions-all {
+  padding-bottom: 1em;
+}
+
 .Link:hover {
   background-color: #edf2f9;
 }
@@ -72,8 +76,8 @@
 }
 
 .video {
-  margin-top: 1.5em;
-  margin-bottom: 2.5em;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .rightside {
@@ -91,6 +95,14 @@
 
 .mobile-manifesto {
   visibility: hidden;
+}
+
+.mobile-resume {
+  visibility: hidden;
+}
+
+.web-resume {
+  visibility: visible;
 }
 
 .answer {
@@ -142,7 +154,12 @@
   }
   .mobile-manifesto {
     visibility: visible !important;
-    margin-top: 4%;
+  }
+  .web-resume {
+    display: none;
+  }
+  .mobile-resume {
+    visibility: visible !important;
   }
 }
 

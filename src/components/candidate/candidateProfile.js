@@ -148,7 +148,7 @@ class candidateProfile extends Component {
                   {candidateDetails.postFullname}{" "}
                 </div>
               </div>
-              <div>
+              <div styleName="styles.web-resume">
                 <Modal
                   trigger={
                     <Button styleName="styles.resume">Electoral Resume</Button>
@@ -163,6 +163,26 @@ class candidateProfile extends Component {
                         src={candidateDetails.resume}
                         width="800"
                         height="800"
+                      ></iframe>
+                    </Modal.Description>
+                  </Modal.Content>
+                </Modal>
+              </div>
+              <div styleName="styles.mobile-resume">
+                <Modal
+                  trigger={
+                    <Button styleName="styles.resume">Electoral Resume</Button>
+                  }
+                >
+                  <Modal.Header>
+                    Electoral Resume of {candidateDetails.fullName}
+                  </Modal.Header>
+                  <Modal.Content>
+                    <Modal.Description>
+                      <iframe
+                        src={candidateDetails.resume}
+                        width="320"
+                        height="400"
                       ></iframe>
                     </Modal.Description>
                   </Modal.Content>
@@ -188,16 +208,18 @@ class candidateProfile extends Component {
                 ></iframe>
               </div>
               <div styleName="styles.mobile-manifesto">
-                <Modal trigger={<a styleName="styles.resume">Manifesto</a>}>
+                <Modal
+                  trigger={<Button styleName="styles.resume">Manifesto</Button>}
+                >
                   <Modal.Header>
                     Electoral Manifesto of {candidateDetails.fullName}
                   </Modal.Header>
                   <Modal.Content>
                     <Modal.Description>
                       <iframe
-                        src={candidateDetails.resume}
-                        width="800"
-                        height="480"
+                        src={candidateDetails.manifesto}
+                        width="320"
+                        height="400"
                       ></iframe>
                     </Modal.Description>
                   </Modal.Content>
@@ -239,7 +261,7 @@ class candidateProfile extends Component {
                   />
                 </div>
               )}
-              <div>
+              <div styleName="styles.candidate-questions-all">
                 {particularQuestions.results ? (
                   <div>
                     {particularQuestions.results.length > 0 ? (

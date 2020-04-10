@@ -15,6 +15,10 @@
   justify-content: space-between;
 }
 
+.answer-questions-all {
+  padding-bottom: 1em;
+}
+
 .Link:hover {
   background-color: #edf2f9;
 }

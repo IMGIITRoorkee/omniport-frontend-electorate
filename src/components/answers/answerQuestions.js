@@ -151,7 +151,7 @@ class answerQuestions extends Component {
           </div>
           <div styleName="styles.rightside">
             {unansweredQuestions.results ? (
-              <div>
+              <div styleName="styles.answer-questions-all">
                 {unansweredQuestions.results.length > 0 ? (
                   <div>
                     {unansweredQuestions.results.map((element) => (
