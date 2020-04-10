@@ -56,6 +56,7 @@ class answerCard extends Component {
         this.props.qid,
         formData,
         this.props.cid,
+        this.props.page["index"],
         this.successCallBack,
         this.errCallback
       );
