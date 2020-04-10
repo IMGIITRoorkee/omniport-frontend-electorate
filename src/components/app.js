@@ -19,7 +19,7 @@ class App extends Component {
     const creators = [
       {
       name: "Anshul Dutt Sharma",
-      role: "Backend Developer",
+      role: "Full Stack Developer",
       },
       {
         name: "Nisarg Patel",
