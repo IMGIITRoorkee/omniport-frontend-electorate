@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Segment, Form, Button, Portal } from "semantic-ui-react";
 
-import { askQuestion } from "../../actions";
+import { askQuestion, changePage } from "../../actions";
 
 import styles from "../../css/questions/questions.css";
 
@@ -42,7 +42,11 @@ class askAQuestion extends Component {
       formData.append("question", this.state.quest);
       formData.append("candidate", this.props.cid);
       formData.append("post", this.props.post);
-      this.props.AskQuestion(formData, this.props.cid);
+      this.props.AskQuestion(
+        formData,
+        this.props.cid,
+        this.props.page["index"]
+      );
       this.setState({
         quest: "",
       });
@@ -98,12 +102,21 @@ class askAQuestion extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    page: state.paginationIndex,
+  };
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    AskQuestion: (data, cid) => {
-      dispatch(askQuestion(data, cid));
+    AskQuestion: (data, cid, index) => {
+      dispatch(askQuestion(data, cid, index));
+    },
+    ChangePage: (index) => {
+      dispatch(changePage(index));
     },
   };
 };
 
-export default connect(null, mapDispatchToProps)(askAQuestion);
+export default connect(mapStateToProps, mapDispatchToProps)(askAQuestion);
