@@ -18,12 +18,12 @@ class App extends Component {
   render() {
     const creators = [
       {
-        name: "Nisarg Patel",
-        role: "Frontend Developer",
+      name: "Anshul Dutt Sharma",
+      role: "Full Stack Developer",
       },
       {
-        name: "Anshul Dutt Sharma",
-        role: "Backend Developer",
+        name: "Nisarg Patel",
+        role: "Frontend Developer",
       },
     ];
     const { match } = this.props;
