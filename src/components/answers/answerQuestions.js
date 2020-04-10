@@ -9,7 +9,9 @@ import {
   Divider,
   Modal,
   Button,
+  Placeholder,
 } from "semantic-ui-react";
+import { DefaultDP } from "formula_one";
 
 import { baseNavUrl } from "../../urls";
 
@@ -98,10 +100,24 @@ class answerQuestions extends Component {
           <div>
             <div>
               <div>
-                <img
-                  src="https://imgix-media.wbdndc.net/cms/filer_public_thumbnails/filer_public/d8/5a/d85a3ec6-79c5-49ae-86e9-902c74546e69/batman-profile-293d6d-bm_cv17_ns-1-v1-600x600-marquee-thumb.jpg__600x600_q85_crop_subsampling-2_upscale.jpg"
-                  styleName="styles2.profileCard-card-profile-photo"
-                />
+                {candidateDetails.loading ? (
+                  <Placeholder style={{ height: 160, width: 160 }}>
+                    <Placeholder.Image />
+                  </Placeholder>
+                ) : candidateDetails.displayPicture ? (
+                  <img
+                    src={candidateDetails.displayPicture}
+                    styleName="home.profileCard-card-profile-photo-candidate-page"
+                  />
+                ) : candidateDetails.fullName ? (
+                  <div styleName="home.profileCard-card-profile-photo-candidate-page">
+                    <DefaultDP
+                      gravatarHash={candidateDetails.gravatarHash}
+                      name={candidateDetails.fullName}
+                      size={"5em"}
+                    />
+                  </div>
+                ) : null}
               </div>
               <div styleName="styles2.heading">{candidateDetails.fullName}</div>
               <div styleName="styles2.headingdetailstwo">
