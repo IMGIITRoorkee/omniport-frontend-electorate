@@ -49,6 +49,8 @@ class askAQuestion extends Component {
       );
       this.setState({
         quest: "",
+        open: false,
+        firstclickdone: false,
       });
     }
   }

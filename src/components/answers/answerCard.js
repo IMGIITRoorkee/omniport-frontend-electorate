@@ -62,6 +62,8 @@ class answerCard extends Component {
       );
       this.setState({
         answer: "",
+        open: false,
+        firstclickdone: false,
       });
     }
   }
