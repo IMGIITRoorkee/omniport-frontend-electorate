@@ -278,6 +278,7 @@ class candidateProfile extends Component {
                             answer={element.answer}
                             likes={element.numberOfLikes}
                             liked={element.didUserLike}
+                            askedOn={element.answered}
                           />
                         ))}
                         <ProfilePagination cid={this.props.match.params.id} />
