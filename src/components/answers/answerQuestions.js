@@ -135,11 +135,12 @@ class answerQuestions extends Component {
                 {candidateDetails.postFullname}{" "}
               </div>
             </div>
-            <div>
+            <div styleName="styles2.web-resume">
               <Modal
                 trigger={
                   <Button styleName="styles2.resume">Electoral Resume</Button>
                 }
+                closeIcon
               >
                 <Modal.Header>
                   Electoral Resume of {candidateDetails.fullName}
@@ -150,6 +151,27 @@ class answerQuestions extends Component {
                       src={candidateDetails.resume}
                       width="800"
                       height="800"
+                    ></iframe>
+                  </Modal.Description>
+                </Modal.Content>
+              </Modal>
+            </div>
+            <div styleName="styles2.mobile-resume">
+              <Modal
+                trigger={
+                  <Button styleName="styles2.resume">Electoral Resume</Button>
+                }
+                closeIcon
+              >
+                <Modal.Header>
+                  Electoral Resume of {candidateDetails.fullName}
+                </Modal.Header>
+                <Modal.Content>
+                  <Modal.Description>
+                    <iframe
+                      src={candidateDetails.resume}
+                      width="320"
+                      height="400"
                     ></iframe>
                   </Modal.Description>
                 </Modal.Content>

@@ -153,6 +153,7 @@ class candidateProfile extends Component {
                   trigger={
                     <Button styleName="styles.resume">Electoral Resume</Button>
                   }
+                  closeIcon
                 >
                   <Modal.Header>
                     Electoral Resume of {candidateDetails.fullName}
@@ -173,6 +174,7 @@ class candidateProfile extends Component {
                   trigger={
                     <Button styleName="styles.resume">Electoral Resume</Button>
                   }
+                  closeIcon
                 >
                   <Modal.Header>
                     Electoral Resume of {candidateDetails.fullName}
@@ -210,6 +212,7 @@ class candidateProfile extends Component {
               <div styleName="styles.mobile-manifesto">
                 <Modal
                   trigger={<Button styleName="styles.resume">Manifesto</Button>}
+                  closeIcon
                 >
                   <Modal.Header>
                     Electoral Manifesto of {candidateDetails.fullName}
