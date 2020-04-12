@@ -178,18 +178,33 @@ class answerCard extends Component {
                       </Button>
                     </div>
                     <div styleName="style.question-card-button">
-                      <span styleName="style.question-card-meta-like">
-                        {this.state.isLiked ? (
-                          <Button basic onClick={this.handleClick}>
-                            <Icon name="thumbs up" color="blue" />{" "}
-                            {this.props.likes} likes
-                          </Button>
-                        ) : (
-                          <Button basic onClick={this.handleClick}>
-                            <Icon name="thumbs up" /> {this.props.likes} likes
-                          </Button>
-                        )}
-                      </span>
+                      {this.props.likes === 1 ? (
+                        <span styleName="styles.question-card-meta-like">
+                          {this.state.isLiked ? (
+                            <Button basic onClick={this.handleClick}>
+                              <Icon name="thumbs up" color="blue" />{" "}
+                              {this.props.likes} like
+                            </Button>
+                          ) : (
+                            <Button basic onClick={this.handleClick}>
+                              <Icon name="thumbs up" /> {this.props.likes} like
+                            </Button>
+                          )}
+                        </span>
+                      ) : (
+                        <span styleName="styles.question-card-meta-like">
+                          {this.state.isLiked ? (
+                            <Button basic onClick={this.handleClick}>
+                              <Icon name="thumbs up" color="blue" />{" "}
+                              {this.props.likes} likes
+                            </Button>
+                          ) : (
+                            <Button basic onClick={this.handleClick}>
+                              <Icon name="thumbs up" /> {this.props.likes} likes
+                            </Button>
+                          )}
+                        </span>
+                      )}
                     </div>
                   </Form>
                 </div>
