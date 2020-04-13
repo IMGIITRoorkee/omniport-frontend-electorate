@@ -40,7 +40,7 @@ class askAQuestion extends Component {
       var formData = new FormData();
       formData.append("asker", this.props.askerId);
       formData.append("question", this.state.quest);
-      formData.append("candidate", this.props.cid);
+      formData.append("candidate", this.props.cpkid);
       formData.append("post", this.props.post);
       this.props.AskQuestion(
         formData,

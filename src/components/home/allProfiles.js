@@ -20,6 +20,7 @@ class allProfiles extends Component {
     this.props.GetPostOptions();
   }
   render() {
+    //console.log(this.props.allProfiles);
     const { allProfiles, getPostOptions } = this.props;
     var allProfilesFiltered;
     const activeStyle = {
@@ -82,9 +83,9 @@ class allProfiles extends Component {
                         degree={profile.degree}
                         branchName={profile.branchName}
                         currentYear={profile.currentYear}
-                        id={profile.id}
                         gravatarHash={profile.gravatarHash}
                         photo={profile.displayPicture}
+                        enrolmentNumber={profile.enrolmentNumber}
                       />
                     ))
                   ) : (

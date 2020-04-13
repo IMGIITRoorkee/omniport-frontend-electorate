@@ -64,6 +64,7 @@ class candidateProfile extends Component {
         }}
       />
     );
+    console.log(this.props);
     return !candidateDetails.isEmpty ? (
       <div styleName="home.allcontainer">
         <div styleName="home.MobileNavbar">
@@ -241,7 +242,7 @@ class candidateProfile extends Component {
                           styleName="styles.answerButton"
                           as={Link}
                           to={baseNavUrl(
-                            `/profiles/${candidateDetails.id}/answer`
+                            `/profiles/${candidateDetails.enrolmentNumber}/answer`
                           )}
                         >
                           Answer Questions
@@ -259,8 +260,9 @@ class candidateProfile extends Component {
                   <AskAQuestion
                     candidate={candidateDetails.fullName}
                     askerId={whoAmI.id}
-                    cid={candidateDetails.id}
+                    cid={candidateDetails.enrolmentNumber}
                     post={candidateDetails.post}
+                    cpkid={candidateDetails.id}
                   />
                 </div>
               )}
@@ -274,7 +276,7 @@ class candidateProfile extends Component {
                             qid={element.id}
                             uid={whoAmI.id}
                             lid={element.likedQuestionId}
-                            cid={element.candidate}
+                            cid={element.enrolmentNumber}
                             question={element.question}
                             asker={element.askerFullName}
                             candidate={element.candidateFullName}

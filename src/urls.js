@@ -18,11 +18,11 @@ export const urlGetAllQuestions = () => {
 };
 
 export const urlGetParticularQuestions = (id) => {
-  return `${baseApiUrl()}question_view/?candidate=${id}`;
+  return `${baseApiUrl()}question_view/?candidate__student__enrolment_number=${id}`;
 };
 
 export const urlGetUnansweredQuestions = (id) => {
-  return `${baseApiUrl()}answer_view/?candidate=${id}`;
+  return `${baseApiUrl()}answer_view/?candidate__student__enrolment_number=${id}`;
 };
 
 export const urlGetQuestionDetails = (id) => {

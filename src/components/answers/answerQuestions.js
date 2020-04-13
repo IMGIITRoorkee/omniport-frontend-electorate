@@ -197,7 +197,7 @@ class answerQuestions extends Component {
                         qid={element.id}
                         uid={whoAmI.id}
                         lid={element.likedQuestionId}
-                        cid={element.candidate}
+                        cid={element.enrolmentNumber}
                         question={element.question}
                         asker={element.askerFullName}
                         askedOn={element.answered}

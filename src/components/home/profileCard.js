@@ -42,7 +42,7 @@ class profileCard extends Component {
             extra
             textAlign="center"
             as={Link}
-            to={`/electorate/profiles/${this.props.id}`}
+            to={`/electorate/profiles/${this.props.enrolmentNumber}`}
           >
             View Profile
           </Card.Content>
