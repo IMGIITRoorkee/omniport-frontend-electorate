@@ -18,13 +18,17 @@ class App extends Component {
   render() {
     const creators = [
       {
-      name: "Anshul Dutt Sharma",
-      role: "Full Stack Developer",
-      },
+        name: "Anshul Dutt Sharma",
+        role: "Full Stack Developer",
+        link: 'https://internet.channeli.in/maintainer_site/team/Anshul/',      },
       {
         name: "Nisarg Patel",
         role: "Frontend Developer",
       },
+      {
+        name: "Manya Singh",
+        role: "Designer"
+      }
     ];
     const { match } = this.props;
     return (
