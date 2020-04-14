@@ -256,7 +256,7 @@ class candidateProfile extends Component {
                   )}
                 </div>
               ) : (
-                <div>
+                <div styleName="styles.candidate-ask-question">
                   <AskAQuestion
                     candidate={candidateDetails.fullName}
                     askerId={whoAmI.id}

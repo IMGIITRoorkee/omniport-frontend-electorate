@@ -7,6 +7,7 @@
 .question-card-question {
   font-size: 17px;
   color: #1d1d1d;
+  word-wrap: break-word;
 }
 
 .question-card-unanswered {
@@ -37,7 +38,7 @@
   flex-direction: column;
   height: 100%;
   margin-left: 16%;
-  width: 60%;
+  width: 65%;
 }
 
 .allquestions-questions-all {

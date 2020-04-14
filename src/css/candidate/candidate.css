@@ -13,6 +13,9 @@
 
 .candidate-questions-all {
   padding-bottom: 1em;
+  word-wrap: break-word;
+}
+.candidate-ask-question {
 }
 
 .Link:hover {
@@ -85,6 +88,7 @@
 .rightside {
   margin-right: 10%;
   margin-left: 15%;
+  width: 56%;
 }
 
 .headingmanifesto {
@@ -141,6 +145,7 @@
   .rightside {
     margin-right: 5%;
     margin-left: 0%;
+    width: 90%;
   }
   .container {
     display: flex;
