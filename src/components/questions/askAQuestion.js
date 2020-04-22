@@ -12,12 +12,14 @@ class askAQuestion extends Component {
     this.state = {
       quest: "",
       open: false,
-      firstclickdone: false,
     };
+    
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleClose = () => this.setState({ open: false });
+  handleOpen = () => this.setState({ open: true });
+
   handleChange(e) {
     const name = e.target.name;
     this.setState({
@@ -25,17 +27,11 @@ class askAQuestion extends Component {
     });
   }
   handleSubmit() {
-    if (this.state.firstclickdone == false) {
-      this.setState({
-        open: true,
-        firstclickdone: true,
-      });
-    }
+
     if (
       this.state.quest &&
       this.props.askerId &&
-      this.props.cid &&
-      this.state.firstclickdone
+      this.props.cid
     ) {
       var formData = new FormData();
       formData.append("asker", this.props.askerId);
@@ -72,9 +68,11 @@ class askAQuestion extends Component {
             }}
           >
             <p>You cannot edit the question after submitting. </p>
-            <p> Please recheck your question.</p>
-
-            <Button content="OK" negative onClick={this.handleClose} />
+            <p> Are you sure you want to submit this question.</p>
+            <div styleName = "styles.confirmbutton">
+            <Button content="CONFIRM" negative onClick={this.handleSubmit} />
+            <Button content="CANCEL" negative onClick={this.handleClose} />
+            </div>
           </Segment>
         </Portal>
 
@@ -95,7 +93,7 @@ class askAQuestion extends Component {
               position="right"
               primary
               content="Submit"
-              onClick={this.handleSubmit}
+              onClick={this.handleOpen}
             />
           </div>
         </Form>

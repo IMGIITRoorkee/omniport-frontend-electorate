@@ -90,6 +90,10 @@
   font-size: 18px;
 }
 
+.confirmbutton{
+  display: flex;
+  justify-content: space-between;
+}
 .dropdown {
   margin-bottom: 15px;
   display: flex;

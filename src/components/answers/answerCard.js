@@ -27,7 +27,6 @@ class answerCard extends Component {
       answer: "",
       isLiked: this.props.liked,
       open: false,
-      firstclickdone: false,
       success: false,
       error: false,
     };
@@ -36,6 +35,8 @@ class answerCard extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClose = () => this.setState({ open: false });
+  handleOpen = () => this.setState({ open: true });
+
   handleChange(e) {
     const name = e.target.name;
     this.setState({
@@ -43,13 +44,8 @@ class answerCard extends Component {
     });
   }
   handleSubmit() {
-    if (this.state.firstclickdone == false) {
-      this.setState({
-        open: true,
-        firstclickdone: true,
-      });
-    }
-    if (this.state.answer && this.state.firstclickdone) {
+
+    if (this.state.answer) {
       var formData = new FormData();
       formData.append("answer", this.state.answer);
       this.props.AnswerQuestion(
@@ -63,7 +59,6 @@ class answerCard extends Component {
       this.setState({
         answer: "",
         open: false,
-        firstclickdone: false,
       });
     }
   }
@@ -151,9 +146,11 @@ class answerCard extends Component {
                     }}
                   >
                     <p>You cannot edit the Answer after submitting. </p>
-                    <p> Please recheck your Answer.</p>
-
-                    <Button content="OK" negative onClick={this.handleClose} />
+                    <p>Are you sure you want to submit your Answer.</p>
+                    <div styleName = "styles.confirmbutton">
+                    <Button content="CONFIRM" negative onClick={this.handleSubmit} />
+                    <Button content="CANCEL" negative onClick={this.handleClose} />
+                    </div>
                   </Segment>
                 </Portal>
                 <div>
@@ -171,7 +168,7 @@ class answerCard extends Component {
                         styleName="style.inputsubmit"
                         type="submit"
                         value="Submit"
-                        onClick={this.handleSubmit}
+                        onClick={this.handleOpen}
                       >
                         {" "}
                         Submit
