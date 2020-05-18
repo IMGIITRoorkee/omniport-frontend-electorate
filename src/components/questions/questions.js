@@ -25,12 +25,18 @@ class questions extends Component {
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
   }
   componentDidMount() {
-    this.props.GetAllQuestions(1);
+    this.props.GetAllQuestions(1, "");
     this.props.SetUser();
     this.props.GetPostOptions();
   }
   handleDropdownChange = (e, { name, value }) => {
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, () => {
+      if (value !== "all") {
+        this.props.GetAllQuestions(1, this.state.post);
+      } else {
+        this.props.GetAllQuestions(1, "");
+      }
+    });
   };
   render() {
     const { allQuestions, whoAmI, getPostOptions } = this.props;
@@ -113,7 +119,11 @@ class questions extends Component {
                   liked={element.didUserLike}
                 />
               ))}
-              <QuestionPagination />
+              {this.state.post === "all" ? (
+                <QuestionPagination post={""} />
+              ) : (
+                <QuestionPagination post={this.state.post} />
+              )}
             </div>
           ) : (
             <Segment>No questions yet!</Segment>
@@ -240,8 +250,8 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    GetAllQuestions: (index) => {
-      dispatch(getAllQuestions(index));
+    GetAllQuestions: (index, post) => {
+      dispatch(getAllQuestions(index, post));
     },
     SetUser: () => {
       dispatch(setUser());

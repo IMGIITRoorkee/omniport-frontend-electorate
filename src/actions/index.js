@@ -59,13 +59,14 @@ export const getPostOptions = () => {
 };
 
 //Get AllQuestions for Questions and Answers Page
-export const getAllQuestions = (index) => {
+export const getAllQuestions = (index, post) => {
   index = Math.ceil(index);
   return (dispatch) => {
     axios
       .get(urlGetAllQuestions(), {
         params: {
           page: index,
+          post: post,
         },
       })
       .then((res) => {
@@ -146,7 +147,7 @@ export const askQuestion = (data, cid, index) => {
     axios
       .post(urlGetAllQuestions(), data, { headers: headers })
       .then((res) => {
-        dispatch(getAllQuestions(index));
+        dispatch(getAllQuestions(index, ""));
         dispatch(getParticularQuestions(cid, index));
         console.log(res);
       })
@@ -172,7 +173,7 @@ export const answerQuestion = (
     axios
       .patch(urlGetQuestionDetails(id), data, { headers: headers })
       .then((res) => {
-        dispatch(getAllQuestions(index));
+        dispatch(getAllQuestions(index, ""));
         dispatch(getUnansweredQuestions(cid, index));
         successCallback(res);
       })
@@ -196,7 +197,7 @@ export const createLike = (qid, uid, cid, index) => {
     axios
       .post(urlLikeView(), data, { headers: headers })
       .then((res) => {
-        dispatch(getAllQuestions(index));
+        dispatch(getAllQuestions(index, ""));
         dispatch(getParticularQuestions(cid, index));
         dispatch(getUnansweredQuestions(cid, index));
         console.log(res);
@@ -215,7 +216,7 @@ export const deleteLike = (id, cid, index) => {
     axios
       .delete(urlLikeDetail(id), { headers: headers })
       .then((res) => {
-        dispatch(getAllQuestions(index));
+        dispatch(getAllQuestions(index, ""));
         dispatch(getParticularQuestions(cid, index));
         dispatch(getUnansweredQuestions(cid, index));
         console.log(res);

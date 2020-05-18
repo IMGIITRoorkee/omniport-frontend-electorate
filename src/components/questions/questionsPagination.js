@@ -10,11 +10,11 @@ class questionsPagination extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
   }
   componentDidMount() {
-    this.props.GetAllQuestions(1);
+    this.props.GetAllQuestions(1, this.props.post);
   }
   handlePageChange = (event, data) => {
     this.props.ChangePage(data["activePage"]);
-    this.props.GetAllQuestions(data["activePage"]);
+    this.props.GetAllQuestions(data["activePage"], this.props.post);
   };
   render() {
     return (
@@ -61,8 +61,8 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    GetAllQuestions: (index) => {
-      dispatch(getAllQuestions(index));
+    GetAllQuestions: (index, post) => {
+      dispatch(getAllQuestions(index, post));
     },
     ChangePage: (index) => {
       dispatch(changePage(index));
